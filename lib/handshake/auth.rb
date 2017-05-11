@@ -101,25 +101,28 @@ module Norn
 
     attr_accessor :socket, :key, :state, :otp, :responses, :characters
     
-    def initialize(params)
+    def initialize(params, &block)
       super(*params.values_at(*self.class.members ))
       @socket    = TCPSocket.new(HOST, PORT)
       @responses = Array.new
       # tell the server we are ready for auth
       write CODES::K
       # pretty self explanatory
-      fetch_key
-        .authenticate
-        .receive!
+      if self.character
+        fetch_key.authenticate.receive! :login
+        yield @otp
+      else
+        fetch_key.authenticate.receive!(:character_list, &block)
+      end
     end
     ##
     ## @brief      handles the incoming packets
     ##
     ## @return     self
     ##
-    def receive!
+    def receive!(mode=:login, &block)
       while !@socket.closed? && resp = @socket.gets
-        handle_incoming Response.parse(resp)
+        handle_incoming(Response.parse(resp), mode, &block)
       end
       self
     end
@@ -180,7 +183,7 @@ module Norn
     ##
     ## @return     void
     ##
-    def handle_incoming(resp)
+    def handle_incoming(resp, mode, &block)
       @responses << resp
       case @state
       when CODES::A
@@ -196,7 +199,7 @@ module Norn
       when CODES::P
         write CODES::C
       when CODES::C
-        handle_character_list_resp resp
+        handle_character_list_resp(resp, mode, &block)
       when CODES::L
         handle_otp_resp resp
         die!
@@ -225,13 +228,23 @@ module Norn
     ##
     ## @return     self
     ##
-    def handle_character_list_resp(resp)
+    def handle_character_list_resp(resp, mode)
       @characters = Characters.new(resp.body[0], resp.body[1], Hash[*resp.body[4..-1]].invert)
-      unless @characters.list[character.capitalize]
-        raise Exception.new "character <#{character}> not found\n: #{@characters.list.keys.join(',')}"
-      end
+      
+      if mode == :character_list
+        send_character_packet yield @characters, self
+      else
+        unless @characters.list[character.capitalize]
+          raise Exception.new "character <#{character}> not found\n: #{@characters.list.keys.join(',')}"
+        end
 
-      write CODES::L, @characters.list[character], CODES::STORM
+        send_character_packet @characters.list[character]
+      end
+      self
+    end
+
+    def send_character_packet(character)
+      write CODES::L, character, CODES::STORM
       self
     end
     ##
@@ -247,6 +260,14 @@ module Norn
         pair.split(/=/).pop 
       end)
       self
+    end
+
+    def finished?
+      !@otp.nil?
+    end
+
+    def to_s
+      "<#{self.class.name}:#{@state} @finished=#{finished?}>"
     end
   end
 end
