@@ -99,6 +99,12 @@ module Norn
         end
     end
 
+    def self.connect(*args)
+      new(*args) do |otp|
+        Norn::Game.connect otp
+      end
+    end
+
     attr_accessor :socket, :key, :state, :otp, :responses, :characters
     
     def initialize(params, &block)

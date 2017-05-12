@@ -1,6 +1,6 @@
 # encoding: US-ASCII
 require 'spec_helper'
-require 'handshake/auth'
+require 'norn/handshake'
 
 describe Norn::Handshake do
   describe '#new' do
