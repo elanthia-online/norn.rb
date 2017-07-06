@@ -9,3 +9,25 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+module Generator
+  STATUSES = [
+    "STUNNED",
+    "PRONE",
+  ]
+
+  STATES = [
+    Status::Y,
+    Status::N,
+  ]
+
+  def self.status
+    kind    = STATUSES.sample
+    visible = STATES.sample
+    { 
+      string:  "<indicator id='Icon#{kind}' visible='#{visible}'/>",
+      visible: visible,
+      kind:    kind,
+    }
+  end
+end

@@ -1,20 +1,24 @@
-require "observer"
+require "norn/worker"
+require "norn/world/status"
 
 module Norn
-  class Parser
-    include Observable
-    QUEUE  = Queue.new
-    PARSER = Parser.new
-    WORKER = Thread.new do PARSER.link! end
+  module Parser
+    POOL_SIZE = 4
+    QUEUE     = Queue.new
 
-    class Subscriber
-      def initialize
-        Parser.add_observer(self)
+    POOL  = Array.new(POOL_SIZE) do
+      Worker.new do
+        Parser.parse(Parser::QUEUE.shift) unless Parser::QUEUE.empty?
       end
     end
 
-    def self.add_observer(thing)
-      PARSER.add_observer(thing)
+    SUPERVISOR = Worker.new(:parser_pool_supervisor) do      
+      POOL.each do |worker|
+        unless worker.alive?
+          POOL.delete(worker)
+          POOL << Worker.new
+        end
+      end
     end
 
     def self.<<(raw)
@@ -22,25 +26,9 @@ module Norn
       self
     end
 
-    def link!
-      loop do
-        run!
-        sleep 0.1
-      end
-    end
-
-    def run!
-      # TODO: try? wrapper would be ideal here
-      parse(QUEUE.shift) unless QUEUE.empty?
-    end
-
-    def parse(str)
-      #puts "Parser.parse(#{str})"
-    end
-
-    def notify(parsed)
-      changed
-      notify_observers(parsed)
+    def self.parse(incoming)
+      puts(incoming)
+      Status.update(incoming)
     end
   end
 end

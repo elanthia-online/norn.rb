@@ -1,4 +1,5 @@
 require "socket"
+require "norn/worker"
 
 module Norn
   class Game < Struct.new(:handshake)
@@ -94,39 +95,35 @@ module Norn
       @state      = STATES::CONNECTING
       @upstream   = TCPSocket.new(handshake.host, handshake.port.to_i)
       @downstream = TCPServer.open(port)
-      @threads    = ThreadGroup.new
       @clients    = Array.new
       ##
       ## open our connection to the game
       ##
-      @threads.add(Thread.new do 
-        Thread.current[:name] = UPSTREAM
+      Worker.new(:upstream) do
         while !@upstream.closed? && resp = @upstream.gets
           handle_incoming resp[0..-1]
         end
         die!
-      end)
+      end
       ##
       ## allow multiple FEs to connect
       ##
-      @threads.add(Thread.new do
-        Thread.current[:name] = DOWNSTREAM
-        loop do
-          Thread.fork(@downstream.accept) do |client| 
-            @clients << client
+      Worker.new(:downstream) do          
+        Thread.fork(@downstream.accept) do |client| 
+          @clients << client
 
-            while !client.closed? && cmd = client.gets
-              if cmd.match(Norn::COMMAND)
-                # TODO
-              else
-                write_game_command(cmd)
-              end
+          while !client.closed? && cmd = client.gets
+            if cmd.match(Norn::COMMAND)
+              # TODO
+            else
+              write_game_command(cmd)
             end
-
-            @client.delete(client)
           end
+
+          @clients.delete(client)
         end
-      end)
+      end
+    
     end
     ##
     ## @brief      Writes a game command.
@@ -167,7 +164,6 @@ module Norn
         client.close
         @clients.delete(client)
       end
-      @threads.list.each(&:kill)
       @upstream.close
       @downstream.close
       self
@@ -195,11 +191,13 @@ module Norn
         # weird version of ACK ¯\_(ツ)_/¯
         write PREFIX, PREFIX
       else
+        
         # forward a copy of the response to the parser
         Parser << resp.dup
-        # forward the response to each of the clients that
-        # are connected
-        @clients.each do |downstream| downstream.puts resp end
+        # forward the response to each connected client
+        @clients.each do |downstream| 
+          downstream.puts resp 
+        end
       end
     end
   end
