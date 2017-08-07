@@ -1,3 +1,5 @@
+require "norn/util/try"
+
 module Norn
   WORKERS = ThreadGroup.new
   
@@ -18,7 +20,15 @@ module Norn
       @name = name
       super do
         loop do
-          yield
+          work = Try.new do
+            yield
+          end
+
+          if work.failed?
+            Norn.log work.result, :error
+            Norn.log work.result.backtrace.join("\n"), :error
+          end
+
           sleep 0.1
         end
       end

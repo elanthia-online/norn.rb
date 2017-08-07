@@ -1,0 +1,1 @@
+ <dialogData id='encum'><progressBar id='encumlevel' value='0' text='None' top='5' left='-5' align='n' width='160' height='15'/><label id='encumblurb' value='You are not encumbered enough to notice.' top='10' left='0' align='n' width='160' height='50' justify='0' anchor_top='encumlevel'/></dialogData>

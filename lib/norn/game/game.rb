@@ -1,5 +1,7 @@
 require "socket"
-require "norn/worker"
+require "norn/game/handshake"
+require "norn/util/worker"
+require "norn/script/exec"
 
 module Norn
   class Game < Struct.new(:handshake)
@@ -22,7 +24,7 @@ module Norn
       CONNECTED      = :CONNECTED
       CLOSED         = :CLOSED
     end
-    USER_AGENT  = "/FE:WIZARD /VERSION:1.0.1.22 /P:NORN@#{Norn::VERSION} /XML"
+    USER_AGENT  = "/FE:STORMFRONT /VERSION:1.0.1.22 /P:NORN@#{Norn::VERSION} /XML"
     PREFIX      =  "<c>"
     PORT        = 8383
     HOST        = "0.0.0.0"
@@ -108,19 +110,26 @@ module Norn
       ##
       ## allow multiple FEs to connect
       ##
-      Worker.new(:downstream) do          
-        Thread.fork(@downstream.accept) do |client| 
-          @clients << client
+      Worker.new(:downstream) do
+        until @downstream.closed?
+          Thread.fork(@downstream.accept) do |client| 
+            @clients << client
 
-          while !client.closed? && cmd = client.gets
-            if cmd.match(Norn::COMMAND)
-              # TODO
-            else
-              write_game_command(cmd)
+            while !client.closed? && cmd = client.gets
+              if cmd.match(Norn::COMMAND)
+                if cmd.match(Script::Exec::COMMAND)
+                  Norn.log cmd, :exec_script
+                  Script::Exec.run(cmd)
+                else
+                  Norn.log cmd, :script
+                end
+              else
+                write_game_command(cmd)
+              end
             end
-          end
 
-          @clients.delete(client)
+            @clients.delete(client)
+          end
         end
       end
     
@@ -136,6 +145,14 @@ module Norn
       puts "command :: #{str}"
       write PACKETS::COMMAND, str
       self
+    end
+    ##
+    ## write a command to all downstream clients
+    ##
+    def write_to_clients(str)
+      @clients.each do |client|
+        client.puts str.to_s.concat("\n")
+      end
     end
     ##
     ## @brief      writes an array of strings to the game
@@ -199,6 +216,10 @@ module Norn
           downstream.puts resp 
         end
       end
+    end
+
+    def to_s
+      %{<Norn::Game @state=#{@state}>}
     end
   end
 end

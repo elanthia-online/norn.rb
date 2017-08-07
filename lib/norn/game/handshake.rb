@@ -76,6 +76,9 @@ module Norn
     ## @brief      Class for one-time password container
     ##
     class OTP < Struct.new(:upport, :game, :code, :name, :file, :host, :port, :key)
+      def to_s
+        ""
+      end
     end
     ##
     ## authentication service constants
@@ -121,6 +124,7 @@ module Norn
         fetch_key.authenticate.receive!(:character_list, &block)
       end
     end
+
     ##
     ## @brief      handles the incoming packets
     ##
@@ -273,7 +277,7 @@ module Norn
     end
 
     def to_s
-      "<#{self.class.name}:#{@state} @finished=#{finished?}>"
+      "<Handshake>"
     end
   end
 end

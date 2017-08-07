@@ -1,57 +1,51 @@
-class Symbol
-  def is_boolean_method?
-    self.to_s.end_with?("?")
-  end
+require "norn/parser/parser"
 
-  def from_boolean_method
-    self.to_s.from_boolean_method
-  end
+module Status
+  module Effects
+    DEAD      = :dead
+    PRONE     = :prone
+    KNEELING  = :kneeling
+    SITTING   = :sitting
+    STUNNED   = :stunned
+    SLEEPING  = :sleeping
+    FROZEN    = :frozen
+    WEBBED    = :webbed
+    ROOTED    = :rooted
+    FLYING    = :flying
 
-  def to_boolean_method
-    self.to_s.to_boolean_method
-  end
-end
-
-class String
-  def is_boolean_method?
-    self.end_with?("?")
-  end
-
-  def from_boolean_method
-    self[0..-2].to_sym
-  end
-
-  def to_boolean_method
-    self.is_boolean_method? ? self : self.downcase.concat("?").to_sym
-  end
-end
-
-class Status
-  INDICATOR = /<indicator\s*id='Icon(?<kind>.*?)'\s*visible='(?<state>.*)'\s*\/>/
-  Y         = "y"
-  N         = "n"
-  EFFECTS   = {}
-
-  def self.cast(visible)
-    visible == Y ? true : false   
-  end
-
-  def self.update(str)
-    if result = INDICATOR.match(str)
-      EFFECTS[result[:kind].downcase.to_sym] = cast(result[:state])
+    def respond_to_missing?(method_name, include_private = false)
+      method_name.is_boolean_method? || super
     end
-    self
+
+    def method_missing(*args)
+      if args.first.is_boolean_method?
+        return status.include?(args.first.from_boolean_method)
+      end
+      super *args
+    end
   end
 
-  def self.method_missing(name)
-    if name.is_boolean_method?
-      EFFECTS[name.from_boolean_method] || false
-    else
-      super
-    end
+  def self.parse(str)
+    str.scan(Norn::Parser::Tags::ExistWithStatus)
+  end
+
+  def self.fetch(*args)
+    Norn::Parser::StatusDecoder.fetch *args
   end
 
   def self.respond_to_missing?(method_name, include_private = false)
     method_name.is_boolean_method? || super
   end
+
+  def self.method_missing(*args)
+    if args.first.is_boolean_method?
+      return fetch(
+        args.first.from_boolean_method, 
+        false,
+      )
+    end
+    super *args
+  end
+
+
 end

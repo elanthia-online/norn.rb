@@ -1,9 +1,8 @@
 # encoding: US-ASCII
+require "cgi"
 require "norn/version"
-require "norn/parser"
-require "norn/game"
-require "norn/handshake"
-require "norn/world/status"
+Dir[File.dirname(__FILE__) + '/norn/ext/**/*.rb'].each do |file| require file end
+Dir[File.dirname(__FILE__) + '/norn/**/*.rb'].each do |file| require file end
 
 module Norn
   ##
@@ -30,5 +29,15 @@ module Norn
   ##
   def self.game
     Norn::Game.instance
+  end
+
+  def self.log(message, label = :debug)
+    if message.is_a?(Exception)
+      message = [
+        message.message,
+        message.backtrace.join("\n"),
+      ].join
+    end
+    puts "[Norn.#{label}] #{message}"
   end
 end
