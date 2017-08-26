@@ -15,21 +15,21 @@ module Norn
         cast: Proc.new do |type, tag, children|
           case tag.id
           when :roomexits
-            [:noop, 
+            [:ok, 
               Direction.parse(children)]
           when :roomdesc
-            [:noop,
+            [:ok,
               Room::Description.parse(tag)]
           when :roomplayers
-            [:noop,
+            [:ok,
               Players.parse(children)]
           when :roomobjs
-            [:noop,
+            [:ok,
               Room.put(:objs, 
                 GameObj.parse(children))]
           else
             ComponentDecoder.debug("possible data loss in component <#{type}>", type)
-            [:noop,
+            [:ok,
               nil]
           end
         end
@@ -53,20 +53,20 @@ module Norn
         cast: Proc.new do |type, tag, children|
           case tag.id
           when :speech
-            [:noop, 
+            [:ok, 
               text.text]
           when :thoughts
-            [:noop, 
+            [:ok, 
               tag.text]
           # defer to inventory parser
           when :inv 
-            [:noop,
+            [:ok,
               Inv.parse(children)]
           when :room
-            [:noop, 
+            [:ok, 
               ComponentDecoder.cast(tag)]
           when :bounty
-            #[:noop, 
+            #[:ok, 
             #  Bounty.parse(tag.text)]
           end
         end
@@ -79,14 +79,38 @@ module Norn
         cast: Proc.new do |type, tag, children|
           case tag.id
           when :roomdesc
-            [:noop,
+            [:ok,
               Room::Description.parse(tag)]
           when :roomname
-            [:noop,
+            [:ok,
               Room.put(:title, tag.text)]
           else
             StyleDecoder.debug(tag, :possible_data_loss)
           end
+        end
+      ]
+    end
+
+    class HandDecoder
+      include Decoder[
+        wants: [:left, :right],
+        cast: Proc.new do |id, tag, children|
+          [:ok,  
+            Hand.new(
+              tag.name, 
+              tag.fetch(:id), 
+              tag.fetch(:noun), 
+              tag.fetch(:desc))]
+        end
+      ]
+    end
+
+    class RTDecoder
+      include Decoder[
+        wants: [:roundtime, :casttime],
+        cast: Proc.new do |type, tag, children|
+          [:ok, 
+            Roundtime.put(tag.name, tag.fetch(:value))]
         end
       ]
     end
@@ -125,6 +149,13 @@ module Norn
     def self.state
       Parser::STATE.access do |state|
         yield state
+      end
+    end
+
+    def self.clear!
+      state do |state|
+        state[:stream] = nil
+        state[:tags]   = []
       end
     end
 
@@ -378,7 +409,7 @@ module Norn
     ## send a parsed Tag to the world
     ##
     def self.emit(type, tag)
-      #Norn.log(tag, :emit)
+      Norn.log(tag, :emit)
       Decoder.each do |decoder|
         decoder.cast(tag) if decoder.wants?(type)
       end

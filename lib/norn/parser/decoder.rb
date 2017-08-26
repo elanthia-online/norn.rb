@@ -32,14 +32,8 @@ module Decoder
       @wants.include?(type)
     end
 
-    def self.debug(message, label = :debug)
-      if message.is_a?(Exception)
-        message = [
-          message.message,
-          message.backtrace.join("\n"),
-        ].join
-      end
-      puts %{[#{self.name}.#{label}] #{message}}
+    def self.debug(message, label)
+      Norn.log message, %{#{self.name}.#{label}}.to_sym
     end
   end
 end

@@ -27,8 +27,12 @@ module Status
 
   @@store   = MemoryStore.new(:status_effects)
 
+  def self.cast(state)
+    state.downcase == "y"
+  end
+
   def self.parse(type, state)
-    @@store.put type.slice(4, type.size).downcase, state.downcase == "y"
+    @@store.put type.slice(4, type.size).downcase, cast(state)
   end
 
   def self.fetch(*args)

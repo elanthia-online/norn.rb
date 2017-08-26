@@ -5,18 +5,22 @@ require "norn/script/exec"
 describe Script::Exec do
   describe "#run" do
     it "runs basic Ruby stuffs" do
-      expect(Script::Exec.run("2 + 2").await)
+      expect(Script::Exec.run("/e 2 + 2").await)
         .to eq(4)
     end
     
     it "can safely access Norn objects" do
       Generator.run(Generator::Status, samples: 10) do |status|
-        Status.update status.string
-        expected = Status.send(status.kind.to_boolean_method)
-        actual   = Status.cast(status.visible)
-        result   = Script::Exec.run("Status.#{status.kind.downcase}?").await
+        Norn::Parser.parse status.string
+        expected = Status.cast(status.visible)
+        result   = Script::Exec.run("/e Status.#{status.kind.downcase}?").await
+        puts result
         expect(result)
-          .to eq(actual)
+          .to eq(expected), %{
+            tag: #{status}
+         result: #{result}
+       expected: #{expected}
+          }
       end
     end
   end

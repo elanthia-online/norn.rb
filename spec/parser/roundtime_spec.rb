@@ -1,21 +1,11 @@
 require 'spec_helper'
 
-RTDecoder = Norn::Parser::RTDecoder
-describe RTDecoder do
-  describe 'Tags::Roundtime' do
-    it "matches" do
-      Generator.run(Generator::Roundtime) do |roundtime|
-        expect(Norn::Parser::Tags::RoundTime.match(roundtime.string))
-          .to be_truthy, %{
-            string: #{roundtime.string}
-          }
-      end
-    end
-  end
+Parser = Norn::Parser
+describe Parser::RTDecoder do
   describe '#update' do
     it "updates roundtimes" do
       Generator.run(Generator::Roundtime, samples: 10) do |roundtime|
-        RTDecoder.update(roundtime.string)
+        Parser.parse(roundtime.string)
         actual = Roundtime.fetch(roundtime.type)
         expect(actual)
           .to eq(roundtime.duration)

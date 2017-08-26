@@ -2,6 +2,9 @@ require 'spec_helper'
 Parser = Norn::Parser
 
 describe Parser do
+  ##
+  ## common assertion about parser state
+  ##
   def assert_parser_empty!
     open_tags = Parser::STATE.fetch(:tags)
     expect(open_tags.size)
@@ -11,6 +14,10 @@ describe Parser do
       })
   end
 
+  before(:each) do
+    Parser.clear!
+  end
+  
   it "#peek", focus: false do
     puts Parser.peek " ,".chars
     puts Parser.peek "(sitting),".chars

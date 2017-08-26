@@ -31,7 +31,15 @@ module Norn
     Norn::Game.instance
   end
 
+  DEBUG = ENV.fetch("DEBUG", false)
+  DEBUG_PATTERN = %r{#{DEBUG}}
+
   def self.log(message, label = :debug)
+    
+    return self unless DEBUG
+
+    return self unless label.to_s.match(DEBUG_PATTERN)
+
     if message.is_a?(Exception)
       message = [
         message.message,

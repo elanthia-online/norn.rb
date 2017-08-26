@@ -1,8 +1,6 @@
 # encoding: US-ASCII
 require 'socket'
 require 'spec_helper'
-require 'norn/game'
-require 'norn/handshake'
 
 describe Norn::Game do
   before(:each) do

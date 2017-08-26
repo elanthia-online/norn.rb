@@ -1,4 +1,4 @@
-# Norn
+# Norn [![Build Status](https://travis-ci.org/ondreian/norn.rb.svg?branch=master)](https://travis-ci.org/ondreian/norn.rb) [![Build status](https://ci.appveyor.com/api/projects/status/8b0y5sbw5e6ejmj0?svg=true)](https://ci.appveyor.com/project/ondreian/norn-rb)
 
 A new scripting engine for Gemstone IV that should be a drop-in replacement for Lich.rb
 
