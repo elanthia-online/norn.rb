@@ -1,7 +1,6 @@
 require "norn/util/registry"
 require "norn/world/gameobj"
 require "norn/world/status"
-require "norn/parser/parser"
 
 class Players
   REGISTRY = Registry.new(:id, :noun, :name)
@@ -17,4 +16,10 @@ end
 
 class Player < GameObj
   include Status::Effects
+end
+
+class GameObj
+  def to_player
+    Player.new(id, noun, name, status, tags)
+  end
 end

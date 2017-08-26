@@ -14,18 +14,25 @@ describe Parser do
       })
   end
 
-  before(:each) do
+  after(:each) do
     Parser.clear!
   end
   
   it "#peek", focus: false do
-    puts Parser.peek " ,".chars
-    puts Parser.peek "(sitting),".chars
-    puts Parser.peek "(stunned) and".chars
-    puts Parser.peek "lying down.".chars
+    expect(Parser.peek(" ,".chars).first)
+      .to be_empty
+    expect(Parser.peek("(sitting),".chars).first)
+      .to eq("(sitting)")
+
+    expect(Parser.peek("(stunned) and".chars).first)
+      .to eq("(stunned)")
+
+    expect(Parser.peek("lying down.".chars).first)
+      .to eq("lying down")
+
   end
 
-  it "#parse" do 
+  it "#parse", focus: true do 
     Generator.one_of(
       Generator::Hand, 
       Generator::Component, 
@@ -194,7 +201,7 @@ describe Parser do
     end
   end
 
-  it "updates streams", focus: false do
+  it "updates streams", focus: true do
     Generator.run(Generator::Stream) do |stream, i|
       chunks = stream.chunks.clone
 

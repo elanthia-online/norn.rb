@@ -78,12 +78,6 @@ module Norn
       end
 
       def close
-        begin
-          raise Exception.new('trace')
-        rescue Exception => ex
-          #Norn.log ex.backtrace.join("\n"), :tag_closure  
-        end
-      
         @text = @text.strip
         @mode = Modes::CLOSED
         self

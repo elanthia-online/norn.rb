@@ -56,8 +56,4 @@ class GameObj < Struct.new(:id, :noun, :name, :status, :after_name, :tags)
   def inspect
     to_s
   end
-
-  def to_player
-    Player.new(id, noun, name, status, tags)
-  end
 end

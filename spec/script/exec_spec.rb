@@ -14,7 +14,6 @@ describe Script::Exec do
         Norn::Parser.parse status.string
         expected = Status.cast(status.visible)
         result   = Script::Exec.run("/e Status.#{status.kind.downcase}?").await
-        puts result
         expect(result)
           .to eq(expected), %{
             tag: #{status}

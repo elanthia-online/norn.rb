@@ -4,8 +4,6 @@ require "norn/util/buffer"
 require "norn/parser/tokens"
 require "norn/parser/decoder"
 
-Dir[File.dirname(__FILE__) + '/../world/**/*.rb'].each do |file| require file end
-
 module Norn
   module Parser
     class ComponentDecoder

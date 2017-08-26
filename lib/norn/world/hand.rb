@@ -1,4 +1,3 @@
-require "norn/parser/parser"
 require "norn/world/gameobj"
 
 class Hand < GameObj
