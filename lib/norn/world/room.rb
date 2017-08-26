@@ -44,10 +44,8 @@ class Room
   end
 
   class Description < Struct.new(:text, :objs)
-    def self.parse(contents)
-      objs = GameObj.parse(contents)
-      text = Norn::Parser.strip_xml(contents)
-      new(text, objs)
+    def self.parse(tag)
+      new(tag.text, GameObj.parse(tag.children))
     end
 
     def initialize(*args)
@@ -66,8 +64,9 @@ class Array
 end
 
 class Direction < Struct.new(:dir)
-  def self.parse(str)
-    Room.put :exits, str.scan(Norn::Parser::Tags::D).to_dirs
+  def self.parse(tags)
+    Norn.log(tags, :direction)
+    #Room.put :exits, str.scan(Norn::Parser::Tags::D).to_dirs
   end
 
   def go

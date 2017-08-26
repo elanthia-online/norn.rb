@@ -17,9 +17,15 @@ class MemoryStore
     self
   end
 
-  def each
+  def access
     @lock.synchronize do
-      @store.keys.each do |k|
+      yield @store
+    end
+  end
+
+  def each
+    access do |store|
+      store.keys.each do |k|
         yield k, @store[k], @store
       end
     end
@@ -30,6 +36,10 @@ class MemoryStore
       @store.delete(key.to_sym)
     end
     self
+  end
+
+  def clear
+    access(&:clear)
   end
 
   def fetch(key=nil, default=nil)

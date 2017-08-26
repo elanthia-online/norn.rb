@@ -33,19 +33,26 @@ module Generator
     end
   end
 
-
-  def self.run(mods, **args)
-    (args[:samples] || 1_000).times do |i|
-      if mods.is_a?(Array)
-        yield *mods.map(&:generate), i
-      else
-        yield mods.send(:generate), i
+  def self.one_of(*mods, samples: 1_000)
+    samples.times do |i|
+      test = mods.sample.send(:generate)
+      begin
+        yield test, i
+      rescue => exception
+        raise $!, "case: #{test}: #{$!}", $!.backtrace
+       
       end
     end
   end
 
+  def self.run(*mods, samples: 1_000, method: :generate)
+    samples.times do |i|
+      yield *mods.map(&method), i
+    end
+  end
+
   def self.sample(type, subtype)
-    File.read(File.join(__dir__, "samples", type.to_s, subtype.to_s + ".tag"))
+    yield File.read(File.join(__dir__, "samples", type.to_s, subtype.to_s + ".tag"))
   end
   
   Dir[File.dirname(__FILE__) + '/generators/**/*.rb'].each do |file|

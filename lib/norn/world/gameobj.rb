@@ -8,26 +8,37 @@ class Array
   end
 end
 
-class GameObj < Struct.new(:id, :noun, :name, :status, :tags)
-  def self.parse(str)
-    str  = Norn::Parser.strip_xml(str, Norn::Parser::Tags::Bold)
-    
-    objs = str.scan(Norn::Parser::Tags::Exist).to_game_objs
+class GameObj < Struct.new(:id, :noun, :name, :status, :after_name, :tags)
+  VERBOSE_EFFECT = "that is"
+  BRIEF_EFFECT   = "("
 
-    byId = objs.reduce(Hash.new) do |map, obj|
-      map[obj.id] = obj
-      map
+  def self.parse(tags)
+    tags.map do |tag|
+      tail = tag.fetch(:tail)
+      after_name = nil
+      status = if tail.nil?
+        []
+      elsif tail[0] == BRIEF_EFFECT
+        tail[1..-2].split(", ")
+      elsif tail.start_with?(VERBOSE_EFFECT)
+        tail[VERBOSE_EFFECT.size..-1].split(", ").map(&:strip)
+      else
+        after_name = tail
+        []
+      end
+
+      new(
+        tag.fetch(:exist),
+        tag.fetch(:noun),
+        tag.text,
+        status.map(&:to_sym),
+        after_name,
+      )
     end
-
-    Status.parse(str).each do |id, name, desc, status|
-      byId[id].status = status.split(", ").map(&:to_sym)  
-    end
-
-    objs
   end
 
-  def initialize(id, noun, name, status = [], tags = [])
-    super(id, noun, name, status, tags)
+  def initialize(id, noun, name, status = [], after_name = nil, tags = [])
+    super(id, noun, name, status, after_name, tags)
   end
 
   def tag(*tags)
@@ -36,6 +47,10 @@ class GameObj < Struct.new(:id, :noun, :name, :status, :tags)
 
   def to_game
     %{##{id}}
+  end
+
+  def full_name
+    (name + " " + (after_name || "")).strip
   end
 
   def inspect

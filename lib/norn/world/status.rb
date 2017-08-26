@@ -1,4 +1,4 @@
-require "norn/parser/parser"
+require "norn/util/memory-store"
 
 module Status
   module Effects
@@ -25,12 +25,14 @@ module Status
     end
   end
 
-  def self.parse(str)
-    str.scan(Norn::Parser::Tags::ExistWithStatus)
+  @@store   = MemoryStore.new(:status_effects)
+
+  def self.parse(type, state)
+    @@store.put type.slice(4, type.size).downcase, state.downcase == "y"
   end
 
   def self.fetch(*args)
-    Norn::Parser::StatusDecoder.fetch *args
+    @@store.fetch *args
   end
 
   def self.respond_to_missing?(method_name, include_private = false)

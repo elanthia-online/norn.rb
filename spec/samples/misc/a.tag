@@ -1,0 +1,1 @@
+Premium Long Term Incentives are now available under the Premium Points system.  You can pick up your scrolls at the Lighthouse on the Isle of Four Winds.  For more information on these benefits please look at <a href="http://www.play.net/gs4/premium/premiumplus.asp">the Premium Plus Webpage</a>.
