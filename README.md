@@ -20,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### ProfanityFE
+
+Norn can be used easily with [ProfanityFE](https://github.com/ondreian/ProfanityFE), due to its ability to connect to arbitrary ports for the game stream.
+The Norn default console (`bin/console`) will prompt for user login information, which will login to the specified character.
+Launching Profanity to read from port 8383 (`ruby profanity.rb --port=8383`) will cause ProfanityFE to connect to Norn for the game stream.
+Norn's connection to ProfanityFE can be confirmed by executing `/i Room.title` inside ProfanityFE, which should return the title of the current room.
 
 ## Development
 
@@ -36,4 +41,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/ondrei
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
