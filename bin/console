@@ -1,6 +1,55 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
 require "norn"
+require "highline/import"
+require "optparse"
+
+options = {
+  :account => nil,
+  :password => nil,
+  :character => nil,
+  :game => "GS3"
+}
+OptionParser.new do |opts|
+  opts.banner = "Usage: console [options]"
+  opts.on("-uUSER", "--username=USER", "Username for login") do |user|
+    options[:account] = user
+  end
+  opts.on("-pPASSWORD", "--password=PASSWORD", "Password") do |pass|
+    options[:password] = pass
+  end
+  opts.on("-cCHAR", "--character=CHAR", "Character name for login") do |character|
+    options[:character] = character.capitalize
+  end
+  opts.on("-gGAME", "--game=GAME", "Game to log into") do |game|
+    options[:game] = game
+  end
+  opts.on( '-h', '--help', 'Display this screen' ) do
+     puts opts
+     exit
+   end
+end.parse!
+
+if !options[:account]
+  options[:account] = ask("Account name: ")
+end
+
+if !options[:password]
+  options[:password] = ask("Password: ") { |q| q.echo = "*" }
+end
+
+if !options[:character]
+  Norn::Handshake.new(account: options[:account], password: options[:password], game: options[:game]) { |characters|
+    choose do |menu|
+      menu.prompt = "Choose character: "
+      characters.list.each_key do |name|
+        menu.choice(name) { options[:character] = name}
+      end
+    end
+  }
+end
+
+Norn.connect(account: options[:account], password: options[:password], character: options[:character], game: options[:game])
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
@@ -8,6 +57,3 @@ require "norn"
 # (If you use this, don't forget to add pry to your Gemfile!)
 require "pry"
 Pry.start
-
-require "irb"
-IRB.start(__FILE__)
