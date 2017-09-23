@@ -114,20 +114,17 @@ module Norn
         until @downstream.closed?
           Thread.fork(@downstream.accept) do |client| 
             @clients << client
-
             while !client.closed? && cmd = client.gets
               if cmd.match(Norn::COMMAND)
                 if cmd.match(Script::Exec::COMMAND)
-                  Norn.log cmd, :exec_script
                   Script::Exec.run(cmd)
                 else
-                  Norn.log cmd, :script
+                  Script::UserScript.run(cmd)
                 end
               else
                 write_game_command(cmd)
               end
             end
-
             @clients.delete(client)
           end
         end
@@ -203,6 +200,7 @@ module Norn
         # and our user agent string? doubt they actually
         # do anything with it, but it's in the spec
         write handshake.key, USER_AGENT
+        handshake.key = :err
       when PACKETS::AUTHENTICATED
         @state = STATES::CONNECTED
         # weird version of ACK ¯\_(ツ)_/¯
@@ -211,9 +209,11 @@ module Norn
         
         # forward a copy of the response to the parser
         Parser << resp.dup
+        # remove closed
+        @clients = @clients.reject(&:closed?)
         # forward the response to each connected client
         @clients.each do |downstream| 
-          downstream.puts resp 
+          downstream.puts resp unless downstream.closed?
         end
       end
     end
