@@ -14,7 +14,8 @@ class Script
     private_class_method :next_id
 
     def self.run(herescript)
-      Script.new("exec:#{next_id}") do |script|
+      mode = herescript.match(COMMAND)[:mode] == INTERACTIVE ? :silent : :normal
+      Script.new("exec:#{next_id}", mode: mode) do |script|
         script.result = script.instance_eval(herescript.gsub(COMMAND, "").strip)
         if herescript.match(COMMAND)[:mode] == INTERACTIVE
           script.write script.result.to_s

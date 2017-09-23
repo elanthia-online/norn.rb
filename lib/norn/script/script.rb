@@ -36,33 +36,63 @@ class Script < Thread
     self
   end
 
+  def self.label(*labels)
+    labels.flatten.compact.map(&:to_s)
+      .join(".")
+      .gsub(/\s+/, "")
+  end
+
   def self.current
     fetch.values.find do |script|
       Thread.current == script
     end
   end
 
-  attr_reader :name, :thread
-  attr_accessor :result
+  attr_reader :name, :code, :mode
+  attr_accessor :result, :package
   
-  def initialize(name)
+  def initialize(name, mode: :normal)
     @name   = name
+    @mode   = mode
     @start  = Time.now
+    script  = self
     super do
+      script.write(%{running}, label: :up) unless silent?
       work = Try.new do
         yield self
+        @code = 0
       end
       if work.failed?
+        @code = 1 if ok?
         write work.result.message
         write work.backtrace.join("\n")
       end
+      script.write(%{status:#{script.code} time:#{script.uptime}s}, label: :end) unless silent?
       Script.kill(@name)
     end
     Script.register(@name, self)
   end
 
-  def view(t)
-    "#{@name}>" + t.to_s.gsub(/(<|>&)/) do 
+  def debug?
+    mode == :debug
+  end
+
+  def silent?
+    mode == :silent
+  end
+
+  def ok?
+    @code = 0
+  end
+
+  def debug(*args, label: nil)
+    return self unless debug?
+    write(*args, 
+      label: [:debug] + [label])
+  end
+
+  def view(t, label: nil)
+    "[#{Script.label(@name, label)}] " + t.to_s.gsub(/(<|>&)/) do 
       CGI.escape_html $1
     end
   end
@@ -72,13 +102,26 @@ class Script < Thread
     @result
   end
 
-  def write(str)
-    puts view str
-    if Norn.game.nil?
-      puts view str
-    else
-      Norn.game.write_to_clients view str
+  def write(*strs, label: nil)
+    begin
+      strs.each do |str|
+        output = view(str, label: label)
+        puts output
+        if Norn.game.nil?
+          puts output
+        else
+          Norn.game.write_to_clients output
+        end
+      end
+    rescue Exception => e
+      unless Norn.game.nil?
+        Norn.game.write_to_clients(e.message)
+        Norn.game.write_to_clients(e.backtrace.join("\n"))
+      end
+      puts e.message
+      puts e.backtrace.join("\n")
     end
+    self
   end
 
   def dead?
