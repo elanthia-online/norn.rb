@@ -8,7 +8,8 @@ options = {
   :account => nil,
   :password => nil,
   :character => nil,
-  :game => "GS3"
+  :game => "GS3",
+  :port => nil
 }
 OptionParser.new do |opts|
   opts.banner = "Usage: console [options]"
@@ -23,6 +24,9 @@ OptionParser.new do |opts|
   end
   opts.on("-gGAME", "--game=GAME", "Game to log into") do |game|
     options[:game] = game
+  end
+  opts.on("-oPORT", "--port=PORT", "Port to open for connecting to a FrontEnd.") do |port|
+    options[:port] = port
   end
   opts.on( '-h', '--help', 'Display this screen' ) do
      puts opts
@@ -49,7 +53,7 @@ if !options[:character]
   }
 end
 
-Norn.connect(account: options[:account], password: options[:password], character: options[:character], game: options[:game])
+Norn.connect(options.fetch(:port, 8383).to_i, account: options[:account], password: options[:password], character: options[:character], game: options[:game])
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.

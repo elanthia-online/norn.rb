@@ -18,8 +18,8 @@ module Norn
   ##
   ## @param      args  The arguments
   ##
-  def self.connect(*args)
-    Handshake.connect *args
+  def self.connect(port = Norn::Game::PORT, *args)
+    Handshake.connect port, *args
   end
   ##
   ## @brief      convenience method to grab the current
