@@ -78,8 +78,8 @@ module Norn
     ##
     ## @return     self
     ##
-    def self.connect(handshake)
-      @@instance = new handshake
+    def self.connect(handshake, port = PORT)
+      @@instance = new handshake, port
       self
     end
 
