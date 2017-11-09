@@ -1,6 +1,6 @@
 require "norn/util/memory-store"
 
-module Status
+class Status < MemoryStore
   module Effects
     DEAD      = :dead
     PRONE     = :prone
@@ -25,25 +25,35 @@ module Status
     end
   end
 
-  @@store   = MemoryStore.new(:status_effects)
+  ALSO_HERE_SIZE = %{Also here: }.size
+  STATUS = %r{(?<name>\w+) \((?<status>.*?)\)$}
 
-  def self.cast(state)
-    state.downcase == "y"
+  def self.parse_also_here(str)
+    parse_effects(str, ALSO_HERE_SIZE)
   end
 
-  def self.parse(type, state)
-    @@store.put type.slice(4, type.size).downcase, cast(state)
+  def self.parse_effects(str, offset)
+    Hash[str.slice(offset, str.size).split(", ").map do |info|
+      ## handle FLAG ROOMBRIEF OFF
+      if info.include?("who is")
+        info = info.gsub("who is ", "(").concat(")")
+      end
+      name, status = info.split(" (")
+      name = name.split(" ").last
+      if status.nil?
+        [name, []] 
+      else
+        [name, status.slice(0, status.size-1).split(",").map(&:to_sym)]
+      end
+    end]
   end
 
-  def self.fetch(*args)
-    @@store.fetch *args
-  end
 
-  def self.respond_to_missing?(method_name, include_private = false)
+  def respond_to_missing?(method_name, include_private = false)
     method_name.is_boolean_method? || super
   end
 
-  def self.method_missing(*args)
+  def method_missing(*args)
     if args.first.is_boolean_method?
       return fetch(
         args.first.from_boolean_method, 
@@ -52,6 +62,4 @@ module Status
     end
     super *args
   end
-
-
 end

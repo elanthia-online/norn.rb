@@ -2,6 +2,7 @@ require "norn/util/try"
 
 module Norn
   WORKERS = ThreadGroup.new
+  TICK    = 0.1
   
   def self.workers
     WORKERS.list
@@ -15,24 +16,31 @@ module Norn
       @@uuid
     end
 
-    attr_accessor :name
+    attr_accessor :name, :state
     def initialize(name = Worker.uuid)
-      @name = name
+      @name  = name
+      @state = :up
+      worker = self
       super do
         loop do
           work = Try.new do
-            yield
+            yield(worker)
           end
 
           if work.failed?
             Norn.log work.result, :error
             Norn.log work.result.backtrace.join("\n"), :error
           end
-
-          sleep 0.1
+          
+          break if @state.eql?(:shutdown)
+          sleep TICK
         end
       end
       WORKERS.add self
+    end
+
+    def shutdown
+      @state = :down
     end
   end
 end

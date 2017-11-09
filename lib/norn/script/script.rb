@@ -49,9 +49,10 @@ class Script < Thread
   end
 
   attr_reader :name, :code, :mode
-  attr_accessor :result, :package
+  attr_accessor :result, :package, :game
   
-  def initialize(name, mode: :normal)
+  def initialize(game, name, mode: :normal)
+    @game   = game
     @name   = name
     @mode   = mode
     @start  = Time.now
@@ -107,16 +108,16 @@ class Script < Thread
       strs.each do |str|
         output = view(str, label: label)
         puts output
-        if Norn.game.nil?
+        if @game.nil?
           puts output
         else
-          Norn.game.write_to_clients output
+          @game.write_to_clients output
         end
       end
     rescue Exception => e
-      unless Norn.game.nil?
-        Norn.game.write_to_clients(e.message)
-        Norn.game.write_to_clients(e.backtrace.join("\n"))
+      unless @game.nil?
+        @game.write_to_clients(e.message)
+        @game.write_to_clients(e.backtrace.join("\n"))
       end
       puts e.message
       puts e.backtrace.join("\n")

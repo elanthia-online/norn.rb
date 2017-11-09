@@ -1,12 +1,15 @@
 class MemoryStore
   attr_reader :name
   
-  def initialize(name = :anonymous, value = Hash.new)
-    unless value.is_a?(Hash)
-      raise Exception.new "cannot create a memory store without a Hash\nwas : #{value.class.name}"
+  def initialize(name = self.class.name, initial = Hash.new)
+    unless initial.is_a?(Hash)
+      raise Exception.new %{
+        cannot create a memory store without Hash
+        was : #{initial.class.name}"
+      }
     end
     @name  = name.to_sym
-    @store = value
+    @store = initial
     @lock  = Mutex.new
   end
 
@@ -43,15 +46,15 @@ class MemoryStore
   end
 
   def fetch(key=nil, default=nil)
-    value = default
+    initial = default
     @lock.synchronize do
       if key.nil?
-        value = @store
+        initial = @store
       else
-        value = @store[key.to_sym].nil? ? default : @store[key.to_sym]
+        initial = @store[key.to_sym].nil? ? default : @store[key.to_sym]
       end
     end
-    value
+    initial
   end
 
   def to_s

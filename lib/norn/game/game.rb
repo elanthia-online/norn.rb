@@ -2,6 +2,7 @@ require "socket"
 require "norn/game/handshake"
 require "norn/util/worker"
 require "norn/script/exec"
+require "norn/world/world"
 
 module Norn
   class Game < Struct.new(:handshake)
@@ -31,45 +32,12 @@ module Norn
     UPSTREAM    = :upstream
     DOWNSTREAM  = :downstream
     ##
-    ## singleton instance, though must be reloadable
-    ##
-    @@instance  = nil
-    ##
-    ## @brief      returns the current game instance
-    ##
-    ## @return     Norn::Game
-    ##
-    def self.instance
-      @@instance
-    end
-    ##
-    ## @brief      kills the current game instance
-    ##
-    ## @return     self
-    ##
-    def self.die!
-      instance.die!
-      self
-    end
-    ##
-    ## @brief      opens a downstream socket to the Game
+    ## @brief      opens a downstream socket to Simu Game Servers
     ##
     ## @return     TCPSocket
     ##
     def self.downstream
       TCPSocket.new(HOST, PORT)
-    end
-    ##
-    ## @brief      kills and clears the current game instance
-    ##
-    ## @return     self
-    ##
-    def self.clear
-      if @@instance
-        @@instance.die!
-      end
-      @@instance = nil
-      self
     end
     ##
     ## @brief      connects to a game instance
@@ -79,11 +47,12 @@ module Norn
     ## @return     self
     ##
     def self.connect(handshake, port = PORT)
-      @@instance = new handshake, port
-      self
+      new handshake, port
     end
 
-    attr_accessor :socket, :state, :callbacks, :threads, :clients
+    attr_accessor :socket, :state,
+                  :callbacks, :threads,
+                  :clients, :parser, :world
     ##
     ## @brief      initializes a Norn::Game instance
     ##
@@ -97,15 +66,42 @@ module Norn
       @state      = STATES::CONNECTING
       @upstream   = TCPSocket.new(handshake.host, handshake.port.to_i)
       @downstream = TCPServer.open(port)
+      @world      = World.new
       @clients    = Array.new
       ##
       ## open our connection to the game
       ##
-      Worker.new(:upstream) do
-        while !@upstream.closed? && resp = @upstream.gets
-          handle_incoming resp[0..-1]
+      Worker.new(:upstream) do |worker|
+        ##
+        ## handle prelude
+        ##
+        until @upstream.closed? or @state.eql?(STATES::CONNECTED)
+          handle_incoming @upstream.gets
+          break if @state.eql?(STATES::CONNECTED)
         end
-        die!
+        ##
+        ## create our Parser with a bridge to the World state
+        ##
+        @parser = Parser.new(@world.callbacks)
+        ##
+        ## handle parsing
+        ##
+        while !@upstream.closed?
+          packet = @upstream.gets
+          if packet
+            @parser.puts packet.dup
+            @clients = @clients.reject(&:closed?)
+            # forward the response to each connected client
+            @clients.each do |downstream| 
+              downstream.puts packet.dup unless downstream.closed?
+            end
+          end
+        end
+        ##
+        ## cleanup
+        ##
+        @downstream.close
+        worker.shutdown
       end
       ##
       ## allow multiple FEs to connect
@@ -117,9 +113,9 @@ module Norn
             while !client.closed? && cmd = client.gets
               if cmd.match(Norn::COMMAND)
                 if cmd.match(Script::Exec::COMMAND)
-                  Script::Exec.run(cmd)
+                  Script::Exec.run(self, cmd)
                 else
-                  Script::UserScript.run(cmd)
+                  Script::UserScript.run(self, cmd)
                 end
               else
                 write_game_command(cmd)
@@ -129,7 +125,6 @@ module Norn
           end
         end
       end
-    
     end
     ##
     ## @brief      Writes a game command.
@@ -206,20 +201,10 @@ module Norn
         # weird version of ACK ¯\_(ツ)_/¯
         write PREFIX, PREFIX
       else
-        
-        # forward a copy of the response to the parser
-        Parser << resp.dup
-        # remove closed
-        @clients = @clients.reject(&:closed?)
-        # forward the response to each connected client
-        @clients.each do |downstream| 
-          downstream.puts resp unless downstream.closed?
+        unless @state == STATES::AUTHENTICATING
+          raise Exception.new "unhandled Game<#{@state}>::PACKET<#{resp}>" 
         end
       end
-    end
-
-    def to_s
-      %{<Norn::Game @state=#{@state}>}
     end
   end
 end

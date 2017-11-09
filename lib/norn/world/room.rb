@@ -1,75 +1,60 @@
-require "norn/parser/parser"
 require "norn/util/memory-store"
-require "norn/world/gameobj"
+require "norn/parser/tag"
 
-class Room
-  @@store = MemoryStore.new
+class Room < MemoryStore
+  Tag = Norn::Parser::Tag
 
-  def self.fetch(*args)
-    @@store.fetch *args
-  end
-
-  def self.put(*args)
-    @@store.put *args
-  end
-  ##
-  ## backwards compat
-  ##
-  def self.current
-    self
-  end
-
-  def self.id
+  def id
     fetch :id
   end
 
-  def self.title
+  def title
     fetch :title
   end
 
-  def self.exits
-    fetch :exits, []
-  end
-
-  def self.desc
+  def desc
     fetch :desc
   end
 
-  def self.objs
+  def exits
+    fetch :exits, []
+  end
+
+  def objs
     fetch :objs, []
   end
 
-  def self.players
-    Players.fetch || []
+  def players
+    fetch :players, []
+  end
+
+  def self.to_monsters_or_items(tags)
+    tags.map do |tag|
+      case tag.name
+      when :monster
+        Monster.new(**tag.to_gameobj)
+      when :a
+        Item.new(**tag.to_gameobj)
+      else
+        raise Exception.new %{
+          unhandled Description descendent
+          #{tag.inspect}
+        }
+      end
+    end
   end
 
   class Description < Struct.new(:text, :objs)
-    def self.parse(tag)
-      new(tag.text, GameObj.parse(tag.children))
-    end
-
-    def initialize(*args)
-      super *args
-      Room.put :desc, self
+    def self.of(tag)
+      new(tag.text, 
+        Room.to_monsters_or_items(tag.children))
     end
   end
-end
 
-class Array
-  def to_dirs
-    self.map do |data|
-      Direction.new *data
+  class Exit < Struct.new(:dir)
+    def self.of(tag)
+      new(tag.fetch(:value, 
+        tag.fetch(:text, nil)))
     end
-  end
-end
-
-class Direction < Struct.new(:dir)
-  def self.parse(tags)
-    Norn.log(tags, :direction)
-    #Room.put :exits, str.scan(Norn::Parser::Tags::D).to_dirs
-  end
-
-  def go
-    World.send("go #{dir}")
   end
 end

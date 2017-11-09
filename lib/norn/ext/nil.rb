@@ -6,4 +6,8 @@ class NilClass
   def is_i?
     false
   end
+
+  def downcase
+    self
+  end
 end
