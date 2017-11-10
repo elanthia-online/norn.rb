@@ -6,7 +6,7 @@ describe Norn::Game do
 
   describe '#downstream' do
     it 'accepts multithreaded downstream connections' do
-      game = Norn.connect(0,
+      game = Norn.connect(4040,
         account:   ENV.fetch("GS_ACCOUNT"),
         password:  ENV.fetch("GS_PASSWORD"),
         game:      ENV.fetch("GS_GAME"),
