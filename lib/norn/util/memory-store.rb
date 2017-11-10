@@ -15,7 +15,7 @@ class MemoryStore
 
   def access()
     @lock.synchronize do
-      yield
+      yield @store
     end
   end
 
@@ -39,6 +39,22 @@ class MemoryStore
         yield k, @store[k], @store
       end
     end
+  end
+
+  def values
+    vals = []
+    access do |store|
+      vals = store.values
+    end
+    vals
+  end
+
+  def keys
+    keys = []
+    access do |store|
+      keys = store.keys
+    end
+    keys
   end
 
   def delete(key)

@@ -23,9 +23,38 @@ class World
     ##
     ## silenced callbacks
     ##
-    def on_dialogdata_mapviewmain(tag) 
+    def silence(tag); end
+    alias_method :on_dialogdata_mapviewmain, :silence
+    alias_method :on_exposecontainer, :silence
+    alias_method :on_opendialog_mapmaster, :silence
+    alias_method :on_opendialog_quick_simu, :silence
+    alias_method :on_opendialog_injuries, :silence
+    alias_method :on_opendialog_combat, :silence
+    alias_method :on_opendialog_espmasterdialog, :silence
+    alias_method :on_opendialog_minivitals, :silence
+    alias_method :on_opendialog_quick, :silence
+    alias_method :on_opendialog_quick_combat, :silence
+    alias_method :on_opendialog_activespells, :silence
+    ##
+    ## openDialog
+    ##
+    def on_opendialog_encum(tag)
     end
-    def on_exposecontainer(tag)
+    def on_opendialog_expr(tag)
+      Tag.find(tag, :dialogdata).children.each do |tag|
+        case tag.id
+        when :yourlvl
+          @world.char.put(:level, tag.fetch(:value).split(" ").last.to_i)
+        when :mindstate
+          on_mindstate(tag)
+        when :nextlvlpb
+          @world.char.put(:next_level, tag.fetch(:text).split(" ").first.to_i)
+        end
+      end
+    end
+    ## proxy to dialogdata callback
+    def on_opendialog_stance(tag)
+      on_dialogdata_stance Tag.find(tag, :dialogdata)
     end
     ##
     ## general info about the Game
@@ -46,6 +75,11 @@ class World
     ##
     def on_roundtime(tag)
       @world.roundtime.put(:roundtime,
+        tag.fetch(:value))
+    end
+
+    def on_casttime(tag)
+      @world.roundtime.put(:casttime,
         tag.fetch(:value))
     end
     ##
@@ -233,15 +267,14 @@ class World
 
     def on_dialogdata_injuries(root)
       root.children.each do |tag|
-        
         case tag.name
         # holds injury/scar info
         when :image
           area  = tag.id
           state = tag.fetch(:name).downcase.to_sym
           ## order of operations is important here
-          ## Scars only appear in the XML after the injury
-          ## is healed
+          ## Scars only appear in the XML after 
+          ## the injury is healed
           op, severity = Injuries.decode(state) || Scars.decode(state) || [:none, 0]
           case op
           when :none
@@ -255,9 +288,9 @@ class World
         # holds health info
         when :progressbar
           if tag.id.eql?(:health2)
-            remaining, total = tag.fetch(:text).split(" ").last.split("/").map(&:to_i)
+            _, remaining, max = decode_progress_bar(tag)
             @world.char.put(:health, remaining)
-            @world.char.put(:total_health, total)
+            @world.char.put(:max_health, max)
           end
         else
           # Silence is golden
@@ -266,11 +299,48 @@ class World
     end
 
     def on_dialogdata_minivitals(tag)
-      # TODO
+      tag.children.each do |tag|
+        if tag.is?(:progressbar)
+          type, remaining, max = decode_progress_bar(tag)
+          @world.char.put(type, remaining)
+          @world.char.put(%{max_#{type}}, max)
+        end
+      end
     end
 
     def on_dialogdata_expr(tag)
-      # TODO
+      tag.children.each do |tag|
+        case tag.id
+        when :mtps
+          ## update mental TPs
+          @world.char.put(:mental_tps, 
+            tag.fetch(:value).split(" ").first.to_i)
+        when :ptps
+          ## update physical TPs
+          @world.char.put(:physical_tps, 
+            tag.fetch(:value).split(" ").first.to_i)
+        when :mindstate
+          on_mindstate(tag)
+        end
+      end
+    end
+
+    def on_dialogdata_encum(tag)
+      Norn.log(tag, tag.id)
+    end
+
+    def on_mindstate(tag)
+      @world.mind.put(:current,
+        Mind.decode(tag.fetch(:text)))
+      @world.mind.put(:percent,
+        tag.fetch(:value).to_i)
+    end
+    ##
+    ## decode a progress bar into a Tuple<Attr, Current, Max>
+    ##
+    def decode_progress_bar(bar)
+      [bar.id, 
+        *bar.fetch(:text).split(" ").last.split("/").map(&:to_i)]
     end
   end
 end

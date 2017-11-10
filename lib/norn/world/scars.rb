@@ -13,6 +13,10 @@ class Scars < MemoryStore
     return false
   end
 
+  def total
+    values.reduce(0, &:+)
+  end
+
   def method_missing(method, fallback = 0)
     fetch(method, fallback)
   end

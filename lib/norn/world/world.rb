@@ -4,7 +4,7 @@ class World
   attr_reader :callbacks,
               :roundtime, :status,
               :room, :hands, :containers,
-              :stance, :char, 
+              :stance, :char, :mind,
               :scars, :injuries
               
   def initialize()
@@ -18,6 +18,7 @@ class World
     @char       = Char.new
     @injuries   = Injuries.new
     @scars      = Scars.new
+    @mind       = Mind.new
   end
 
   def context()
