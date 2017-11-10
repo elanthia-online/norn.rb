@@ -28,7 +28,7 @@ module Norn
     USER_AGENT  = "/FE:STORMFRONT /VERSION:1.0.1.22 /P:NORN@#{Norn::VERSION} /XML"
     PREFIX      =  "<c>"
     PORT        = 8383
-    HOST        = "0.0.0.0"
+    HOST        = "127.0.0.1"
     UPSTREAM    = :upstream
     DOWNSTREAM  = :downstream
     ##
