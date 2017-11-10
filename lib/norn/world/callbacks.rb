@@ -1,4 +1,8 @@
+require "norn/parser/tag"
+
 class World
+  ## alias Tag util
+  Tag = Norn::Parser::Tag
   class Callbacks
     attr_reader :world
     ##
@@ -14,7 +18,21 @@ class World
     ## general catch-all for debugging
     ##
     def on_unhandled(tag)
-      # Norn.log(tag, %{unhandled_#{tag.name}})
+      Norn.log(tag, %{unhandled_#{tag.name}})
+    end
+    ##
+    ## silenced callbacks
+    ##
+    def on_dialogdata_mapviewmain(tag) 
+    end
+    def on_exposecontainer(tag)
+    end
+    ##
+    ## general info about the Game
+    ## specific to a Character
+    ##
+    def on_app(tag)
+      @world.char.merge(tag.attrs)
     end
     ##
     ## <prompt> update server-time offset
@@ -43,6 +61,24 @@ class World
     def on_indicator(tag)
       @world.status.put(tag.id,
         tag.fetch(:visible))
+    end
+    ##
+    ## handle Streams
+    ##
+    def on_clearstream(stream)
+      # TODO flush stream
+    end
+
+    def on_stream_society(task)
+      # TODO save society task
+    end
+
+    def on_stream_bounty(task)
+      # TODO save bounty
+    end
+
+    def on_stream_spells(spells)
+      # TODO save spells
     end
     ##
     ## Room callbacks
@@ -110,6 +146,10 @@ class World
     def on_dialogdata_activespells(tag)
       # TODO
     end
+    ## spell about to be cast
+    def on_spell(tag)
+      # TODO
+    end
     ##
     ## Hand callbacks
     ##
@@ -167,6 +207,41 @@ class World
     ## friends
     ##
     def on_dialogdata_befriend(tag)
+      # TODO
+    end
+    ##
+    ## combat
+    ##
+    def on_dialogdata_combat(root)
+      root.children.each do |child|
+        case child.id
+        when :pbarstance
+          on_dialogdata_stance(child)
+        else
+          # silence is golden
+        end
+      end
+    end
+
+    def on_dialogdata_stance(tag)
+      current = Tag.find(tag, :progressbar)
+      @world.stance.put(:percent, 
+        current.fetch(:value).to_i)
+      @world.stance.put(:current,
+        current.fetch(:text).split(" ").first.to_sym)
+    end
+
+    def on_dialogdata_injuries(root)
+      root.children.each do |tag|
+        Norn.log(tag.attrs, :injury)
+      end
+    end
+
+    def on_dialogdata_minivitals(tag)
+      # TODO
+    end
+
+    def on_dialogdata_expr(tag)
       # TODO
     end
   end

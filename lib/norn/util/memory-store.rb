@@ -13,17 +13,24 @@ class MemoryStore
     @lock  = Mutex.new
   end
 
-  def put(key, val)
+  def access()
     @lock.synchronize do
+      yield
+    end
+  end
+
+  def put(key, val)
+    access do
       @store[key.to_sym] = val
     end
     self
   end
 
-  def access
-    @lock.synchronize do
-      yield @store
+  def merge(other)
+    access do
+      @store = @store.merge(other)
     end
+    self
   end
 
   def each
@@ -35,7 +42,7 @@ class MemoryStore
   end
 
   def delete(key)
-    @lock.synchronize do
+    access do
       @store.delete(key.to_sym)
     end
     self
@@ -47,7 +54,7 @@ class MemoryStore
 
   def fetch(key=nil, default=nil)
     initial = default
-    @lock.synchronize do
+    access do
       if key.nil?
         initial = @store
       else

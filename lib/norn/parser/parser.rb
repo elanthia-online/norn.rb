@@ -16,7 +16,13 @@ module Norn
     ## from parser callbacks since they 
     ## have no context within Norn
     ##
-    EDGE_NODES   = %i{a monster resource d streamwindow output opendialog nav updateverbs}
+    EDGE_NODES   = %i{a monster resource d 
+                      streamwindow output
+                      mode settingsinfo
+                      endsetup switchquickbar
+                      link cmdbutton dropdownbox
+                      updowneditbox
+                      opendialog nav updateverbs}
     ## attrs
     attr_reader :worker, :reader, :writer, 
                 :oga, :lock, :sax_callbacks

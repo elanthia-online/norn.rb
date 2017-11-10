@@ -2,9 +2,9 @@ require "norn/util/memory-store"
 
 class Status < MemoryStore
   module DSL
-    MONSTER_VERBOSE_EFFECT = %r{that appears (?:to be |)(?<effect>\w+)(\b|,|.)}
-    PLAYER_VERBOSE_EFFECT  = %r{who (is|appears to be) (?<effect>\w+)(\b|,|.)}
-    BRIEF_EFFECT           = %r{\((?<effect>\w+)\)(\b|,|.)}
+    MONSTER_VERBOSE_EFFECT = %r{that appears (?:to be |)(?<effect>\w+)($|,|.)}
+    PLAYER_VERBOSE_EFFECT  = %r{who (is|appears to be) (?<effect>\w+)($|,|.)}
+    BRIEF_EFFECT           = %r{\((?<effect>\w+)\)($|,|.)}
   end
 
   module Effects
