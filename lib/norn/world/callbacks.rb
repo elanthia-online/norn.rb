@@ -233,7 +233,35 @@ class World
 
     def on_dialogdata_injuries(root)
       root.children.each do |tag|
-        Norn.log(tag.attrs, :injury)
+        
+        case tag.name
+        # holds injury/scar info
+        when :image
+          area  = tag.id
+          state = tag.fetch(:name).downcase.to_sym
+          ## order of operations is important here
+          ## Scars only appear in the XML after the injury
+          ## is healed
+          op, severity = Injuries.decode(state) || Scars.decode(state) || [:none, 0]
+          case op
+          when :none
+            @world.injuries.put(area, severity)
+            @world.scars.put(area, severity)
+          when :scar
+            @world.scars.put(area, severity)
+          when :injury
+            @world.injuries.put(area, severity)
+          end
+        # holds health info
+        when :progressbar
+          if tag.id.eql?(:health2)
+            remaining, total = tag.fetch(:text).split(" ").last.split("/").map(&:to_i)
+            @world.char.put(:health, remaining)
+            @world.char.put(:total_health, total)
+          end
+        else
+          # Silence is golden
+        end
       end
     end
 

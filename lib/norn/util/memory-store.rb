@@ -35,7 +35,7 @@ class MemoryStore
 
   def each
     access do |store|
-      store.keys.each do |k|
+      @store.keys.each do |k|
         yield k, @store[k], @store
       end
     end

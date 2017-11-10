@@ -5,29 +5,22 @@ class Script
   ## execution
   ##
   class Context
-     def self.inject(obj, namespace = nil)
-      const = namespace
-
-      if const.nil?
-        if obj.is_a?(Class) or obj.is_a?(Module)
-          const = obj.name.split("::").last.to_sym
+     def self.inject(*objs)
+      objs.each do |obj|
+        const = if obj.is_a?(Class) or obj.is_a?(Module)
+          obj.name.split("::").last.to_sym
         else
-          const = obj.class.name.split("::").last.to_sym
+          obj.class.name.split("::").last.to_sym
         end
+        self.const_set(const, obj)
       end
-      self.const_set(const, obj)
       self
     end
 
     def self.of(script)
       ctx = Class.new(Context)
-      ctx.inject(script, :Context)
-      ctx.inject(script.game.world)
-      ctx.inject(script.game.world.room)
-      ctx.inject(script.game.world.stance)
-      ctx.inject(script.game.world.status)
-      ctx.inject(script.game.world.containers)
-      ctx.inject(script.game.world.char)
+      ctx.const_set(:Script, script)
+      ctx.inject *script.game.world.context
       ctx
     end
   end

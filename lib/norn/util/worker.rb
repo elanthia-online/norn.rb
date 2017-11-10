@@ -1,19 +1,32 @@
 require "norn/util/try"
 
 module Norn
-  WORKERS = ThreadGroup.new
-  TICK    = 0.1
-  
   def self.workers
-    WORKERS.list
+    Norn::Worker::WORKERS.list
   end
 
   class Worker < Thread
-    @@uuid = -1
+    WORKERS = ThreadGroup.new
+    TICK    = 0.1
+    @@uuid  = -1
 
     def self.uuid
       @@uuid = @@uuid + 1
       @@uuid
+    end
+    ##
+    ## workers should never silence errors
+    ## because they are useful for debugging
+    ## asynchronous operations
+    ##
+    def self.log(message, label = :debug)
+      if message.is_a?(Exception)
+        message = [
+          message.message,
+          message.backtrace.join("\n"),
+        ].join
+      end
+      puts "[Norn.Worker.#{label}] #{message.inspect}"
     end
 
     attr_accessor :name, :state
@@ -28,8 +41,8 @@ module Norn
           end
 
           if work.failed?
-            Norn.log work.result, :error
-            Norn.log work.result.backtrace.join("\n"), :error
+            Worker.log work.result, :error
+            Worker.log work.result.backtrace.join("\n"), :error
           end
           
           break if @state.eql?(:shutdown)

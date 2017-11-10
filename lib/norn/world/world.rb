@@ -4,7 +4,8 @@ class World
   attr_reader :callbacks,
               :roundtime, :status,
               :room, :hands, :containers,
-              :stance, :char
+              :stance, :char, 
+              :scars, :injuries
               
   def initialize()
     @callbacks  = World::Callbacks.new(self)
@@ -15,5 +16,13 @@ class World
     @containers = Containers.new
     @stance     = Stance.new
     @char       = Char.new
+    @injuries   = Injuries.new
+    @scars      = Scars.new
+  end
+
+  def context()
+    instance_variables.map do |prop|
+      instance_variable_get(prop)
+    end
   end
 end

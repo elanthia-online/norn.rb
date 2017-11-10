@@ -5,7 +5,7 @@ Dir[File.dirname(__FILE__) + '/../world/**/*.rb'].each do |file| require file en
 class Script < Thread
   RUNNING = MemoryStore.new(:scripts)
 
-  SUPERVISOR = Norn::Worker.new(:script_supervisor) do      
+  SUPERVISOR = Norn::Worker.new(:script_supervisor) do   
     RUNNING.each do |name, script, store|
       unless script.alive?
         store.delete(name)

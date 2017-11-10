@@ -12,4 +12,8 @@ class Char < MemoryStore
   def title
     fetch(:title, :err)
   end
+
+  def method_missing(method, *args)
+    fetch(method, *args)
+  end
 end
