@@ -208,7 +208,7 @@ module Norn
     ## create a downstream listener
     ##
     def downstream()
-      TCPSocket.new(HOST, @port)
+      TCPSocket.new("127.0.0.1", @port)
     end
   end
 end
