@@ -1,19 +1,8 @@
 require "norn/util/try"
 require "norn/script/script"
+require "norn/script/context"
 
 class Script
-  class Context
-    def self.of(script)
-      ctx = Class.new(Context) do
-        # TODO
-      end
-      ctx.const_set :World,  script.game.world 
-      ctx.const_set :Room,   script.game.world.room
-      ctx.const_set :Status, script.game.world.status
-      ctx
-    end
-  end
-
   class Exec
     COMMAND = /^\/(?<mode>e|i)/
     @@id    = 0

@@ -24,11 +24,25 @@ class Room < MemoryStore
     fetch :objs, []
   end
 
+  def monsters
+    objs.select do |obj|
+      obj.is_a?(Monster)
+    end
+  end
+
+  def items
+    objs.select do |obj|
+      obj.is_a?(Item)
+    end
+  end
+
   def players
     fetch :players, []
   end
 
   def self.to_monsters_or_items(tags)
+    # Norn.log(tags.first.parent, :monsters_or_items)
+    # Norn.log(Status.parse_also_see(tags.first.parent.text), :also_see)
     tags.map do |tag|
       case tag.name
       when :monster
@@ -48,6 +62,18 @@ class Room < MemoryStore
     def self.of(tag)
       new(tag.text, 
         Room.to_monsters_or_items(tag.children))
+    end
+
+    def monsters
+      objs.select do |obj|
+        obj.is_a?(Monster)
+      end
+    end
+
+    def items
+      objs.select do |obj|
+        obj.is_a?(Item)
+      end
     end
   end
 

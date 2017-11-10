@@ -1,6 +1,12 @@
 require "norn/util/memory-store"
 
 class Status < MemoryStore
+  module DSL
+    MONSTER_VERBOSE_EFFECT = %r{that appears (?:to be |)(?<effect>\w+)(\b,|.)}
+    PLAYER_VERBOSE_EFFECT  = %r{who (is|appears to be) (?<effect>\w+)(\b,|.)}
+    BRIEF_EFFECT           = %r{\((?<effect>\w+)\)(,|.)}
+  end
+
   module Effects
     DEAD      = :dead
     PRONE     = :prone
@@ -25,29 +31,24 @@ class Status < MemoryStore
     end
   end
 
-  ALSO_HERE_SIZE = %{Also here: }.size
-  STATUS = %r{(?<name>\w+) \((?<status>.*?)\)$}
+  ALSO_HERE_SIZE    = %{Also here: }.size
+  ALSO_SEE_SIZE     = %{You also see }.size
+  STATUS            = %r{(?<name>\w+) \((?<status>.*?)\)$}
+  VERBOSE_EFFECT    = %{(who|that) is}
 
-  def self.parse_also_here(str)
-    parse_effects(str, ALSO_HERE_SIZE)
+  def self.match(text)
+    return found if found = Status.parse(text, DSL::BRIEF_EFFECT)
+    return found if found = Status.parse(text, DSL::MONSTER_VERBOSE_EFFECT)
+    return found if found = Status.parse(text, DSL::PLAYER_VERBOSE_EFFECT)
+    return false
   end
 
-  def self.parse_effects(str, offset)
-    Hash[str.slice(offset, str.size).split(", ").map do |info|
-      ## handle FLAG ROOMBRIEF OFF
-      if info.include?("who is")
-        info = info.gsub("who is ", "(").concat(")")
-      end
-      name, status = info.split(" (")
-      name = name.split(" ").last
-      if status.nil?
-        [name, []] 
-      else
-        [name, status.slice(0, status.size-1).split(",").map(&:to_sym)]
-      end
-    end]
+  def self.parse(pattern, text)
+    if found = text.match(pattern)
+      return found[:effect].split(",").map(&:strip).map(&:to_sym)
+    end
+    return false
   end
-
 
   def respond_to_missing?(method_name, include_private = false)
     method_name.is_boolean_method? || super

@@ -25,6 +25,11 @@ module Norn
       ##
       def on_text(text)
         return if @stack.empty?
+        Norn.log(%{#{@stack.last.text}:#{@stack.size}:#{text} Status.match(#{Status.match(text)})}, :status)
+        if status = Status.match(text)
+          child = @stack.last.children.last
+          child.attrs[:status] = status unless child.nil?
+        end
         @stack.last + text
       end
       ##

@@ -2,6 +2,7 @@ require "yaml"
 require "norn/util/try"
 require "norn/script/script"
 require "norn/storage/storage"
+require "norn/script/context"
 
 class Script
   class UserScript
@@ -67,7 +68,7 @@ class Script
       Script.new(name) do |script|
         code, metadata = Loader.compile(name)
         script.package = metadata
-        script.result  = script.instance_eval code
+        script.result  = Context.of(script).class_eval(code)
       end
     end
   end

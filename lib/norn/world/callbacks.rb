@@ -93,15 +93,9 @@ class World
     end
 
     def on_component_room_players(tag)
-      statuses = Status.parse_also_here(tag.text)
-
+      return @world.room.put(:players, []) if tag.children.empty?
       @world.room.put(:players, tag.children.map do |tag|
-        Player.new(
-          id:   tag.fetch(:exist),
-          noun: tag.fetch(:noun),
-          name: tag.text,
-          tags: statuses[tag.fetch(:noun)]
-        )
+        Player.new(**tag.to_gameobj)
       end)
     end
     ##
@@ -154,9 +148,17 @@ class World
 
     ## add item to container
     def on_inv(tag)
-      child = tag.children.first
-      return if child.fetch(:exist, nil).eql?(tag.id)
       id = tag.id.eql?(:stow) ? @world.containers.fetch(:real_stow_id) : tag.id
+      
+      if tag.children.empty?
+        container = @world.containers.fetch(id, nil)
+        return if container.nil?
+        return @world.containers.delete(id)
+      end
+
+      child = tag.children.first
+     
+      return if child.fetch(:exist, nil).eql?(id)
 
       @world.containers.put(id,
         @world.containers.fetch(id, []) + [Item.new(**child.to_gameobj)])

@@ -125,7 +125,12 @@ module Norn
       end
 
       def to_gameobj
-        {id: fetch(:exist), name: text, noun: fetch(:noun)}
+        {
+          id: fetch(:exist), 
+          name: text,
+          noun: fetch(:noun),
+          status: fetch(:status, []),
+        }
       end
 
       def to_s
