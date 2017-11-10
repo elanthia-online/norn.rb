@@ -3,13 +3,10 @@ require 'socket'
 require 'spec_helper'
 
 describe Norn::Game do
-  before(:each) do
-    Norn::Game.clear
-  end
 
   describe '#downstream' do
     it 'accepts multithreaded downstream connections' do
-      norn = Norn.connect(
+      game = Norn.connect(0,
         account:   ENV.fetch("GS_ACCOUNT"),
         password:  ENV.fetch("GS_PASSWORD"),
         game:      ENV.fetch("GS_GAME"),
@@ -17,21 +14,21 @@ describe Norn::Game do
       )
 
       client1 = Thread.new do
-        socket = Norn::Game.downstream
+        socket = game.downstream
         line   = nil
         break while line = socket.gets
+        line
       end
 
       client2 = Thread.new do
-        socket = Norn::Game.downstream
+        socket = game.downstream
         line   = nil
         break while line = socket.gets
+        line
       end
 
-      line1 = client1.value
-      line2 = client2.value
-
-      expect(line1).to be line2
+      expect(client1.value).to be_truthy
+      expect(client1.value).to eq client2.value
     end
   end
 end

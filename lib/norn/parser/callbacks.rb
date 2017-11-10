@@ -25,7 +25,6 @@ module Norn
       ##
       def on_text(text)
         return if @stack.empty?
-        Norn.log(%{#{@stack.last.text}:#{@stack.size}:#{text} Status.match(#{Status.match(text)})}, :status)
         if status = Status.match(text)
           child = @stack.last.children.last
           child.attrs[:status] = status unless child.nil?
@@ -48,7 +47,7 @@ module Norn
           elsif prev.is?(:monster) && (child.is?(:monster) || child.is?(:b))
             return prev.merge(child)
           # siblings
-          elsif (prev.is?(:monster) || prev.is?(:a)) && child.is?(:a)
+          elsif (prev.is?(:monster) || prev.is?(:a)) && child.is?(:a) && prev.parent
             #Norn.log(child, :siblings)
             return prev.parent.children << child
           else

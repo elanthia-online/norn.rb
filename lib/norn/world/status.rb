@@ -2,9 +2,9 @@ require "norn/util/memory-store"
 
 class Status < MemoryStore
   module DSL
-    MONSTER_VERBOSE_EFFECT = %r{that appears (?:to be |)(?<effect>\w+)(\b,|.)}
-    PLAYER_VERBOSE_EFFECT  = %r{who (is|appears to be) (?<effect>\w+)(\b,|.)}
-    BRIEF_EFFECT           = %r{\((?<effect>\w+)\)(,|.)}
+    MONSTER_VERBOSE_EFFECT = %r{that appears (?:to be |)(?<effect>\w+)(\b|,|.)}
+    PLAYER_VERBOSE_EFFECT  = %r{who (is|appears to be) (?<effect>\w+)(\b|,|.)}
+    BRIEF_EFFECT           = %r{\((?<effect>\w+)\)(\b|,|.)}
   end
 
   module Effects
@@ -31,16 +31,12 @@ class Status < MemoryStore
     end
   end
 
-  ALSO_HERE_SIZE    = %{Also here: }.size
-  ALSO_SEE_SIZE     = %{You also see }.size
-  STATUS            = %r{(?<name>\w+) \((?<status>.*?)\)$}
-  VERBOSE_EFFECT    = %{(who|that) is}
-
   def self.match(text)
+    found = false
     return found if found = Status.parse(text, DSL::BRIEF_EFFECT)
     return found if found = Status.parse(text, DSL::MONSTER_VERBOSE_EFFECT)
     return found if found = Status.parse(text, DSL::PLAYER_VERBOSE_EFFECT)
-    return false
+    return found
   end
 
   def self.parse(pattern, text)

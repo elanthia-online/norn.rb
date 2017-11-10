@@ -32,14 +32,6 @@ module Norn
     UPSTREAM    = :upstream
     DOWNSTREAM  = :downstream
     ##
-    ## @brief      opens a downstream socket to Simu Game Servers
-    ##
-    ## @return     TCPSocket
-    ##
-    def self.downstream
-      TCPSocket.new(HOST, PORT)
-    end
-    ##
     ## @brief      connects to a game instance
     ##
     ## @param      handshake  The handshake
@@ -47,12 +39,15 @@ module Norn
     ## @return     self
     ##
     def self.connect(handshake, port = PORT)
-      new handshake, port
+      new(handshake, port)
     end
-
+    ##
+    ## attributes
+    ##
     attr_accessor :socket, :state,
                   :callbacks, :threads,
-                  :clients, :parser, :world
+                  :clients, :parser, :world,
+                  :port
     ##
     ## @brief      initializes a Norn::Game instance
     ##
@@ -66,6 +61,9 @@ module Norn
       @state      = STATES::CONNECTING
       @upstream   = TCPSocket.new(handshake.host, handshake.port.to_i)
       @downstream = TCPServer.open(port)
+      ## if we bound to 0 then we need to expose
+      ## the real port we listened to
+      @port       = @downstream.addr[1]
       @world      = World.new
       @clients    = Array.new
       ##
@@ -205,6 +203,12 @@ module Norn
           raise Exception.new "unhandled Game<#{@state}>::PACKET<#{resp}>" 
         end
       end
+    end
+    ##
+    ## create a downstream listener
+    ##
+    def downstream()
+      TCPSocket.new(HOST, @port)
     end
   end
 end

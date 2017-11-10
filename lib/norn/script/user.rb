@@ -63,9 +63,9 @@ class Script
         .strip
     end
 
-    def self.run(cmd)
+    def self.run(game, cmd)
       name = normalize(cmd)
-      Script.new(name) do |script|
+      Script.new(game, name) do |script|
         code, metadata = Loader.compile(name)
         script.package = metadata
         script.result  = Context.of(script).class_eval(code)

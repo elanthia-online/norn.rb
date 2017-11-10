@@ -1,22 +1,21 @@
 require "norn/gameobj/gameobj"
 
-class Monster 
+class Plane
   extend GameObj
-
-  def kill
-    puts "kill #{gid}"
+  def fly
+    "fly #{gid}"
   end
 end
 
-describe Monster do
-  describe "#new" do
+describe GameObj do
+  describe "schema" do
     it "constructs properly" do
-      m = Monster.new(
+      m = Plane.new(
         id:   1,
-        noun: "guy",
-        name: "bad guy",
+        noun: "jet",
+        name: "boeing 747",
       )
-      m.kill
+      expect(m).to respond_to(:fly)
     end
   end
 end
