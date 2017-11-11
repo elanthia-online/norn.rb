@@ -117,7 +117,15 @@ class World
     end
 
     def on_stream_spells(spells)
-      # TODO save spells
+      spells.children.each do |known|
+        unless known.fetch(:noun).empty?
+          @world.spells.learn(known.fetch(:noun).to_i, known.text)
+        end
+      end
+    end
+
+    def on_stream_inv(tag)
+      # TODO save inv objs
     end
     ##
     ## Room callbacks
@@ -174,20 +182,17 @@ class World
       end)
     end
     ##
-    ## inventory callbacks
-    ##
-    def on_stream_inv(tag)
-      # TODO
-    end
-    ##
     ## Spell Info
     ##
-    def on_dialogdata_activespells(tag)
-      # TODO
+    def on_dialogdata_activespells(spells)
+      @world.spells.flush!
+      Tag.by_name(spells, :label).map do |spell|
+        @world.spells.add *Spells.parse(spell)
+      end
     end
     ## spell about to be cast
     def on_spell(tag)
-      # TODO
+      @world.spells.prepare(tag.text)
     end
     ##
     ## Hand callbacks

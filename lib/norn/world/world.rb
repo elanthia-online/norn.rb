@@ -5,7 +5,8 @@ class World
               :roundtime, :status,
               :room, :hands, :containers,
               :stance, :char, :mind,
-              :scars, :injuries, :encumb
+              :scars, :injuries, :encumb,
+              :spells
               
   def initialize()
     @callbacks  = World::Callbacks.new(self)
@@ -20,6 +21,7 @@ class World
     @scars      = Scars.new
     @mind       = Mind.new
     @encumb     = Encumb.new
+    @spells     = Spells.new
   end
 
   def context()

@@ -26,10 +26,10 @@ module Norn
       ##
       ## parse a Tag tree
       ##
-      def self.getElementsByName(tag, name, results = [])
+      def self.by_name(tag, name, results = [])
         results << tag if tag.name.eql?(name)
         tag.children.each do |child|
-          getElementsByName(child, name, results)
+          Tag.by_name(child, name, results)
         end
         results
       end
