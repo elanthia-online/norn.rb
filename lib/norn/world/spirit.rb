@@ -1,6 +1,6 @@
 require "norn/util/memory-store"
 require "norn/util/percentage"
 
-class Mana < MemoryStore
+class Spirit < MemoryStore
   include Percentage
 end

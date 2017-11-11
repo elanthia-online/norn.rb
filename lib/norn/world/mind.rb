@@ -1,8 +1,8 @@
 require "norn/util/memory-store"
-require "norn/world/vital"
+require "norn/util/percentage"
 
 class Mind < MemoryStore
-  include Vital
+  include Percentage
 
   MAPPINGS = {
     saturated:       "saturated",

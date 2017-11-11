@@ -1,4 +1,8 @@
-module Vital
+##
+## unified interface for extending
+## MemoryStore with percent information
+##
+module Percentage
   def percent
     current_max = max.to_f
     return 0 if current_max.eql?(0)

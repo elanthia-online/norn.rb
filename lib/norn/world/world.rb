@@ -6,7 +6,7 @@ class World
               :room, :hands, :containers,
               :stance, :char, :mind,
               :scars, :injuries, :spells,
-              :encumb, :health, :mana, :stamina
+              :encumb, :health, :mana, :stamina, :spirit
               
   def initialize()
     @callbacks  = World::Callbacks.new(self)
@@ -25,6 +25,7 @@ class World
     @mana       = Mana.new
     @stamina    = Stamina.new
     @health     = Health.new
+    @spirit     = Spirit.new
   end
 
   def context()

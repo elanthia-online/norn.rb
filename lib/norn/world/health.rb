@@ -1,6 +1,6 @@
 require "norn/util/memory-store"
-require "norn/world/vital"
+require "norn/util/percentage"
 
 class Health < MemoryStore
-  include Vital
+  include Percentage
 end

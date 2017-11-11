@@ -21,7 +21,7 @@ class Spells
   end
 
   def add(name, hours, minutes)
-    @active[name] = (hours * 60 * 60) + minutes * 60
+    @active[name] = [hours, minutes]
   end
 
   def flush!()
