@@ -1,6 +1,9 @@
 require "norn/util/memory-store"
+require "norn/world/vital"
 
 class Mind < MemoryStore
+  include Vital
+
   MAPPINGS = {
     saturated:       "saturated",
     must_rest:       "must rest",
@@ -16,22 +19,6 @@ class Mind < MemoryStore
 
   def self.decode(text)
     INVERSE_MAPPINGS.fetch(text.strip)
-  end
-
-  def percent
-    fetch(:percent, 0)
-  end
-
-  def gt?(val)
-    percent > val
-  end
-
-  def lt?(val)
-    percent < val
-  end
-
-  def eql?(val)
-    percent.eql?(val)
   end
 
   def current

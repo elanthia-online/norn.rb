@@ -108,6 +108,17 @@ class World
       # TODO flush stream
     end
 
+    def on_streamwindow(window)
+      if window.fetch(:title).downcase.to_sym.eql?(:room)
+        title = window.fetch(:subtitle)
+        title = title.slice(3, title.size)
+        return if @world.room.title.eql?(title)
+        @world.room.inc
+        @world.room.put(:title,
+          title)
+      end
+    end
+
     def on_stream_society(task)
       # TODO save society task
     end
@@ -136,7 +147,10 @@ class World
         when :room_players
           on_component_room_players(tag)
         when :room_desc
-          on_style_roomdesc(tag)
+          unless tag.text.nil?
+            @world.room.put(:desc, 
+              Room::Description.of(tag))
+          end
         when :room_exits
           on_compass(tag)
         when :room_objs
@@ -154,14 +168,11 @@ class World
     end
 
     def on_style_roomname(tag)
-      @world.room.put(:title,
-        tag.text)
+      # silence is golden
     end
 
     def on_style_roomdesc(tag)
-      return if tag.text.nil?
-      @world.room.put(:desc, 
-        Room::Description.of(tag))
+      # silence is golden
     end
 
     def on_compass(tag)
@@ -269,7 +280,7 @@ class World
 
     def on_dialogdata_stance(tag)
       current = Tag.find(tag, :progressbar)
-      @world.stance.put(:percent, 
+      @world.stance.put(:remaining, 
         current.fetch(:value).to_i)
       @world.stance.put(:current,
         current.fetch(:text).split(" ").first.to_sym)
@@ -312,8 +323,15 @@ class World
       tag.children.each do |tag|
         if tag.is?(:progressbar)
           type, remaining, max = decode_progress_bar(tag)
-          @world.char.put(type, remaining)
-          @world.char.put(%{max_#{type}}, max)
+          ctx = @world.get_context_for(type)
+
+          unless ctx.nil?
+            ctx
+              .put(:max, max)
+              .put(:remaining, remaining)
+          else
+            Norn.log(tag, :vitals)
+          end
         end
       end
     end

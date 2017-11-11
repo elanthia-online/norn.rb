@@ -17,8 +17,7 @@ module Norn
     ## have no context within Norn
     ##
     EDGE_NODES   = %i{a monster resource d 
-                      streamwindow output
-                      mode settingsinfo
+                      output mode settingsinfo
                       endsetup switchquickbar
                       link cmdbutton dropdownbox
                       updowneditbox

@@ -20,6 +20,7 @@ class Script
     def self.of(script)
       ctx = Class.new(Context)
       ctx.const_set(:Script, script)
+      ctx.const_set(:World, script.game.world)
       ctx.inject *script.game.world.context
       ctx
     end

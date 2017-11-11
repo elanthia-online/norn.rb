@@ -3,6 +3,18 @@ require "norn/parser/tag"
 
 class Room < MemoryStore
   Tag = Norn::Parser::Tag
+  ##
+  ## increments the number of Rooms seen
+  ## during this session
+  ##
+  def inc
+    put(:count, 
+      fetch(:count, 0) + 1)
+  end
+
+  def count
+    fetch :count, 0
+  end
 
   def id
     fetch :id

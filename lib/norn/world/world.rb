@@ -5,8 +5,8 @@ class World
               :roundtime, :status,
               :room, :hands, :containers,
               :stance, :char, :mind,
-              :scars, :injuries, :encumb,
-              :spells
+              :scars, :injuries, :spells,
+              :encumb, :health, :mana, :stamina
               
   def initialize()
     @callbacks  = World::Callbacks.new(self)
@@ -20,13 +20,20 @@ class World
     @injuries   = Injuries.new
     @scars      = Scars.new
     @mind       = Mind.new
-    @encumb     = Encumb.new
     @spells     = Spells.new
+    @encumb     = Encumb.new
+    @mana       = Mana.new
+    @stamina    = Stamina.new
+    @health     = Health.new
   end
 
   def context()
     instance_variables.map do |prop|
       instance_variable_get(prop)
     end
+  end
+
+  def get_context_for(name)
+    instance_variable_get(%{@#{name}}.to_sym)
   end
 end
