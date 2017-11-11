@@ -16,11 +16,11 @@ class Stance < MemoryStore
   end
 
   def gt?(val)
-    percent > 0
+    percent > val
   end
 
   def lt?(val)
-    percent < 0
+    percent < val
   end
 
   def eql?(val)

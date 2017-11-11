@@ -4,9 +4,9 @@ module Norn
     ## normalizes GS tags to true HTML-style tags
     ##
     module Normalizer
-      OPEN_STREAM  = %r{<pushStream id='(?<type>\w+)'/>}
-      CLOSE_STREAM = %r{<popStream id='(?<type>\w+)'/>}
-      OPEN_STYLE   = %r{<style id="(?<type>\w+)" />}
+      OPEN_STREAM  = %r{<pushStream id=(?:'|")(?<type>\w+)(?:'|")/>}
+      CLOSE_STREAM = %r{<popStream id=(?:'|")(?<type>\w+)(?:'|")/>}
+      OPEN_STYLE   = %r{<style id=(?:'|")(?<type>\w+)(?:'|") />}
       ##
       ## fix GS tags so that Oga
       ## can reliably parse them

@@ -38,8 +38,13 @@ class World
     ##
     ## openDialog
     ##
-    def on_opendialog_encum(tag)
+    ## encumberance info
+    def on_opendialog_encum(root)
+      root.children.each do |tag|
+        on_dialogdata_encum Tag.find(tag, :dialogdata)
+      end
     end
+    ## experience info
     def on_opendialog_expr(tag)
       Tag.find(tag, :dialogdata).children.each do |tag|
         case tag.id
@@ -270,7 +275,7 @@ class World
         case tag.name
         # holds injury/scar info
         when :image
-          area  = tag.id
+          area  = Injuries.decode_area(tag.id)
           state = tag.fetch(:name).downcase.to_sym
           ## order of operations is important here
           ## Scars only appear in the XML after 
@@ -325,8 +330,18 @@ class World
       end
     end
 
-    def on_dialogdata_encum(tag)
-      Norn.log(tag, tag.id)
+    def on_dialogdata_encum(root)
+      root.children.each do |tag|
+        case tag.id
+        when :encumlevel
+          @world.encumb.put(:percent, 
+            tag.fetch(:value).to_i)
+          @world.encumb.put(:level,
+            tag.fetch(:text).downcase.gsub(" ", "_").to_sym)
+        when :encumblurb
+          # silence
+        end
+      end
     end
 
     def on_mindstate(tag)
