@@ -1,9 +1,4 @@
 class Spells
-  def self.parse(tag)
-    [tag.fetch(:anchor_right), 
-      *tag.fetch(:value).strip.split(":").map(&:to_i)]
-  end
-
   attr_reader :active, :known
 
   def initialize()

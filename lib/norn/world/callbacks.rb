@@ -130,7 +130,13 @@ class World
     def on_stream_spells(spells)
       spells.children.each do |known|
         unless known.fetch(:noun).empty?
-          @world.spells.learn(known.fetch(:noun).to_i, known.text)
+          num  = known.fetch(:noun)
+          ##
+          ## sometimes the Stream text is formatted
+          ## like "501 Sleep"
+          ##
+          name = known.text.strip.gsub(num + " ", "")
+          @world.spells.learn(num.to_i, name)
         end
       end
     end
@@ -198,7 +204,10 @@ class World
     def on_dialogdata_activespells(spells)
       @world.spells.flush!
       Tag.by_name(spells, :label).map do |spell|
-        @world.spells.add *Spells.parse(spell)
+        if spell.fetch(:anchor_right, nil)
+          @world.spells.add *[spell.fetch(:anchor_right), 
+            *spell.fetch(:value).strip.split(":").map(&:to_i)]
+        end
       end
     end
     ## spell about to be cast

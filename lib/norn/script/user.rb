@@ -45,30 +45,22 @@ class Script
       end
 
       def self.package(path)
-        Norn.log(path, :package)
         metadata = Package.metadata(path)
         [File.open(metadata.absolute_entry_path, 'rb').read, metadata]
       end
 
       def self.script(path)
-        Norn.log(path, :script)
         [File.open(rb_file(path), 'rb').read, OpenStruct.new]
       end
     end
 
-    def self.normalize(cmd)
-      cmd
-        .gsub(Norn::COMMAND, "")
-        .without_line_breaks
-        .strip
-    end
-
-    def self.run(game, cmd)
-      name = normalize(cmd)
+    def self.run(game, name, args: [])
+      Norn.log(args, name)
       Script.new(game, name) do |script|
         code, metadata = Loader.compile(name)
         script.package = metadata
-        script.result  = Context.of(script).class_eval(code)
+        script.result  = Context.of(script, args).class_eval(code)
+        Norn.log(script.result, name)
       end
     end
   end

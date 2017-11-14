@@ -6,14 +6,6 @@ Dir[File.dirname(__FILE__) + '/norn/**/*.rb'].each do |file| require file end
 ##
 module Norn
   ##
-  ## the global norn scripting command regex
-  ##
-  COMMAND     = /^(\/|;)/
-  ##
-  ## dot commands to interact with a Norninstance
-  ##
-  DOT_COMMAND = /^\./
-  ##
   ## @brief      generates a non-blocking connection to a game
   ##
   ## @param      args  The arguments

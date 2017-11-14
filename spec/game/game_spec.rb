@@ -4,8 +4,8 @@ require 'spec_helper'
 
 describe Norn::Game do
 
-  describe '#downstream' do
-    it 'accepts multithreaded downstream connections' do
+  describe '#listen -> TCPSocket' do
+    it 'accepts multithreaded listen connections' do
       game = Norn.connect(4040,
         account:   ENV.fetch("GS_ACCOUNT"),
         password:  ENV.fetch("GS_PASSWORD"),
@@ -14,14 +14,14 @@ describe Norn::Game do
       )
 
       client1 = Thread.new do
-        socket = game.downstream
+        socket = game.listen
         line   = nil
         break while line = socket.gets
         line
       end
 
       client2 = Thread.new do
-        socket = game.downstream
+        socket = game.listen
         line   = nil
         break while line = socket.gets
         line

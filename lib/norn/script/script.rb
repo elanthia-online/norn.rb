@@ -51,27 +51,22 @@ class Script < Thread
   attr_reader :name, :code, :mode
   attr_accessor :result, :package, :game
   
-  def initialize(game, name, mode: :normal)
+  def initialize(game, name, mode: :normal, args: [])
     @game   = game
     @name   = name
     @mode   = mode
+    @code   = 0
     @start  = Time.now
     script  = self
+    Script.register(@name, self)
     super do
-      script.write(%{running}, label: :up) unless silent?
       work = Try.new do
         yield self
-        @code = 0
       end
-      if work.failed?
-        @code = 1 if ok?
-        write work.result.message
-        write work.backtrace.join("\n")
-      end
-      script.write(%{status:#{script.code} time:#{script.uptime}s}, label: :end) unless silent?
-      Script.kill(@name)
+      @code = 1 if work.failed?
+      Try.dump(script, work)
+      script.write(%{<Exit status:#{script.code} time:#{script.uptime}s>}) unless silent?
     end
-    Script.register(@name, self)
   end
 
   def debug?
@@ -80,6 +75,12 @@ class Script < Thread
 
   def silent?
     mode == :silent
+  end
+
+  def siblings
+    RUNNING.values.reject do |script|
+      script == self
+    end
   end
 
   def ok?
@@ -107,7 +108,6 @@ class Script < Thread
     begin
       strs.each do |str|
         output = view(str, label: label)
-        puts output
         if @game.nil?
           puts output
         else

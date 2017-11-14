@@ -3,6 +3,7 @@ require "norn/game/handshake"
 require "norn/util/worker"
 require "norn/script/exec"
 require "norn/world/world"
+require "norn/game/command"
 
 module Norn
   class Game < Struct.new(:handshake)
@@ -88,10 +89,14 @@ module Norn
           packet = @upstream.gets
           if packet
             @parser.puts packet.dup
-            @clients = @clients.reject(&:closed?)
+            @clients.reject!(&:closed?)
             # forward the response to each connected client
             @clients.each do |downstream| 
-              downstream.puts packet.dup unless downstream.closed?
+              begin
+                downstream.puts packet.dup unless downstream.closed?  
+              rescue => exception
+                Norn.log(exception, :error)
+              end
             end
           end
         end
@@ -109,12 +114,8 @@ module Norn
           Thread.fork(@downstream.accept) do |client| 
             @clients << client
             while !client.closed? && cmd = client.gets
-              if cmd.match(Norn::COMMAND)
-                if cmd.match(Script::Exec::COMMAND)
-                  Script::Exec.run(self, cmd)
-                else
-                  Script::UserScript.run(self, cmd)
-                end
+              if Command.match?(cmd)
+                Command.parse(self, cmd)
               else
                 write_game_command(cmd)
               end
@@ -133,7 +134,7 @@ module Norn
     ##
     def write_game_command(str)
       puts "command :: #{str}"
-      write PACKETS::COMMAND, str
+      write %{#{PACKETS::COMMAND}#{str}}
       self
     end
     ##
@@ -207,7 +208,7 @@ module Norn
     ##
     ## create a downstream listener
     ##
-    def downstream()
+    def listen()
       TCPSocket.new(HOST, @port)
     end
   end

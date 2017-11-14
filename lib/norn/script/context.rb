@@ -1,8 +1,12 @@
+require "norn/script/downstream"
+
 class Script
   ##
   ## dynamically generates
   ## the context of a Script
-  ## execution
+  ## execution anything here
+  ## will exist on the top-level
+  ## of the Script runtime
   ##
   class Context
      def self.inject(*objs)
@@ -17,12 +21,18 @@ class Script
       self
     end
 
-    def self.of(script)
+    def self.of(script, args = [])
       ctx = Class.new(Context)
       ctx.const_set(:Script, script)
+      ctx.const_set(:Game, script.game)
       ctx.const_set(:World, script.game.world)
+      ctx.const_set(:ARGV, args)
       ctx.inject *script.game.world.context
       ctx
+    end
+
+    def self.keepalive!
+      loop do sleep(10) end
     end
   end
 end
