@@ -7,6 +7,19 @@ class Try
     end
   end
 
+  def self.dump(ctx, try)
+    return unless ctx.respond_to?(:write) && try.failed?
+    begin
+      ctx.write try.result.message
+      try.result.backtrace.each do |line|
+         ctx.write line
+      end
+    rescue => exception
+      Norn.log(try.result, "Try.dump")
+      Norn.log(exception, "Try.dump")
+    end
+  end
+
   def initialize(&task)
     @task = task
     run!

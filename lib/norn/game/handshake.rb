@@ -103,9 +103,11 @@ module Norn
     end
 
     def self.connect(port = Norn::Game::PORT, *args)
+      game = nil
       new(*args) do |otp|
-        Norn::Game.connect otp, port
+        game = Norn::Game.connect otp, port
       end
+      game
     end
 
     attr_accessor :socket, :key, :state, :otp, :responses, :characters

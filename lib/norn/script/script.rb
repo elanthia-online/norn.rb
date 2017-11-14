@@ -5,7 +5,7 @@ Dir[File.dirname(__FILE__) + '/../world/**/*.rb'].each do |file| require file en
 class Script < Thread
   RUNNING = MemoryStore.new(:scripts)
 
-  SUPERVISOR = Norn::Worker.new(:script_supervisor) do      
+  SUPERVISOR = Norn::Worker.new(:script_supervisor) do   
     RUNNING.each do |name, script, store|
       unless script.alive?
         store.delete(name)
@@ -49,28 +49,24 @@ class Script < Thread
   end
 
   attr_reader :name, :code, :mode
-  attr_accessor :result, :package
+  attr_accessor :result, :package, :game
   
-  def initialize(name, mode: :normal)
+  def initialize(game, name, mode: :normal, args: [])
+    @game   = game
     @name   = name
     @mode   = mode
+    @code   = 0
     @start  = Time.now
     script  = self
+    Script.register(@name, self)
     super do
-      script.write(%{running}, label: :up) unless silent?
       work = Try.new do
         yield self
-        @code = 0
       end
-      if work.failed?
-        @code = 1 if ok?
-        write work.result.message
-        write work.backtrace.join("\n")
-      end
-      script.write(%{status:#{script.code} time:#{script.uptime}s}, label: :end) unless silent?
-      Script.kill(@name)
+      @code = 1 if work.failed?
+      Try.dump(script, work)
+      script.write(%{<Exit status:#{script.code} time:#{script.uptime}s>}) unless silent?
     end
-    Script.register(@name, self)
   end
 
   def debug?
@@ -79,6 +75,12 @@ class Script < Thread
 
   def silent?
     mode == :silent
+  end
+
+  def siblings
+    RUNNING.values.reject do |script|
+      script == self
+    end
   end
 
   def ok?
@@ -106,17 +108,16 @@ class Script < Thread
     begin
       strs.each do |str|
         output = view(str, label: label)
-        puts output
-        if Norn.game.nil?
+        if @game.nil?
           puts output
         else
-          Norn.game.write_to_clients output
+          @game.write_to_clients output
         end
       end
     rescue Exception => e
-      unless Norn.game.nil?
-        Norn.game.write_to_clients(e.message)
-        Norn.game.write_to_clients(e.backtrace.join("\n"))
+      unless @game.nil?
+        @game.write_to_clients(e.message)
+        @game.write_to_clients(e.backtrace.join("\n"))
       end
       puts e.message
       puts e.backtrace.join("\n")

@@ -1,6 +1,12 @@
 require "norn/util/memory-store"
 
-module Status
+class Status < MemoryStore
+  module DSL
+    MONSTER_VERBOSE_EFFECT = %r{that appears (?:to be |)(?<effect>\w+)($|,|.)}
+    PLAYER_VERBOSE_EFFECT  = %r{who (is|appears to be) (?<effect>\w+)($|,|.)}
+    BRIEF_EFFECT           = %r{\((?<effect>\w+)\)($|,|.)}
+  end
+
   module Effects
     DEAD      = :dead
     PRONE     = :prone
@@ -25,25 +31,26 @@ module Status
     end
   end
 
-  @@store   = MemoryStore.new(:status_effects)
-
-  def self.cast(state)
-    state.downcase == "y"
+  def self.match(text)
+    found = false
+    return found if found = Status.parse(text, DSL::BRIEF_EFFECT)
+    return found if found = Status.parse(text, DSL::MONSTER_VERBOSE_EFFECT)
+    return found if found = Status.parse(text, DSL::PLAYER_VERBOSE_EFFECT)
+    return found
   end
 
-  def self.parse(type, state)
-    @@store.put type.slice(4, type.size).downcase, cast(state)
+  def self.parse(pattern, text)
+    if found = text.match(pattern)
+      return found[:effect].split(",").map(&:strip).map(&:to_sym)
+    end
+    return false
   end
 
-  def self.fetch(*args)
-    @@store.fetch *args
-  end
-
-  def self.respond_to_missing?(method_name, include_private = false)
+  def respond_to_missing?(method_name, include_private = false)
     method_name.is_boolean_method? || super
   end
 
-  def self.method_missing(*args)
+  def method_missing(*args)
     if args.first.is_boolean_method?
       return fetch(
         args.first.from_boolean_method, 
@@ -52,6 +59,4 @@ module Status
     end
     super *args
   end
-
-
 end

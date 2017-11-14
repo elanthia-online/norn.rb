@@ -19,4 +19,8 @@ class String
     self.gsub(/\r/," ")
         .gsub(/\n/," ")
   end
+
+  def is_i?
+    !!(self =~ /\A[-+]?[0-9]+\z/)
+  end
 end

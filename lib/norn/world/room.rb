@@ -1,75 +1,98 @@
-require "norn/parser/parser"
 require "norn/util/memory-store"
-require "norn/world/gameobj"
+require "norn/parser/tag"
 
-class Room
-  @@store = MemoryStore.new
-
-  def self.fetch(*args)
-    @@store.fetch *args
-  end
-
-  def self.put(*args)
-    @@store.put *args
-  end
+class Room < MemoryStore
+  Tag = Norn::Parser::Tag
   ##
-  ## backwards compat
+  ## increments the number of Rooms seen
+  ## during this session
   ##
-  def self.current
-    self
+  def inc
+    put(:count, 
+      fetch(:count, 0) + 1)
   end
 
-  def self.id
+  def count
+    fetch :count, 0
+  end
+
+  def id
     fetch :id
   end
 
-  def self.title
+  def title
     fetch :title
   end
 
-  def self.exits
-    fetch :exits, []
-  end
-
-  def self.desc
+  def desc
     fetch :desc
   end
 
-  def self.objs
+  def exits
+    fetch :exits, []
+  end
+
+  def objs
     fetch :objs, []
   end
 
-  def self.players
-    Players.fetch || []
+  def monsters
+    objs.select do |obj|
+      obj.is_a?(Monster)
+    end
+  end
+
+  def items
+    objs.select do |obj|
+      obj.is_a?(Item)
+    end
+  end
+
+  def players
+    fetch :players, []
+  end
+
+  def self.to_monsters_or_items(tags)
+    # Norn.log(tags.first.parent, :monsters_or_items)
+    # Norn.log(Status.parse_also_see(tags.first.parent.text), :also_see)
+    tags.map do |tag|
+      case tag.name
+      when :monster
+        Monster.new(**tag.to_gameobj)
+      when :a
+        Item.new(**tag.to_gameobj)
+      else
+        raise Exception.new %{
+          unhandled Description descendent
+          #{tag.inspect}
+        }
+      end
+    end
   end
 
   class Description < Struct.new(:text, :objs)
-    def self.parse(tag)
-      new(tag.text, GameObj.parse(tag.children))
+    def self.of(tag)
+      new(tag.text, 
+        Room.to_monsters_or_items(tag.children))
     end
 
-    def initialize(*args)
-      super *args
-      Room.put :desc, self
+    def monsters
+      objs.select do |obj|
+        obj.is_a?(Monster)
+      end
+    end
+
+    def items
+      objs.select do |obj|
+        obj.is_a?(Item)
+      end
     end
   end
-end
 
-class Array
-  def to_dirs
-    self.map do |data|
-      Direction.new *data
+  class Exit < Struct.new(:dir)
+    def self.of(tag)
+      new(tag.fetch(:value, 
+        tag.fetch(:text, nil)))
     end
-  end
-end
-
-class Direction < Struct.new(:dir)
-  def self.parse(tags)
-    Norn.log(tags, :direction)
-    #Room.put :exits, str.scan(Norn::Parser::Tags::D).to_dirs
-  end
-
-  def go
-    World.send("go #{dir}")
   end
 end

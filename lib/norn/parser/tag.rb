@@ -1,121 +1,149 @@
+require 'forwardable'
+
 module Norn
-  module Parser
+  class Parser
     class Tag
+      extend Forwardable
+      MAPPINGS = {
+        b: :monster
+      }
+
+      def self.normalize_name(tag)
+        MAPPINGS.fetch(tag, tag)
+      end
       ##
-      ## all modes a tag can be in
+      ## find the first match in a Tag tree
       ##
-      module Modes
-        IN_TAG_NAME     = :in_tag_name
-        IN_TAG_ATTRS    = :in_tag_attrs
-        IN_TAG_CONTENTS = :in_tag_contents
-        CLOSED          = :closed
-      end
-
-      class InvalidTagMode < Exception
-        def initialize(tag, arg)
-          super("invalid TagMode #{tag} -> #{arg}")
+      def self.find(tag, name)
+        return tag if tag.name.eql?(name)
+        children = tag.children.clone
+        until children.empty?
+          found = find(children.shift, name)
+          return found unless found.nil?
         end
+        nil
       end
-
-      ATTR = /(?<prop>[a-z]+)=("|')(?<val>.*?)("|')/
-
-      attr_reader :name, :mode, 
-                  :children, :parent, 
-                  :text, :attrs, :id
-
-      def initialize(parent=nil)
-        @mode     = Modes::IN_TAG_NAME
-        @parent   = parent unless parent.nil?
-        @attrs    = Hash.new
-        @children = []
-      end
-
-      def name=(name)
-        raise InvalidTagMode.new(self, name) unless in_tag_name?
-        @name = name.downcase.to_sym
-        @mode = Modes::IN_TAG_ATTRS
-        self
-      end
-
-      def attrs=(attr_str)
-        raise InvalidTagMode.new(self, attr_str) unless in_tag_attrs?
-        
-        @mode = Modes::IN_TAG_CONTENTS
-
-        return self if attr_str.empty?
-
-        attr_str.scan(ATTR).each do |prop, contents|
-          @attrs[prop.to_sym] = contents.strip
+      ##
+      ## parse a Tag tree
+      ##
+      def self.by_name(tag, name, results = [])
+        results << tag if tag.name.eql?(name)
+        tag.children.each do |child|
+          Tag.by_name(child, name, results)
         end
+        results
+      end
+      ##
+      ## normalize the Id value
+      ##
+      def self.normalize_id_value(id)
+        # don't cast GameObj ids to Symbol
+        return id if id.is_i?
+        # downcase it
+        id = id.downcase
+        # normalize <indicator> id
+        # ex: IconSTUNNED => :stunned
+        return id.gsub("icon", "").to_sym if id.start_with?("icon")
+        # normalize other ids
+        id.gsub(/\s+/, "_").gsub("-", "_").to_sym
+      end
+      ##
+      ## normalize an attr, value pair
+      ##
+      def self.normalize_attr(k, v)
+        k = k.to_sym
+        return [k, Tag.normalize_id_value(v)]  if k.eql?(:id)
+        return [k, v.downcase.eql?("y")] if k.eql?(:visible)
+        return [k, v]
+      end
+      ##
+      ## normalize a Hash of attributes
+      ##
+      def self.normalize_attrs(attrs = {})
+        Hash[attrs.map do |k, v| 
+          Tag.normalize_attr(k, v)
+        end]
+      end
+      ##
+      ## create a single callback symbol
+      ##
+      def self.callback(name, id = nil)
+        callback = ["on"]
+        callback << name
+        callback << id unless id.nil?
+        callback.join("_").downcase.to_sym
+      end
+      ##
+      ## create a list of callbacks for a tag
+      ## 
+      ## TODO: memoize this
+      ##
+      def self.callbacks(name, id = nil)
+        ## less specific callback
+        callbacks = [callback(name)]
+        ## more specific callback
+        callbacks << callback(name, id) unless id.nil?
+        callbacks
+      end
+      ##
+      ## read-only refs
+      ##
+      attr_reader :name, :attrs,
+                  :children, :callbacks
+      ##
+      ## read + write refs
+      ##
+      attr_accessor :text, :parent
 
-        if @attrs[:id]
-          @id = @attrs[:id].gsub(/\s+/, '').downcase.to_sym
-        end
-       
-        self
+      def_delegators :@attrs, :fetch
+
+      def initialize(name, attrs)
+        @name      = Tag.normalize_name(name.gsub("-", "_").downcase.to_sym)
+        @attrs     = Tag.normalize_attrs(attrs)
+        @callbacks = []
+        @callbacks = Tag.callbacks(@name.to_s, id) unless EDGE_NODES.include?(@name)
+        @children  = []
       end
 
-      def fetch(prop)
-        @attrs[prop.to_sym]
+      def id
+        @attrs.fetch(:id, nil)
       end
 
-      def put(prop, val)
-        @attrs[prop.to_sym] = val
-        self
-      end
-
-      def <<(child)
-        raise InvalidTagMode.new(self, child) unless in_tag_contents?
-        @children << child
-        self
+      def is?(type)
+        @name.eql?(type)
       end
 
       def +(text)
-        raise InvalidTagMode.new(self, text) unless in_tag_contents?
-        @text ||= ""
-        @text = (@text + text).gsub(/\s+/, " ")
+        return if text.nil?
+        @text = (@text || "") + text
+      end
+
+      def merge(other)
+        @text  = other.text
+        @attrs = @attrs.merge(other.attrs)
         self
       end
 
-      def close
-        @text = @text.strip
-        @mode = Modes::CLOSED
-        self
-      end
-
-      def is_parent?
-        @parent.nil?
-      end
-
-      def in_tag_name?
-        @mode == Modes::IN_TAG_NAME
-      end
-      
-      def in_tag_attrs?
-        @mode == Modes::IN_TAG_ATTRS
-      end
-
-      def in_tag_contents?
-        @mode == Modes::IN_TAG_CONTENTS
-      end
-
-      def closed?
-        @mode == Modes::CLOSED
-      end
-
-      def open?
-        !closed?
+      def to_gameobj
+        {
+          id: fetch(:exist), 
+          name: text,
+          noun: fetch(:noun),
+          status: fetch(:status, []),
+        }
       end
 
       def to_s
-        tag = "<#{@name} @mode=#{@mode}"
-        #tag = tag + " @parent=#{@parent.name}" unless @parent.nil?
-        tag = tag + " #{@attrs}"
-        tag = tag + " #{@children}" unless @children.empty?
-        tag = tag + ">"
-        tag = tag + @text unless @text.nil?
-        tag = tag + "</#{@name}>" if closed?
-        tag
+        out = %{<#{name} #{attrs} } 
+        out.concat %{ #{children.map(&:to_s)}} unless children.empty?
+        out.concat %{ cbs=#{callbacks}} unless callbacks.empty?
+        out.concat %{ text=#{text}>} if text
+        out.concat %{>}
+        out
+      end
+
+      def inspect
+        to_s
       end
     end
   end

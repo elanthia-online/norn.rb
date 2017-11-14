@@ -1,11 +1,16 @@
 class Registry
-  attr_reader :members
-  def initialize(*members)
-    @members = members
-    @maps    = Hash.new
-    @list    = Array.new
-    @lock    = Mutex.new
-    @members.each do |prop|
+  def self.for_game_objs
+    new(:id, :noun, :name)
+  end
+
+  attr_reader :props, :list
+
+  def initialize(*props)
+    @props = props
+    @maps  = Hash.new
+    @list  = Array.new
+    @lock  = Mutex.new
+    @props.each do |prop|
       @maps[prop.to_sym] = Hash.new
     end
   end
@@ -20,11 +25,13 @@ class Registry
   def put(*objs)
     @lock.synchronize do
       clear!
-      @list = objs
+      @list = objs.dup
       @maps.each do |prop, store|
         objs.each do |obj|
-          val = obj.send(prop)
-          store[val] = obj
+          if obj.respond_to?(prop)
+            val = obj.send(prop) 
+            store[val] = obj
+          end
         end
       end
     end

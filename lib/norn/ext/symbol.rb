@@ -22,4 +22,8 @@ class Symbol
   def ok?
     self == :ok
   end
+
+  def is_i?
+    to_s.is_i?
+  end
 end

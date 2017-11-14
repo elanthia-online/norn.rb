@@ -1,7 +1,7 @@
 require "norn/util/memory-store"
 require "ostruct"
 
-class Bounty < OpenStruct
+class Bounty < MemoryStore
   module DSL
     NPCS = %r{
        guard|sergeant|Felinium|clerk|purser|taskmaster
@@ -10,7 +10,7 @@ class Bounty < OpenStruct
       |Areacne|Jhiseth|Gaedrein
     }x
 
-    Herbalist = %r{
+    HERBALIST = %r{
       illistim|vaalor|legendary rest|solhaven
     }x
   
@@ -24,7 +24,6 @@ class Bounty < OpenStruct
       dangerous: /You have been tasked to hunt down and kill a particularly dangerous (?<creature>.*) that has established a territory (?:in|on) (?:the )?(?<area>.*?)(?: near| between| under|\.)/,
       succeeded: /^You have succeeded in your task and can return to the Adventurer's/,
       heirloom:  /^You have been tasked to recover (a|an|some) (?<heirloom>.*?) that an unfortunate citizen lost after being attacked by (a|an|some) (?<creature>.*?) (?:in|on|around|near|by) (?<area>.*?)(| near (?<realm>.*?))\./,
-
 
       get_rescue:      /It appears that a local resident urgently needs our help in some matter/,
       get_bandits:     /It appears they have a bandit problem they'd like you to solve./,
@@ -48,14 +47,7 @@ class Bounty < OpenStruct
     )
   end
 
-  @@store = MemoryStore.new
-  
-  def Bounty.put(bounty)
-    @@store.put(:bounty, 
-      Bounty.match(bounty))
-  end
-
-  def Bounty.parse(bounty)
+  def self.parse(bounty)
     type, patt = DSL::BOUNTIES.each_pair.find do |type, exp|
       exp.match bounty
     end
@@ -63,24 +55,7 @@ class Bounty < OpenStruct
     bounty = patt.match(bounty).to_struct.to_h
     bounty[:raw]  = str
     bounty[:type] = type
-    Bounty.new **bounty
+    bounty
   end
 
-  def Bounty.fetch(key = :bounty, default = nil)
-    @@store.fetch(bounty, default)
-  end
-
-  def Bounty.done?
-    succeeded?
-  end
-
-  def Bounty.method_missing(method)
-    str = method.to_s
-
-    if str.chars.last == "?"
-      return Bounty.type == str.chars.take(str.length-1).join.to_sym
-    end
-
-    Bounty.fetch.send(method)
-  end
 end

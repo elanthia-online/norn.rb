@@ -21,7 +21,7 @@ describe Norn::Handshake do
         game:      ENV.fetch("GS_GAME"),
         character: ENV.fetch("GS_CHARACTER"),
       ) do |otp|
-        puts otp
+        expect(otp.to_s).to eq ""
         expect(otp).not_to be_nil
         expect(otp.key).not_to be_nil
       end
