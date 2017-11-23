@@ -15,8 +15,8 @@ class Try
          ctx.write line
       end
     rescue => exception
-      Norn.log(try.result, "Try.dump")
-      Norn.log(exception, "Try.dump")
+      System.log(try.result, label: "Try.dump")
+      System.log(exception,  label: "Try.dump")
     end
   end
 

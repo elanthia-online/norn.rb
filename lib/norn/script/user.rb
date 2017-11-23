@@ -55,12 +55,10 @@ class Script
     end
 
     def self.run(game, name, args: [])
-      Norn.log(args, name)
       Script.new(game, name) do |script|
         code, metadata = Loader.compile(name)
         script.package = metadata
         script.result  = Context.of(script, args).class_eval(code)
-        Norn.log(script.result, name)
       end
     end
   end

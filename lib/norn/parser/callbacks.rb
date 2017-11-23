@@ -38,7 +38,6 @@ module Norn
         if stack.size > 1
           child  = @stack.pop
           prev   = @stack.last
-          #Norn.log(stack, :stack)
           # parent is a monster
           if prev.is?(:monster) && child.is?(:a) && prev.attrs.empty?
             # monsters eat their children
@@ -48,7 +47,6 @@ module Norn
             return prev.merge(child)
           # siblings
           elsif (prev.is?(:monster) || prev.is?(:a)) && child.is?(:a) && prev.parent
-            #Norn.log(child, :siblings)
             return prev.parent.children << child
           else
             child.parent = prev
@@ -63,7 +61,7 @@ module Norn
       ## callback for SAX errors
       ##
       def parser_error(*args)
-        Norn.log(args, :sax_error)
+        System.log(args, label: :sax_error)
       end
       ##
       ## GS-specific callbacks

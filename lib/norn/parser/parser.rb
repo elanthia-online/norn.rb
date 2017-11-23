@@ -47,7 +47,6 @@ module Norn
     def puts(incoming)
       @lock.synchronize do
         incoming = Normalizer.apply(incoming)
-        #Norn.log(incoming, :incoming)
         @writer.puts incoming
       end
     end

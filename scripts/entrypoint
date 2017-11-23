@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+#
+require "bundler/setup"
+require "norn"
+$game = Norn.connect(4040,
+  account:   ENV.fetch("ACCOUNT"),
+  password:  ENV.fetch("PASSWORD"),
+  character: ENV.fetch("CHARACTER"),
+  game:      ENV.fetch("GAME", "GS3"),
+)
+System.log $game
+sleep(1) until $game.upstream.closed?

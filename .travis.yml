@@ -1,5 +1,18 @@
-sudo: false
+sudo: required
 language: ruby
 rvm:
   - 2.3.0
+services:
+  - docker
+
+env:
+  global:
+  - secure: aZL17tUy5gtMyEgiCXNF9a5nakhfucOY/+hIzh6haFP9FSUJZlP1d5GyVL19LWPdArDPJP3gntPAYyJ2AkGOGt0JPXMaa5atiJDRz1QXzOnnmp7baK8NJZHuVw1Wiylrb4HbezuIvn1Z1oSgsyk3lOAU60xoBoh6ay0SBlI8WAL2xmdb+Yyw3WdHLWSTON1cKx/wR9qxDMoH9iV2GWnH7DVA2berOhgYlXBWQ/AJlZRQLYOwOOHzoSVXky4DyOhmsSUUESTBnRG2b/Bm8FEEoPNy5h62jIJfO1llpcDAFEqPuXkDbfn62QdWpHTlHrd5s2R6q+olw1o53+wWSSMASu1S6wVpTLZFD7KIPVEqQOIaCpjUTXKUS4lAKKRLTV1uS4DjHY0yIQKvFhLcJ4z4WmklCkxJ04UIIOO0xtLdsM56u94mftt9HL6NhGV42XiOney6O+U9m6pXOYXVh15brC3aJ7jIfUB4EjOTEALRkXvQtoRG35S6jgFUjoIa+40QqELg82I4AVHa54Du2lnzBJyj4iWc6a681+Q5SkvjpWnpNdg1FGuyAkqDqaYZvrcqmKWJl85pIx8xVNHcW3DJYd0bYENzolMO+RYMg86W/KwxbIQyudmPNCNcqi78XFexGtQeZqWmlC+FEO15ftQ0oMurtVRI0GguluYq2zl1szw=
+  - secure: aXnq7fPC6lyBYpBoD1od1vX87JaQxLHa80CUL0NFY09vO5AgxDz6+i5E5nh7ohdt562B5AnU05dId19K+SDR3ftTG3/1hRqaRiyeEcamRYGPSCBRu7uuDZuwQ3GHf0u4/Fm3JgHlhJMJwOrBpAyJYdHsOQ8+9qVCNh9LPGZiiXY8R7nWLa/I853haJj764xPDEjmXxRxWpXGGVGkAs998EsadlLF3370qh8KDt46+fxYfiJEpsUS8VokgjOrB3QDTTT6L5jZd93FQLse5YcbWknthi+dNvqnY3XHcDDqdA4DF6fudfioL46bhTKKsSJoV5xchpsGmz6tjS2ua+dGfyDZBtg85lhZ+RVXE1mz5gnSELsKwSvdAkPVHBwe232waJuuNg2Szg4mz0CJ5ppLdsCXyF1oC/ufErxCo43Bmtj0s2dVosx0ycB0nbFV4zT1B5zA5JJb6cLgsNVDlVsT0RPHRHdan7V3/5IUHwBk8VB6v6AaIEw35CZ956bIpehlgLqFbBU4YN5p5+FM1DB9qmebjIC5x4FBi72tWwkcUTNX9GEmtF7OHCE/H5h/lGkMvbsxop8DxnnlxIM6tCcXR9PTGssWXeHdMZK6K3doHfgPlZiGLkKrFwL5jw7yFS3Tvf1P0XVrlMfiasrlcWnYfhNaz95efxm9NPW+F7MjNkY=
+
 before_install: gem install bundler -v 1.14.3
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    ci/publish-image;
+    fi

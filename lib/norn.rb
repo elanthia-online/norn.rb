@@ -13,24 +13,6 @@ module Norn
   def self.connect(port = Norn::Game::PORT, *args)
     Handshake.connect port, *args
   end
-  
-  DEBUG = ENV.fetch("DEBUG", false)
-  DEBUG_PATTERN = %r{#{DEBUG}}
-  GLOBAL_LOCK = Mutex.new
-
-  def self.log(message, label = :debug)
-    GLOBAL_LOCK.synchronize do
-      return self unless DEBUG
-      return self unless label.to_s.match(DEBUG_PATTERN)
-      if message.is_a?(Exception)
-        message = [
-          message.message,
-          message.backtrace.join("\n"),
-        ].join
-      end
-      puts "[Norn.#{label}] #{message.inspect}"
-    end
-  end
 
   def self.clobber(patt)
     $LOADED_FEATURES

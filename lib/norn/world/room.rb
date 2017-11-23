@@ -53,8 +53,6 @@ class Room < MemoryStore
   end
 
   def self.to_monsters_or_items(tags)
-    # Norn.log(tags.first.parent, :monsters_or_items)
-    # Norn.log(Status.parse_also_see(tags.first.parent.text), :also_see)
     tags.map do |tag|
       case tag.name
       when :monster

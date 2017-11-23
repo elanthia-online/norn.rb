@@ -40,7 +40,7 @@ module Command
         return Script::UserScript.run(game, script, args: args.strip.split(" "))
       end
     rescue => exception
-      Norn.log(exception, :commands)
+      System.log(exception, label: :command_error)
     end
   end
 end
