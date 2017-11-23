@@ -27,6 +27,19 @@ The Norn default console (`bin/console`) will prompt for user login information,
 Launching Profanity to read from port 8383 (`ruby profanity.rb --port=8383`) will cause ProfanityFE to connect to Norn for the game stream.
 Norn's connection to ProfanityFE can be confirmed by executing `/i Room.title` inside ProfanityFE, which should return the title of the current room.
 
+## Docker
+
+I provide image builds for Dockerized usage of norn, to let someone get up and running quickly without having to do anything on your localhost if you want to try Norn out.
+
+The Docker image still needs some work for mounting `~/.norn/scripts` from your localhost into the container
+
+https://hub.docker.com/r/ondreian/norn.rb/
+
+usage:
+```bash
+docker run -e ACCOUNT=<account> -e PASSWORD=<password> -e CHARACTER=<character> -d -p 4040:4040 norn.rb
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

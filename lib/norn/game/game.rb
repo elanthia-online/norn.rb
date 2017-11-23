@@ -45,10 +45,10 @@ module Norn
     ##
     ## attributes
     ##
-    attr_accessor :socket, :state,
-                  :callbacks, :threads,
+    attr_accessor :socket, :upstream,
+                  :callbacks, :threads, :state,
                   :clients, :parser, :world,
-                  :port
+                  :port, :receivers, :mutators
     ##
     ## @brief      initializes a Norn::Game instance
     ##
@@ -65,8 +65,26 @@ module Norn
       ## if we bound to 0 then we need to expose
       ## the real port we listened to
       @port       = @downstream.addr[1]
+      ##
+      ## create an isolated World instance
+      ## to track state
+      ##
       @world      = World.new
+      ##
+      ## clients (Wizard FE)
+      ## they will receive a copy of 
+      ## the mutated feed
+      ##
       @clients    = Array.new
+      ##
+      ## asychronous callbacks that just receive
+      ## a copy of the data from the feed
+      ##
+      @receivers  = Array.new
+      ##
+      ## callbacks that may mutate the Game feed
+      ##
+      @mutators   = Array.new
       ##
       ## open our connection to the game
       ##
@@ -85,17 +103,33 @@ module Norn
         ##
         ## handle parsing
         ##
-        while !@upstream.closed?
+        until @upstream.closed?
           packet = @upstream.gets
           if packet
-            @parser.puts packet.dup
+            original_packet = packet.dup
+            ## parser & receivers always receives raw game feed
+            @parser.puts original_packet.dup
+            ## receivers always 
+            @receivers.each do |receiver|
+              receiver.puts original_packet.dup
+            end
+            ## allow scripts to mutate the game feed
+            mutated_packet = @mutators.reduce(original_packet) do |packet, mutator|
+              result = mutator.call(packet)
+              if result.eql?(:err)
+                packet
+              else
+                result
+              end
+            end
+
             @clients.reject!(&:closed?)
             # forward the response to each connected client
             @clients.each do |downstream| 
               begin
-                downstream.puts packet.dup unless downstream.closed?  
+                downstream.puts mutated_packet.dup unless downstream.closed?  
               rescue => exception
-                Norn.log(exception, :error)
+                System.log(exception, label: :game_error)
               end
             end
           end
@@ -103,6 +137,7 @@ module Norn
         ##
         ## cleanup
         ##
+        @clients.each(&:close)
         @downstream.close
         worker.shutdown
       end

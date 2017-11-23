@@ -18,7 +18,7 @@ class World
     ## general catch-all for debugging
     ##
     def on_unhandled(tag)
-      Norn.log(tag, %{unhandled_#{tag.name}})
+      System.log(tag, label: %{unhandled_#{tag.name}})
     end
     ##
     ## silenced callbacks
@@ -339,7 +339,7 @@ class World
               .put(:max, max)
               .put(:remaining, remaining)
           else
-            Norn.log(tag, :vitals)
+            System.log(tag, label: :vitals)
           end
         end
       end

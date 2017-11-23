@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+#
+# publish Docker image
+# to hub.docker.com
+#
+require "bundler/setup"
+require "norn"
+
+module Log
+  ## print all messages
+  ENV["DEBUG"] = ".*"
+  def self.write(message, label: [])
+    message.split(/\r|\n/).each do |line|
+      line.scan(/.{50}/).each do |chunk|
+        System.log(line.strip, label: %i{docker} + label)
+      end
+    end
+  end
+end
+
+module Docker
+  def self.run(cmd)
+    IO.popen(%{docker #{cmd}}) do |io|
+      while line = io.gets
+        Log.write line, label: [cmd.split(" ").first]
+      end
+    end
+  end
+end
+
+Docker.run("build -t norn.rb:#{Norn::VERSION} -t norn.rb:latest -f Dockerfile .")
+Docker.run("push ondreian/norn.rb:latest")
+Docker.run("push ondreian/norn.rb:#{Norn::VERSION}")

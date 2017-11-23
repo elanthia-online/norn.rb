@@ -1,3 +1,4 @@
+require "cgi"
 require "norn/util/memory-store"
 require "norn/util/worker"
 Dir[File.dirname(__FILE__) + '/../world/**/*.rb'].each do |file| require file end
@@ -37,9 +38,9 @@ class Script < Thread
   end
 
   def self.label(*labels)
-    labels.flatten.compact.map(&:to_s)
+    "[" + labels.flatten.compact.map(&:to_s)
       .join(".")
-      .gsub(/\s+/, "")
+      .gsub(/\s+/, "") + "]"
   end
 
   def self.current
@@ -93,10 +94,10 @@ class Script < Thread
       label: [:debug] + [label])
   end
 
-  def view(t, label: nil)
-    "[#{Script.label(@name, label)}] " + t.to_s.gsub(/(<|>&)/) do 
-      CGI.escape_html $1
-    end
+  def view(obj, label: nil)
+    left_col = Script.label(@name, label)
+    escaped  = obj.to_s.gsub(/(<|>&)/) do CGI.escape_html $1 end
+    [left_col, escaped].join(" ")
   end
 
   def await
@@ -104,23 +105,27 @@ class Script < Thread
     @result
   end
 
+  def safe_write(*lines)
+    return if @game.nil?
+    return if lines.empty?
+    @game.clients.each do |client|
+      unless client.is_a?(Downstream::Receiver) or client.is_a?(Downstream::Mutator)
+        lines.each do |line|
+          client.puts(line)
+        end
+      end
+    end
+  end
+
   def write(*strs, label: nil)
     begin
       strs.each do |str|
-        output = view(str, label: label)
-        if @game.nil?
-          puts output
-        else
-          @game.write_to_clients output
-        end
+        safe_write view(str, label: label)
       end
     rescue Exception => e
-      unless @game.nil?
-        @game.write_to_clients(e.message)
-        @game.write_to_clients(e.backtrace.join("\n"))
-      end
-      puts e.message
-      puts e.backtrace.join("\n")
+      safe_write(e.message)
+      safe_write(e.backtrace.join("\n"))
+      Try.dump(System, e)
     end
     self
   end
