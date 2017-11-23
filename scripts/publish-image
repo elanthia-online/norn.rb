@@ -28,6 +28,6 @@ module Docker
   end
 end
 
-Docker.run("build -t norn.rb:#{Norn::VERSION} -t norn.rb:latest -f Dockerfile .")
+Docker.run("build -t ondreian/norn.rb:#{Norn::VERSION} -t ondreian/norn.rb:latest -f Dockerfile .")
 Docker.run("push ondreian/norn.rb:latest")
 Docker.run("push ondreian/norn.rb:#{Norn::VERSION}")
