@@ -15,5 +15,5 @@ before_install: gem install bundler -v 1.14.3
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u "$DOCKER_USER" -p "$DOCKER_PASSWORD";
-    ci/publish-image;
+    scripts/publish-image;
     fi
