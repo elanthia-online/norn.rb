@@ -50,15 +50,26 @@ class Script
       end
 
       def self.script(path)
-        [File.open(rb_file(path), 'rb').read, OpenStruct.new]
+        entry = rb_file(path)
+        [File.open(entry, 'rb').read, 
+          OpenStruct.new(file: entry)]
       end
     end
 
     def self.run(game, name, args: [])
-      Script.new(game, name) do |script|
-        code, metadata = Loader.compile(name)
-        script.package = metadata
-        script.result  = Context.of(script, args).class_eval(code)
+      if Script.running?(name)
+        game.clients.each do |client|
+          client.puts %{[script.error] #{name} is already running}
+        end
+      else
+        Script.new(game, name) do |script|
+          code, metadata = Loader.compile(name)
+          script.package = metadata
+          puts metadata
+          script.result  = Context.of(script, args).class_eval <<-end_eval, metadata.file
+            #{code}
+          end_eval
+        end
       end
     end
   end

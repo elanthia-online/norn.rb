@@ -1,6 +1,7 @@
 require "socket"
 require "norn/game/handshake"
 require "norn/util/worker"
+require "norn/util/thread-pool"
 require "norn/script/exec"
 require "norn/world/world"
 require "norn/game/command"
@@ -48,6 +49,7 @@ module Norn
     attr_accessor :socket, :upstream,
                   :callbacks, :threads, :state,
                   :clients, :parser, :world,
+                  :scripts,
                   :port, :receivers, :mutators
     ##
     ## @brief      initializes a Norn::Game instance
@@ -85,6 +87,11 @@ module Norn
       ## callbacks that may mutate the Game feed
       ##
       @mutators   = Array.new
+      ##
+      ## registry for the scripts that are running
+      ## in this game instance
+      ##
+      @scripts = ThreadPool.new
       ##
       ## open our connection to the game
       ##

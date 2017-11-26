@@ -22,8 +22,6 @@ class Script
       self
     end
 
-
-
     def self.proxy_classes(ctx, script)
       receiver_proxy = Class.new do
         def self.of(&block)
@@ -65,6 +63,14 @@ class Script
 
     def self.name
       const_get(:Script).name
+    end
+
+    def self.to_s
+      "Context::Script::#{name}"
+    end
+
+    def self.inspect
+      to_s
     end
 
     def self.keepalive!

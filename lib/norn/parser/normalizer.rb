@@ -21,6 +21,10 @@ module Norn
         ## normalize style XML
         packet.gsub!(%{<style id=""/>}, %{</style>})
         packet.gsub!(OPEN_STYLE) do %{<style id="#{$~[:type]}">} end
+        ## normalize mono tags
+        packet.gsub!(%{<output class="mono"/>}, %{<mono>})
+        packet.gsub!(%{<output class=""/>}, %{</mono>})
+
         return packet
       end
     end

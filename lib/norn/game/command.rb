@@ -9,6 +9,9 @@ module Command
     ## verbose exec script
     ## eg: /i 1+1 => 2
     INTERACTIVE = "i"
+    ## kill a script
+    ## eg: /k test
+    KILL = "k"
   end
 
   def self.match?(str)
@@ -36,6 +39,13 @@ module Command
         return Script::Exec.run(game, args, mode: :silent)
       when DSL::INTERACTIVE
         return Script::Exec.run(game, args, mode: :verbose)
+      when DSL::KILL
+        args.strip.split(" ").each do |pattern|
+          found = Script.running.keys.find do |script|
+            script.to_s.start_with?(pattern)
+          end
+          Script.kill(found) unless found.nil?
+        end
       else
         return Script::UserScript.run(game, script, args: args.strip.split(" "))
       end

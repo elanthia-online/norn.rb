@@ -4,49 +4,10 @@ require "norn/util/worker"
 Dir[File.dirname(__FILE__) + '/../world/**/*.rb'].each do |file| require file end
 
 class Script < Thread
-  RUNNING = MemoryStore.new(:scripts)
-
-  SUPERVISOR = Norn::Worker.new(:script_supervisor) do   
-    RUNNING.each do |name, script, store|
-      unless script.alive?
-        store.delete(name)
-      end
-    end
-  end
-
-  def self.running?(name)
-    fetch(name) && fetch(name).alive?
-  end
-
-  def self.running
-    fetch
-  end
-
-  def self.fetch(name = nil)
-    RUNNING.fetch(name)
-  end
-
-  def self.register(name, script)
-    RUNNING.put(name, script)
-    self
-  end
-
-  def self.kill(name)
-    fetch(name).kill
-    RUNNING.delete(name)
-    self
-  end
-
-  def self.label(*labels)
-    "[" + labels.flatten.compact.map(&:to_s)
+  def self.label(*prefixes)
+    "[" + prefixes.flatten.compact.map(&:to_s)
       .join(".")
       .gsub(/\s+/, "") + "]"
-  end
-
-  def self.current
-    fetch.values.find do |script|
-      Thread.current == script
-    end
   end
 
   attr_reader :name, :code, :mode
@@ -59,15 +20,19 @@ class Script < Thread
     @code   = 0
     @start  = Time.now
     script  = self
-    Script.register(@name, self)
+    game.scripts.register(@name, self)
     super do
       work = Try.new do
         yield self
       end
       @code = 1 if work.failed?
       Try.dump(script, work)
-      script.write(%{<Exit status:#{script.code} time:#{script.uptime}s>}) unless silent?
+      exit_info
     end
+  end
+
+  def exit_info
+    write(%{<Exit status:#{@code} time:#{self.uptime}s>}) unless silent?
   end
 
   def debug?
@@ -79,13 +44,19 @@ class Script < Thread
   end
 
   def siblings
-    RUNNING.values.reject do |script|
+    @game.scripts.values.reject do |script|
       script == self
     end
   end
 
   def ok?
     @code = 0
+  end
+
+  def die!
+    @code = 1
+    exit_info
+    kill
   end
 
   def debug(*args, label: nil)
