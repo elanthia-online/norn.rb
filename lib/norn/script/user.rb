@@ -15,18 +15,19 @@ class Script
         data[:absolute_entry_path] = File.join(path, data["main"])
         Metadata.new data
       end
-
-      def self.entry(metadata)
-
-      end
     end
 
     module Loader
-      SCRIPTS = "scripts"
-      Norn::Storage.mkdir_p SCRIPTS
+      DEFAULT = Norn::Storage.norn_path("scripts")
+      SCRIPTS = ENV.fetch("NORN_SCRIPTS", 
+        DEFAULT)
+
+      if SCRIPTS.eql?(DEFAULT)
+        Norn::Storage.mkdir_p SCRIPTS
+      end
 
       def self.script_path(*path)
-        Norn::Storage.norn_path *([SCRIPTS] + path)
+        File.join(SCRIPTS, path)
       end
 
       def self.rb_file(path)
@@ -40,7 +41,7 @@ class Script
         elsif File.exists?(rb_file(path))
           script path
         else
-          raise Exception.new "could not find #{name}"
+          raise Exception.new %{<Script::#{name}> was not found at #{path}}
         end
       end
 
@@ -57,7 +58,7 @@ class Script
     end
 
     def self.run(game, name, args: [])
-      if Script.running?(name)
+      if game.scripts.running?(name)
         game.clients.each do |client|
           client.puts %{[script.error] #{name} is already running}
         end
