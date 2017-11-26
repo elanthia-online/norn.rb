@@ -66,7 +66,6 @@ class Script
         Script.new(game, name) do |script|
           code, metadata = Loader.compile(name)
           script.package = metadata
-          puts metadata
           script.result  = Context.of(script, args).class_eval <<-end_eval, metadata.file
             #{code}
           end_eval

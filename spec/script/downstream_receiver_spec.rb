@@ -27,9 +27,6 @@ describe Script::Downstream::Receiver do
     expect(sent)
       .to eq received
 
-    expect(receiver.alive?)
-      .to be false
-
     expect(registry.empty?)
       .to be true
   end
