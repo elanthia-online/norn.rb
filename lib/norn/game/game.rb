@@ -175,7 +175,6 @@ module Norn
     ## @return     self
     ##
     def write_game_command(str)
-      puts "command :: #{str}"
       write %{#{PACKETS::COMMAND}#{str}}
       self
     end

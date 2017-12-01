@@ -76,5 +76,11 @@ class Script
     def self.keepalive!
       loop do sleep() end
     end
+
+    def self.put(cmd)
+      script = const_get(:Script)
+      script.safe_write %{#{script.name}>#{cmd}}
+      const_get(:Game).write_game_command cmd
+    end
   end
 end
