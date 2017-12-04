@@ -35,6 +35,8 @@ class World
     alias_method :on_opendialog_quick, :silence
     alias_method :on_opendialog_quick_combat, :silence
     alias_method :on_opendialog_activespells, :silence
+    alias_method :on_opendialog_befriend, :silence
+    alias_method :on_mono, :silence
     ##
     ## openDialog
     ##
@@ -124,7 +126,7 @@ class World
     end
 
     def on_stream_bounty(task)
-      # TODO save bounty
+      world.bounty.sync **Bounty.parse(task.text)
     end
 
     def on_stream_spells(spells)
