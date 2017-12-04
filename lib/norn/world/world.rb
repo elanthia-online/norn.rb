@@ -4,7 +4,7 @@ class World
   attr_reader :callbacks,
               :roundtime, :status,
               :room, :hands, :containers,
-              :stance, :char, :mind,
+              :stance, :char, :mind, :bounty,
               :scars, :injuries, :spells,
               :encumb, :health, :mana, :stamina, :spirit
               
@@ -20,6 +20,7 @@ class World
     @injuries   = Injuries.new
     @scars      = Scars.new
     @mind       = Mind.new
+    @bounty     = Bounty.new
     @spells     = Spells.new
     @encumb     = Encumb.new
     @mana       = Mana.new

@@ -19,6 +19,13 @@ class MemoryStore
     end
   end
 
+  def sync(value = {})
+    access do
+      @store = value
+    end
+    self
+  end
+
   def put(key, val)
     access do
       @store[key.to_sym] = val
@@ -78,6 +85,14 @@ class MemoryStore
       end
     end
     initial
+  end
+
+  def method_missing(method, fallback = nil)
+    fetch(method, fallback)
+  end
+
+  def respond_to_missing?(method, include_private = false)
+    @store.has_key?(method) || super
   end
 
   def to_s

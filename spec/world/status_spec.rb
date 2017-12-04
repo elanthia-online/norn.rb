@@ -1,4 +1,3 @@
-# encoding: US-ASCII
 require 'spec_helper'
 
 describe Status do
