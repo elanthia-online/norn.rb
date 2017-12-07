@@ -1,5 +1,6 @@
 require "norn/script/downstream/receiver"
 require "norn/script/downstream/mutator"
+require "norn/script/downstream/suppressor"
 
 class Script
   ##
@@ -41,13 +42,22 @@ class Script
         end
       end
 
-      [receiver_proxy, mutator_proxy].each do |proxy|
+      suppressor_proxy = Class.new do
+        def self.of(**args)
+          Downstream::Suppressor.new(const_get(:Mutator), **args)
+        end
+      end
+
+      [receiver_proxy, mutator_proxy, suppressor_proxy].each do |proxy|
         proxy.const_set(:Game, script.game)
         proxy.const_set(:Script, script)
       end
 
-      ctx.const_set(:Receiver, receiver_proxy)
-      ctx.const_set(:Mutator,  mutator_proxy)
+      suppressor_proxy.const_set(:Mutator, mutator_proxy)
+
+      ctx.const_set(:Receiver,   receiver_proxy)
+      ctx.const_set(:Mutator,    mutator_proxy)
+      ctx.const_set(:Suppressor, suppressor_proxy)
     end
 
     def self.of(script, args = [])

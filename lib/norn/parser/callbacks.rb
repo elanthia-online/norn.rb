@@ -10,9 +10,9 @@ module Norn
       ##
       ## setup stream state
       #
-      def initialize(world_callbacks = nil)
+      def initialize(callbacks)
         @stack           = Array.new
-        @world_callbacks = world_callbacks
+        @world_callbacks = callbacks
       end
       ##
       ## SAX parser callbacks
@@ -73,12 +73,14 @@ module Norn
         ## delegate this tag to World callbacks
         ## if they exist
         ##
-        unless tag.callbacks.any? do |cb| world_callbacks.respond_to?(cb) end
-          world_callbacks.on_unhandled(tag)
-        else
-          tag.callbacks.each do |callback|
-            if world_callbacks.respond_to?(callback)
-              world_callbacks.send(callback, tag)
+        @world_callbacks.each do |dispatcher|
+          unless tag.callbacks.any? do |cb| dispatcher.respond_to?(cb) end
+             dispatcher.on_unhandled(tag) if dispatcher.respond_to?(:on_unhandled)
+          else
+            tag.callbacks.each do |callback|
+              if dispatcher.respond_to?(callback)
+                dispatcher.send(callback, tag)
+              end
             end
           end
         end

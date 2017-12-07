@@ -10,16 +10,17 @@ class Script < Thread
       .gsub(/\s+/, "") + "]"
   end
 
-  attr_reader :name, :code, :mode
+  attr_reader :name, :code, :mode, :callbacks
   attr_accessor :result, :package, :game
   
   def initialize(game, name, mode: :normal, args: [])
-    @game   = game
-    @name   = name
-    @mode   = mode
-    @code   = 0
-    @start  = Time.now
-    script  = self
+    @game      = game
+    @name      = name
+    @callbacks = []
+    @mode      = mode
+    @code      = 0
+    @start     = Time.now
+    script     = self
     game.scripts.register(@name, self)
     super do
       work = Try.new do
@@ -27,12 +28,29 @@ class Script < Thread
       end
       @code = 1 if work.failed?
       Try.dump(script, work)
-      exit_info
+      teardown
     end
+  end
+
+  def add_callbacks(obj)
+    @callbacks << obj
+    @game.world.callbacks << obj
+  end
+
+  def delete_callbacks(obj)
+    @callbacks.delete(obj)
+    @game.world.callbacks.delete(obj)
   end
 
   def exit_info
     write(%{<Exit status:#{@code} time:#{self.uptime}s>}) unless silent?
+  end
+
+  def teardown
+    @callbacks.each do |service|
+      delete_callbacks service
+    end
+    exit_info
   end
 
   def debug?
@@ -55,7 +73,7 @@ class Script < Thread
 
   def die!
     @code = 1
-    exit_info
+    teardown
     kill
   end
 
@@ -100,6 +118,8 @@ class Script < Thread
     end
     self
   end
+
+  alias_method :inspect, :write
 
   def dead?
     !alive?

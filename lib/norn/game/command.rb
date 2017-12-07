@@ -41,10 +41,10 @@ module Command
         return Script::Exec.run(game, args, mode: :verbose)
       when DSL::KILL
         args.strip.split(" ").each do |pattern|
-          found = Script.running.keys.find do |script|
+          found = game.scripts.running.keys.find do |script|
             script.to_s.start_with?(pattern)
           end
-          Script.kill(found) unless found.nil?
+          game.scripts.kill(found) unless found.nil?
         end
       else
         return Script::UserScript.run(game, script, args: args.strip.split(" "))
