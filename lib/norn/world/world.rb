@@ -9,7 +9,7 @@ class World
               :encumb, :health, :mana, :stamina, :spirit
               
   def initialize()
-    @callbacks  = World::Callbacks.new(self)
+    @callbacks  = [World::Callbacks.new(self)]
     @roundtime  = Roundtime.new
     @status     = Status.new
     @room       = Room.new

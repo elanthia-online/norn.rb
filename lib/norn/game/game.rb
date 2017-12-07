@@ -7,7 +7,7 @@ require "norn/world/world"
 require "norn/game/command"
 
 module Norn
-  class Game < Struct.new(:handshake)
+  class Game
     ##
     ## self-contained packets that happen
     ## at the start of a session
@@ -46,7 +46,7 @@ module Norn
     ##
     ## attributes
     ##
-    attr_accessor :socket, :upstream,
+    attr_accessor :socket, :upstream, :handshake,
                   :callbacks, :threads, :state,
                   :clients, :parser, :world,
                   :scripts,
@@ -60,7 +60,7 @@ module Norn
     ## @return     self
     ##
     def initialize(handshake, port = PORT)
-      super(handshake)
+      @handshake  = handshake
       @state      = STATES::CONNECTING
       @upstream   = TCPSocket.new(handshake.host, handshake.port.to_i)
       @downstream = TCPServer.open(port)
@@ -92,6 +92,10 @@ module Norn
       ## in this game instance
       ##
       @scripts = ThreadPool.new
+       ##
+      ## create our Parser with a bridge to the World state
+      ##
+      @parser = Parser.new(@world.callbacks)
       ##
       ## open our connection to the game
       ##
@@ -103,10 +107,6 @@ module Norn
           handle_incoming @upstream.gets
           break if @state.eql?(STATES::CONNECTED)
         end
-        ##
-        ## create our Parser with a bridge to the World state
-        ##
-        @parser = Parser.new(@world.callbacks)
         ##
         ## handle parsing
         ##
@@ -129,10 +129,10 @@ module Norn
                 result
               end
             end
-
+            
             @clients.reject!(&:closed?)
             # forward the response to each connected client
-            @clients.each do |downstream| 
+            !mutated_packet.nil? && @clients.each do |downstream| 
               begin
                 downstream.puts mutated_packet.dup unless downstream.closed?  
               rescue => exception

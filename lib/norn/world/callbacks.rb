@@ -14,6 +14,12 @@ class World
     def initialize(world)
       @world = world
     end
+
+    def to_s
+      "<World::Callbacks>"
+    end
+
+    alias_method :inspect, :to_s
     ##
     ## general catch-all for debugging
     ##
@@ -321,8 +327,8 @@ class World
         when :progressbar
           if tag.id.eql?(:health2)
             _, remaining, max = decode_progress_bar(tag)
-            @world.char.put(:health, remaining)
-            @world.char.put(:max_health, max)
+            @world.health.put(:remaining, remaining)
+            @world.health.put(:max, max)
           end
         else
           # Silence is golden
