@@ -125,6 +125,10 @@ class Script < Thread
     !alive?
   end
   
+  def keepalive!
+    loop do sleep() end
+  end
+
   def to_s
     "<Script:#{@name} @uptime=#{uptime.as_time}>"
   end
