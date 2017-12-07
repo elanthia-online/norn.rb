@@ -5,11 +5,12 @@ class Script
         new **args
       end
 
-      attr_reader :start, :done, :active
+      attr_reader :start, :done, :active, :ran
 
       def initialize(mutator, start: nil, done: %r{^<prompt})
         @active = false
         @start  = start
+        @ran    = false
         @done   = done
         this    = self
         mutator.of do |line|
@@ -17,7 +18,12 @@ class Script
         end
       end
 
+      def ran?
+        @ran
+      end
+
       def on!
+        @ran    = true
         @active = true
       end
 
