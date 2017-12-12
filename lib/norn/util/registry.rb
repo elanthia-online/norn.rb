@@ -1,11 +1,9 @@
 class Registry
-  def self.for_game_objs
-    new(:id, :noun, :name)
-  end
+  DEFAULTS = [:id, :noun, :name]
 
   attr_reader :props, :list
 
-  def initialize(*props)
+  def initialize(props = DEFAULTS)
     @props = props
     @maps  = Hash.new
     @list  = Array.new
@@ -38,22 +36,32 @@ class Registry
     self
   end
 
-  def fetch(prop = nil, by = nil, &block)
-    val = nil
+  def find(**attrs, &block)
     @lock.synchronize do
-      if prop.nil? && by.nil?
-        val = @list.clone
-      else
-        prop = prop.to_sym
-        val = @maps
-          .fetch(prop)
-          .fetch(by, val)
-        unless block.nil?
-          val = yield val
-        end
+      return @list.find do |member|
+        attrs.take_while do |param, val|
+          if member.respond_to?(param)
+            member.send(param) == val
+          else
+            member[param] == val
+          end
+        end.size.eql?(attrs.size)
       end
     end
-    val
+  end
+
+  def find(**attrs, &block)
+    @lock.synchronize do
+      return @list.select do |member|
+        attrs.take_while do |param, val|
+          if member.respond_to?(param)
+            member.send(param) == val
+          else
+            member[param] == val
+          end
+        end.size.eql?(attrs.size)
+      end
+    end
   end
 
   private

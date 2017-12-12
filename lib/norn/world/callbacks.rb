@@ -150,7 +150,7 @@ class World
     end
 
     def on_stream_inv(tag)
-      # TODO save inv objs
+      @world.inv.put *tag.children.map(&:to_gameobj)
     end
     ##
     ## Room callbacks
@@ -253,10 +253,13 @@ class World
         @world.containers.put(:real_stow_id, id)
       end
     end
+
     ## clear a container
     def on_clearcontainer(tag)
       @world.containers.delete(tag.id)
     end
+
+    alias_method :on_deletecontainer, :on_clearcontainer
 
     ## add item to container
     def on_inv(tag)

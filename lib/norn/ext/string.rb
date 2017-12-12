@@ -20,6 +20,10 @@ class String
         .gsub(/\n/," ")
   end
 
+  def words
+    self.split(" ")
+  end
+
   def is_i?
     !!(self =~ /\A[-+]?[0-9]+\z/)
   end

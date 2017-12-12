@@ -43,7 +43,7 @@ class Script < Thread
   end
 
   def exit_info
-    write(%{<Exit status:#{@code} time:#{self.uptime}s>}) unless silent?
+    log(%{<Exit status:#{@code} time:#{self.uptime}s>}) unless silent?
   end
 
   def teardown
@@ -77,10 +77,9 @@ class Script < Thread
     kill
   end
 
-  def debug(*args, label: nil)
-    return self unless debug?
-    write(*args, 
-      label: [:debug] + [label])
+  def await
+    sleep 0.1 while alive?
+    @result
   end
 
   def view(obj, label: nil)
@@ -88,39 +87,24 @@ class Script < Thread
     escaped  = obj.to_s.gsub(/(<|>&)/) do CGI.escape_html $1 end
     [left_col, escaped].join(" ")
   end
-
-  def await
-    sleep 0.1 while alive?
-    @result
-  end
-
-  def safe_write(*lines)
+  ##
+  ## send a string to a client
+  ##
+  def safe_log(*lines, label: nil)
     return if @game.nil?
     return if lines.empty?
     @game.clients.each do |client|
       unless client.is_a?(Downstream::Receiver) or client.is_a?(Downstream::Mutator)
         lines.each do |line|
-          client.puts(line)
+          client.puts view(line, label: label)
         end
       end
     end
   end
 
-  def write(*strs, label: nil)
-    begin
-      strs.each do |str|
-        safe_write view(str, label: label)
-      end
-    rescue Exception => e
-      safe_write(e.message)
-      safe_write(e.backtrace.join("\n"))
-      Try.dump(System, e)
-    end
-    self
-  end
-
-  alias_method :inspect, :write
-
+  alias_method :log, :safe_log
+  alias_method :inspect, :safe_log
+  
   def dead?
     !alive?
   end

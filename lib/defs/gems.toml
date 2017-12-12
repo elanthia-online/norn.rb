@@ -1,0 +1,1907 @@
+[[gems]]
+name = "swirling aetherstone"
+noun = "aetherstone"
+rarity = "very rare"
+realm = "the rift"
+
+[[gems]]
+name = "banded agate"
+noun = "agate"
+rarity = "common"
+realm = ""
+
+[[gems]]
+name = "blue lace agate"
+noun = "agate"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "chameleon agate"
+noun = "agate"
+rarity = "very rare"
+realm = "teras isle"
+
+[[gems]]
+name = "cloud agate"
+noun = "agate"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "fire agate"
+noun = "agate"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "frost agate"
+noun = "agate"
+rarity = "infrequent"
+realm = "icemule trace"
+
+[[gems]]
+name = "moss agate"
+noun = "agate"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "mottled agate"
+noun = "agate"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "tigereye agate"
+noun = "agate"
+rarity = ""
+realm = "en"
+
+[[gems]]
+name = "piece of golden amber"
+noun = "amber"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "deep purple amethyst"
+noun = "amethyst"
+rarity = "uncommon"
+realm = "any"
+
+[[gems]]
+name = "brilliant wyrm's-tooth amethyst"
+noun = "amethyst"
+rarity = "rare"
+realm = "the rift"
+
+[[gems]]
+name = "piece of azurite"
+noun = "azurite"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "kezmonihoney beryl"
+noun = "beryl"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "azure blazestar"
+noun = "blazestar"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "crimson blazestar"
+noun = "blazestar"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "golden blazestar"
+noun = "blazestar"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "emerald blazestar"
+noun = "blazestar"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "selanthbloodjewel"
+noun = "bloodjewel"
+rarity = "extremely rare"
+realm = "solhaven"
+
+[[gems]]
+name = "dark red-green bloodstone"
+noun = "bloodstone"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "bright bluerock"
+noun = "bluerock"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "deep red carbuncle"
+noun = "carbuncle"
+rarity = ""
+realm = "en"
+
+[[gems]]
+name = "piece of grey chalcedony"
+noun = "chalcedony"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "piece of white chalcedony"
+noun = "chalcedony"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "piece of blue ridge coral"
+noun = "coral"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of cat's paw coral"
+noun = "coral"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "piece of flower coral"
+noun = "coral"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "polished black coral"
+noun = "coral"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "polished blue coral"
+noun = "coral"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "polished pink coral"
+noun = "coral"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "polished red coral"
+noun = "coral"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "blue cordierite"
+noun = "cordierite"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of corestone"
+noun = "corestone"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "cinnabar crystal"
+noun = "crystal"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "glaesine crystal"
+noun = "crystal"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "quartz crystal"
+noun = "crystal"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "rock crystal"
+noun = "crystal"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "shard of dragonmist crystal"
+noun = "crystal"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "shard of tigerfang crystal"
+noun = "crystal"
+rarity = ""
+realm = "icemule trace"
+
+[[gems]]
+name = "chalky yellow cube"
+noun = "cube"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "black deathstone"
+noun = "deathstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "scarlet despanal"
+noun = "despanal"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "blue diamond"
+noun = "diamond"
+rarity = "extremely rare"
+realm = "teras isle"
+
+[[gems]]
+name = "dragon's-tear diamond"
+noun = "diamond"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "dwarf-cut diamond"
+noun = "diamond"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "faceted black diamond"
+noun = "diamond"
+rarity = "excessively rare"
+realm = "the rift"
+
+[[gems]]
+name = "large yellow diamond"
+noun = "diamond"
+rarity = ""
+realm = "icemule trace"
+
+[[gems]]
+name = "uncut diamond"
+noun = "diamond"
+rarity = "rare"
+realm = "any"
+
+[[gems]]
+name = "uncut maernstrike diamond"
+noun = "diamond"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "uncut star-of-tamzyrr diamond"
+noun = "diamond"
+rarity = "extremely rare"
+realm = "solhaven"
+
+[[gems]]
+name = "star diopside"
+noun = "diopside"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "glossy black doomstone"
+noun = "doomstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "black dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "blue dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "green dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "pink dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "red dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "yellow dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "white dreamstone"
+noun = "dreamstone"
+rarity = "infequent"
+realm = "teras isle"
+
+[[gems]]
+name = "dram of gold dust"
+noun = "dust"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "handful of gold dust"
+noun = "dust"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "pinch of gold dust"
+noun = "dust"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "petrified aivren egg"
+noun = "egg"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "dragonfire emerald"
+noun = "emerald"
+rarity = "extremely rare"
+realm = "teras isle"
+
+[[gems]]
+name = "dragon's-tear emerald"
+noun = "emerald"
+rarity = "extremely rare"
+realm = "elven nations"
+
+[[gems]]
+name = "dwarf-cut emerald"
+noun = "emerald"
+rarity = "unknown"
+realm = "unknown"
+
+[[gems]]
+name = "uncut emerald"
+noun = "emerald"
+rarity = "rare"
+realm = "any"
+
+[[gems]]
+name = "eye-of-koar emerald"
+noun = "emerald"
+rarity = "extremely rare"
+realm = "the rift"
+
+[[gems]]
+name = "star emerald"
+noun = "emerald"
+rarity = "extremely rare"
+realm = "teras isle"
+
+[[gems]]
+name = "deep blue eostone"
+noun = "eostone"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "olivine faenor-bloom"
+noun = "faenor-bloom"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "bronze fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "copper fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "gold fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "iron fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "mithril fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "platinum fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "silver fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "steel fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "urglaes fang"
+noun = "fang"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "bright violet feystone"
+noun = "feystone"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "periwinkle feystone"
+noun = "feystone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "firestone"
+noun = "firestone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "silvery galena"
+noun = "galena"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "almandine garnet"
+noun = "garnet"
+rarity = "common"
+realm = ""
+
+[[gems]]
+name = "blood red garnet"
+noun = "garnet"
+rarity = "infrequent"
+realm = "icemule trace"
+
+[[gems]]
+name = "green garnet"
+noun = "garnet"
+rarity = "infrequent"
+realm = ""
+
+[[gems]]
+name = "orange spessartine garnet"
+noun = "garnet"
+rarity = "infrequent"
+realm = "elven nations"
+
+[[gems]]
+name = "sanguine wyrm's-eye garnet"
+noun = "garnet"
+rarity = "very rare"
+realm = "the rift"
+
+[[gems]]
+name = "ametrine gem"
+noun = "gem"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "aquamarine gem"
+noun = "gem"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "bright chrysoberyl gem"
+noun = "gem"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "clear blue gem"
+noun = "gem"
+rarity = ""
+realm = "pinefar"
+
+[[gems]]
+name = "fiery red gem"
+noun = "gem"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "golden beryl gem"
+noun = "gem"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "green chrysoprase gem"
+noun = "gem"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "small green geode"
+noun = "geode"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "small blue geode"
+noun = "geode"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "small red geode"
+noun = "geode"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "small purple geode"
+noun = "geode"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "brilliant lilac glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "ceruleglimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "clear glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "golden glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "green glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "peach glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "smoky glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "ultramarine glimaerstone"
+noun = "glimaerstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "piece of petrified haon"
+noun = "haon"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "pale yellow heliodor"
+noun = "heliodor"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "yellow hyacinth"
+noun = "hyacinth"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "piece of polished ivory"
+noun = "ivory"
+rarity = "uncommon"
+realm = "icemule trace"
+
+[[gems]]
+name = "fiery jacinth"
+noun = "jacinth"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "piece of brown jade"
+noun = "jade"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of green jade"
+noun = "jade"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of white jade"
+noun = "jade"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of yellow jade"
+noun = "jade"
+rarity = ""
+realm = "icemule"
+
+[[gems]]
+name = "piece of black jasper"
+noun = "jasper"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of red jasper"
+noun = "jasper"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of yellow jasper"
+noun = "jasper"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "blue lapis lazuli"
+noun = "lapis"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "piece of black marble"
+noun = "marble"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of green marble"
+noun = "marble"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of pink marble"
+noun = "marble"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of white marble"
+noun = "marble"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "large piece of mica"
+noun = "mica"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "blue moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "grey moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "cats-eye moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "black moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "golden moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "opaline moonstone"
+noun = "moonstone"
+rarity = "extremely rare"
+realm = "teras isle"
+
+[[gems]]
+name = "pale blue moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "pale green moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "silvery moonstone"
+noun = "moonstone"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "gold nugget"
+noun = "nugget"
+rarity = ""
+realm = "icemule/pinefar"
+
+[[gems]]
+name = "platinum nugget"
+noun = "nugget"
+rarity = ""
+realm = "icemule/pinefar"
+
+[[gems]]
+name = "large gold nugget"
+noun = "nugget"
+rarity = ""
+realm = "icemule/pinefar"
+
+[[gems]]
+name = "large platinum nugget"
+noun = "nugget"
+rarity = ""
+realm = "icemule/pinefar"
+
+[[gems]]
+name = "piece of obsidian"
+noun = "obsidian"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of spiderweb obsidian"
+noun = "obsidian"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of banded onyx"
+noun = "onyx"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "piece of black onyx"
+noun = "onyx"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of onyx"
+noun = "onyx"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "aster opal"
+noun = "opal"
+rarity = "extremely rare"
+realm = "the rift"
+
+[[gems]]
+name = "black opal"
+noun = "opal"
+rarity = "uncommon"
+realm = "any"
+
+[[gems]]
+name = "boulder opal"
+noun = "opal"
+rarity = "rare"
+realm = "zul logoth"
+
+[[gems]]
+name = "dragonfire opal"
+noun = "opal"
+rarity = "very rare"
+realm = "teras isle"
+
+[[gems]]
+name = "fire opal"
+noun = "opal"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "moonglae opal"
+noun = "opal"
+rarity = "very rare"
+realm = "elven nations"
+
+[[gems]]
+name = "white opal"
+noun = "opal"
+rarity = "uncommon"
+realm = "any"
+
+[[gems]]
+name = "blue-white frost opal"
+noun = "opal"
+rarity = "rare"
+realm = "icemule trace"
+
+[[gems]]
+name = "brilliant purple opal"
+noun = "opal"
+rarity = ""
+realm = "krag dwellers"
+
+[[gems]]
+name = "green ora-bloom"
+noun = "ora-bloom"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "golden firemote orb"
+noun = "orb"
+rarity = "extremely rare"
+realm = "the rift"
+
+[[gems]]
+name = "murky shadowglass orb"
+noun = "orb"
+rarity = "extremely rare"
+realm = "the rift"
+
+[[gems]]
+name = "brilliant fire pearl"
+noun = "pearl"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "iridescent pearl"
+noun = "pearl"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "metallic black pearl"
+noun = "pearl"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "black pearl"
+noun = "pearl"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "grey pearl"
+noun = "pearl"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "pink pearl"
+noun = "pearl"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "white pearl"
+noun = "pearl"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "pink peridot"
+noun = "peridot"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "green peridot"
+noun = "peridot"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "blue peridot"
+noun = "peridot"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "piece of blue quartz"
+noun = "quartz"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of carneliquartz"
+noun = "quartz"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of cat's eye quartz"
+noun = "quartz"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of citrine quartz"
+noun = "quartz"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "piece of rose quartz"
+noun = "quartz"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "quartz crystal"
+noun = "crystal"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "shard of rainbow quartz"
+noun = "quartz"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "tangerine quartz"
+noun = "quartz"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "asterfire quartz"
+noun = "quartz"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "dragonfire quartz"
+noun = "quartz"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "dragon's-fang quartz"
+noun = "quartz"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "leopard quartz"
+noun = "quartz"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "shard of oblivion quartz"
+noun = "quartz"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "golden rhimar-bloom"
+noun = "rhimar-bloom"
+rarity = ""
+realm = "icemule/pinefar"
+
+[[gems]]
+name = "blue star-shaped riftshard"
+noun = "riftshard"
+rarity = "very rare"
+realm = "the rift"
+
+[[gems]]
+name = "faceted midnight blue riftstone"
+noun = "riftstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "pale violet riftstone"
+noun = "riftstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "piece of black riftstone"
+noun = "riftstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "piece of rosespar"
+noun = "rosespar"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "dragon's-tear ruby"
+noun = "ruby"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "dwarf-cut ruby"
+noun = "ruby"
+rarity = ""
+realm = "unknown"
+
+[[gems]]
+name = "star ruby"
+noun = "ruby"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "uncut ruby"
+noun = "ruby"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "sylvarraend ruby"
+noun = "ruby"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "jewel-toned dragonfly saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "bright orange butterfly saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "iridescent azure butterfly saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "pale gold firefly saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "silver firefly saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "vibrant hummingbird saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "russet and cream moth saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "silvery mint green moth saewehna"
+noun = "saewehna"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "blue sapphire"
+noun = "sapphire"
+rarity = "rare"
+realm = "any"
+
+[[gems]]
+name = "blue shimmarglin sapphire"
+noun = "sapphire"
+rarity = "rare"
+realm = "elven nations"
+
+[[gems]]
+name = "clear sapphire"
+noun = "sapphire"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "dragonsbreath sapphire"
+noun = "sapphire"
+rarity = "very rare"
+realm = "teras isle"
+
+[[gems]]
+name = "dragonseye sapphire"
+noun = "sapphire"
+rarity = "very rare"
+realm = "elven nations"
+
+[[gems]]
+name = "deep blue mermaid's-tear sapphire"
+noun = "sapphire"
+rarity = "very rare"
+realm = "solhaven river's rest"
+
+[[gems]]
+name = "dwarf-cut sapphire"
+noun = "sapphire"
+rarity = "unknown"
+realm = "unknown"
+
+[[gems]]
+name = "green sapphire"
+noun = "sapphire"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "lavender shimmarglin sapphire"
+noun = "sapphire"
+rarity = "rare"
+realm = "elven nations"
+
+[[gems]]
+name = "pale water sapphire"
+noun = "sapphire"
+rarity = "common"
+realm = "elven nations"
+
+[[gems]]
+name = "pink sapphire"
+noun = "sapphire"
+rarity = "uncommon"
+realm = "any"
+
+[[gems]]
+name = "star sapphire"
+noun = "sapphire"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "violet sapphire"
+noun = "sapphire"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "yellow sapphire"
+noun = "sapphire"
+rarity = "common"
+realm = "any"
+
+[[gems]]
+name = "umber sard"
+noun = "sard"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "blood red teardrop-etched scarab"
+noun = "scarab"
+rarity = "rare"
+realm = "traps"
+
+[[gems]]
+name = "etched translucent scarab"
+noun = "scarab"
+rarity = "rare"
+realm = "traps"
+
+[[gems]]
+name = "glimmering opalescent scarab"
+noun = "scarab"
+rarity = "rare"
+realm = "traps"
+
+[[gems]]
+name = "sea-green glaes scarab"
+noun = "scarab"
+rarity = "rare"
+realm = "traps"
+
+[[gems]]
+name = "sky-blue glaes scarab"
+noun = "scarab"
+rarity = "rare"
+realm = "traps"
+
+[[gems]]
+name = "spiked onyx scarab"
+noun = "scarab"
+rarity = "rare"
+realm = "traps"
+
+[[gems]]
+name = "hazy red seglass disk"
+noun = "disk"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "mist blue seglass disk"
+noun = "disk"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "round amber seglass disk"
+noun = "disk"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "smooth green seglass disk"
+noun = "disk"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "shimmertine shard"
+noun = "shard"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "amethyst clam shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "black helmet shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "black-spined conch shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "blue-banded coquinshell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "bright noble pectin shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "candystick tellin shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "crown conch shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "crown-of-charl shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "dovesnail shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "egg cowrie shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "fluted limpet shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "iridescent piece of mother-of-pearl"
+noun = "mother-of-pearl"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "king helmet shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "lavender nassshell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "lynx cowrie shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "opaque spiral shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "pink-banded coquinshell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "polished green abalone shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "polished red abalone shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "purple-cap cowrie shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "red helmet shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "ruby-lined nassshell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "snake-head cowrie shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "solhaven bay scallop shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "sparkling silvery conch shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "speckled conch shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "split-back pink conch shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "tiger cowrie shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "tiger-strpied nautilus shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "yellow helmet shell"
+noun = "shell"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "fiery viridisoulstone"
+noun = "soulstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "black sphene"
+noun = "sphene"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "brown sphene"
+noun = "sphene"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "white sphene"
+noun = "sphene"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "yellow sphene"
+noun = "sphene"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "tiny black and blue spherine"
+noun = "spherine"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "tiny green and grey spherine"
+noun = "spherine"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "tiny red and blue spherine"
+noun = "spherine"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "tiny white and black spherine"
+noun = "spherine"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "transparent spherine"
+noun = "spherine"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "blue spinel"
+noun = "spinel"
+rarity = "infrequent"
+realm = "any"
+
+[[gems]]
+name = "pink spinel"
+noun = "spinel"
+rarity = "infrequent"
+realm = "any"
+
+[[gems]]
+name = "red spinel"
+noun = "spinel"
+rarity = "infrequent"
+realm = "any"
+
+[[gems]]
+name = "violet spinel"
+noun = "spinel"
+rarity = "infrequent"
+realm = "any"
+
+[[gems]]
+name = "blue starstone"
+noun = "starstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "green starstone"
+noun = "starstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "red starstone"
+noun = "starstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "white starstone"
+noun = "starstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "banded sardonyx stone"
+noun = "stone"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "green alexandrite stone"
+noun = "stone"
+rarity = "very rare"
+realm = ""
+
+[[gems]]
+name = "green aventurine stone"
+noun = "stone"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "green malachite stone"
+noun = "stone"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "iridescent labradorite stone"
+noun = "stone"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "light pink morganite stone"
+noun = "stone"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "pink rhodocrosite stone"
+noun = "stone"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "polished jet stone"
+noun = "stone"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "turquoise stone"
+noun = "stone"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "yellow sunstone"
+noun = "sunstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "white sunstone"
+noun = "sunstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "red sunstone"
+noun = "sunstone"
+rarity = ""
+realm = "teras isle"
+
+[[gems]]
+name = "deep blue sapphire talon"
+noun = "talon"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "fiery ruby talon"
+noun = "talon"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "glistening onyx talon"
+noun = "talon"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "sparkling emerald talon"
+noun = "talon"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "piece of petrified thanot"
+noun = "thanot"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "deep blue thunderstone"
+noun = "thunderstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "radiant opalescent thunderstone"
+noun = "thunderstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "smoky grey thunderstone"
+noun = "thunderstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "swirling purple thunderstone"
+noun = "thunderstone"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "polished shark tooth"
+noun = "tooth"
+rarity = ""
+realm = "solhaven"
+
+[[gems]]
+name = "blue topaz"
+noun = "topaz"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "clear topaz"
+noun = "topaz"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "golden topaz"
+noun = "topaz"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "green errisitopaz"
+noun = "topaz"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "orange imperial topaz"
+noun = "topaz"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "pink topaz"
+noun = "topaz"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "smoky topaz"
+noun = "topaz"
+rarity = ""
+realm = "any"
+
+[[gems]]
+name = "black tourmaline"
+noun = "tourmaline"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "blue tourmaline"
+noun = "tourmaline"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "clear tourmaline"
+noun = "tourmaline"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "green tourmaline"
+noun = "tourmaline"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "pink tourmaline"
+noun = "tourmaline"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "spiderweb turquoise"
+noun = "turquoise"
+rarity = ""
+realm = "elven nations"
+
+[[gems]]
+name = "argent vultite-bloom"
+noun = "vultite-bloom"
+rarity = ""
+realm = "zul logoth"
+
+[[gems]]
+name = "nacreous blue waterweb"
+noun = "waterweb"
+rarity = ""
+realm = "isle of the four winds"
+
+[[gems]]
+name = "dark-spoked crystalline wheel"
+noun = "wheel"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "small crystal-spoked wheel"
+noun = "wheel"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "multi-colored wyrdshard"
+noun = "wyrdshard"
+rarity = ""
+realm = "the rift"
+
+[[gems]]
+name = "brown zircon"
+noun = "zircon"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "clear zircon"
+noun = "zircon"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "green zircon"
+noun = "zircon"
+rarity = ""
+realm = ""
+
+[[gems]]
+name = "snowflake zircon"
+noun = "zircon"
+rarity = ""
+realm = "icemule/pinefar"
+
+[[gems]]
+name = "yellow zircon"
+noun = "zircon"
+rarity = ""
+realm = ""

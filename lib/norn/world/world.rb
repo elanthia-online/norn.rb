@@ -6,7 +6,8 @@ class World
               :room, :hands, :containers,
               :stance, :char, :mind, :bounty,
               :scars, :injuries, :spells,
-              :encumb, :health, :mana, :stamina, :spirit
+              :encumb, :health, :mana, :stamina, :spirit,
+              :stats, :silver, :inv
               
   def initialize()
     @callbacks  = [World::Callbacks.new(self)]
@@ -16,11 +17,14 @@ class World
     @hands      = Hands.new
     @containers = Containers.new
     @stance     = Stance.new
+    @inv        = Inv.new
+    @silver     = Silver.new
     @char       = Char.new
     @injuries   = Injuries.new
     @scars      = Scars.new
     @mind       = Mind.new
     @bounty     = Bounty.new
+    @stats      = Stats.new
     @spells     = Spells.new
     @encumb     = Encumb.new
     @mana       = Mana.new

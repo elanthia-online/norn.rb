@@ -5,41 +5,44 @@ class Script
         new **args
       end
 
-      attr_reader :start, :done, :active, :ran
+      attr_reader :start, :done, :started, :mutator
 
       def initialize(mutator, start: nil, done: %r{^<prompt})
-        @active = false
-        @start  = start
-        @ran    = false
-        @done   = done
-        this    = self
-        mutator.of do |line|
+        # has it begun receiving data?
+        @started = false  
+        # pattern to signal receiving data
+        @start   = start
+        # pattern to signal stop receiving data
+        @done    = done
+        this     = self
+        @mutator = mutator.of do |line|
           this.handle(line)
         end
       end
 
-      def ran?
-        @ran
+      def started?
+        @started
       end
 
-      def on!
-        @ran    = true
-        @active = true
+      def await
+        sleep 0.1 while @mutator.alive?
+        self
       end
 
-      def off!
-        @active = false
+      def start!
+        @started = true
       end
 
-      def on?
-        @active
+      def running?
+        @mutator.alive?
       end
 
       def handle(line)
-        off! if line.match(@done)
-        on!  if line.match(@start)
-        return nil if on?
-        return line
+        return nil if line.nil?
+        @mutator.teardown if line.match(@done)
+        start! if line.match(@start)
+        return line unless started?
+        return nil
       end
     end
   end

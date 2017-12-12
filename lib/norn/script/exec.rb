@@ -17,7 +17,7 @@ class Script
       begin
         Script.new(game, "exec:#{next_id}", mode: :silent) do |script|
           script.result = Context.of(script).class_eval(herescript.strip)
-          script.write(script.result.to_s) unless opts.fetch(:mode, :silent).eql?(:silent)
+          script.inspect(script.result.to_s) unless opts.fetch(:mode, :silent).eql?(:silent)
           script.result
         end
       rescue => err

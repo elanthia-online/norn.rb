@@ -2,13 +2,14 @@ class Script
   module Downstream
     class Mutator < Thread
       attr_reader :supervisor, 
-                  :callback
+                  :callback, :registry
       
       def initialize(registry, supervisor, &callback)
         ## the supervisor thread
         @supervisor = supervisor
         ## add our IO callback
         @callback   = callback
+        @registry   = registry
         ## alias self since the context
         ## will change inside of super
         mutator     = self
@@ -16,8 +17,13 @@ class Script
         registry.push(mutator)
         super do
           sleep(0.1) while mutator.supervisor.alive?
-          registry.delete(mutator)
+          mutator.teardown
         end
+      end
+
+      def teardown
+        registry.delete(self)
+        kill
       end
 
       def call(data)

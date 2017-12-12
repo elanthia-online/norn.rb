@@ -8,11 +8,11 @@ class Try
   end
 
   def self.dump(ctx, try)
-    return unless ctx.respond_to?(:write) && try.failed?
+    return unless ctx.respond_to?(:log) && try.failed?
     begin
-      ctx.write try.result.message
+      ctx.log try.result.message
       try.result.backtrace.each do |line|
-         ctx.write line
+         ctx.log line
       end
     rescue => exception
       System.log(try.result, label: "Try.dump")

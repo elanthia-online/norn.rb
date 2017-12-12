@@ -1,0 +1,1244 @@
+[[skins]]
+creature = "black-winged daggerbeak"
+name = "daggerbeak wing"
+noun = "wing"
+
+[[skins]]
+creature = "black rolton"
+name = "rolton ear"
+noun = "ear"
+
+[[skins]]
+creature = "carrion worm"
+name = "worm skin"
+noun = "skin"
+
+[[skins]]
+creature = "fanged rodent"
+name = "rodent fang"
+noun = "fang"
+
+[[skins]]
+creature = "fire ant"
+name = "fire ant pincer"
+noun = "pincer"
+
+[[skins]]
+creature = "giant ant"
+name = "ant pincer"
+noun = "pincer"
+
+[[skins]]
+creature = "giant rat"
+name = "rat pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "kobold"
+name = "kobold skin"
+noun = "skin"
+
+[[skins]]
+creature = "lesser ghoul"
+name = "ghoul nail"
+noun = "nail"
+
+[[skins]]
+creature = "rolton"
+name = "rolton pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "skeleton"
+name = "skeleton bone"
+noun = "bone"
+
+[[skins]]
+creature = "spotted gnarp"
+name = "spotted gnarp horn"
+noun = "horn"
+
+[[skins]]
+creature = "young grass snake"
+name = "snake skin"
+noun = "skin"
+
+[[skins]]
+creature = "zombie rolton"
+name = "rotting rolton pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "big ugly kobold"
+name = "kobold skin"
+noun = "skin"
+
+[[skins]]
+creature = "brown gak"
+name = "brown gak hide"
+noun = "hide"
+
+[[skins]]
+creature = "cave gnome"
+name = "gnome scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "fanged goblin"
+name = "goblin fang"
+noun = "fang"
+
+[[skins]]
+creature = "goblin"
+name = "goblin skin"
+noun = "skin"
+
+[[skins]]
+creature = "pale crab"
+name = "pale crab pincer"
+noun = "pincer"
+
+[[skins]]
+creature = "rabid squirrel"
+name = "squirrel tail"
+noun = "tail"
+
+[[skins]]
+creature = "spotted gak"
+name = "gak hide"
+noun = "hide"
+
+[[skins]]
+creature = "bresnahanini rolton"
+name = "rolton horn"
+noun = "horn"
+
+[[skins]]
+creature = "cave nipper"
+name = "cave nipper skin"
+noun = "skin"
+
+[[skins]]
+creature = "fire salamander"
+name = "salamander skin"
+noun = "skin"
+
+[[skins]]
+creature = "greater ghoul"
+name = "ghoul scraping"
+noun = "scraping"
+
+[[skins]]
+creature = "greater ice spider"
+name = "spider leg"
+noun = "leg"
+
+[[skins]]
+creature = "hobgoblin"
+name = "hobgoblin scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "ice skeleton"
+name = "skeleton skull"
+noun = "skull"
+
+[[skins]]
+creature = "kobold shepherd"
+name = "kobold ear"
+noun = "ear"
+
+[[skins]]
+creature = "mountain snowcat"
+name = "snowcat pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "relnak"
+name = "relnak sail"
+noun = "sail"
+
+[[skins]]
+creature = "spotted velnalin"
+name = "velnalin horn"
+noun = "horn"
+
+[[skins]]
+creature = "striped gak"
+name = "gak pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "striped relnak"
+name = "striped relnak sail"
+noun = "sail"
+
+[[skins]]
+creature = "velnalin"
+name = "velnalin hide"
+noun = "hide"
+
+[[skins]]
+creature = "black urgh"
+name = "black urgh hide"
+noun = "hide"
+
+[[skins]]
+creature = "cobra"
+name = "cobra skin"
+noun = "skin"
+
+[[skins]]
+creature = "fanged viper"
+name = "viper skin"
+noun = "skin"
+
+[[skins]]
+creature = "mongrel kobold"
+name = "mangy kobold scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "spotted leaper"
+name = "spotted leaper pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "urgh"
+name = "urgh hide"
+noun = "hide"
+
+[[skins]]
+creature = "water moccasin"
+name = "water moccasin skin"
+noun = "skin"
+
+[[skins]]
+creature = "whiptail"
+name = "whiptail stinger"
+noun = "stinger"
+
+[[skins]]
+creature = "bobcat"
+name = "bobcat claw"
+noun = "claw"
+
+[[skins]]
+creature = "coyote"
+name = "coyote tail"
+noun = "tail"
+
+[[skins]]
+creature = "mist wraith"
+name = "mist wraith eye"
+noun = "eye"
+
+[[skins]]
+creature = "mongrel hobgoblin"
+name = "mongrel hobgoblin snout"
+noun = "snout"
+
+[[skins]]
+creature = "night golem"
+name = "night golem finger"
+noun = "finger"
+
+[[skins]]
+creature = "cockatrice"
+name = "cockatrice feather"
+noun = "feather"
+
+[[skins]]
+creature = "leaper"
+name = "leaper hide"
+noun = "hide"
+
+[[skins]]
+creature = "lesser mummy"
+name = "mummy's shroud"
+noun = "shroud"
+
+[[skins]]
+creature = "lesser orc"
+name = "orc hide"
+noun = "hide"
+
+[[skins]]
+creature = "monkey"
+name = "monkey paw"
+noun = "paw"
+
+[[skins]]
+creature = "snowy cockatrice"
+name = "snowy cockatrice tailfeather"
+noun = "tailfeather"
+
+[[skins]]
+creature = "spotted lynx"
+name = "lynx pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "blood eagle"
+name = "blood red eagle feather"
+noun = "feather"
+
+[[skins]]
+creature = "greater kappa"
+name = "kappa fin"
+noun = "fin"
+
+[[skins]]
+creature = "hobgoblin shaman"
+name = "hobgoblin shaman ear"
+noun = "ear"
+
+[[skins]]
+creature = "lesser burrow orc"
+name = "orc claw"
+noun = "claw"
+
+[[skins]]
+creature = "lesser red orc"
+name = "red orc scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "shelfae soldier"
+name = "shelfae scale"
+noun = "scale"
+
+[[skins]]
+creature = "albino tomb spider"
+name = "multi-faceted tomb spider eye"
+noun = "eye"
+
+[[skins]]
+creature = "bone golem"
+name = "golem bone"
+noun = "bone"
+
+[[skins]]
+creature = "crystal crab"
+name = "faceted crystal crab shell"
+noun = "shell"
+
+[[skins]]
+creature = "greater burrow orc"
+name = "orc claw"
+noun = "claw"
+
+[[skins]]
+creature = "greater orc"
+name = "orc scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "greater spider"
+name = "spider leg"
+noun = "leg"
+
+[[skins]]
+creature = "thrak"
+name = "thrak hide"
+noun = "hide"
+
+[[skins]]
+creature = "brown spinner"
+name = "brown spinner leg"
+noun = "leg"
+
+[[skins]]
+creature = "crocodile"
+name = "crocodile snout"
+noun = "snout"
+
+[[skins]]
+creature = "death dirge"
+name = "dirge skin"
+noun = "skin"
+
+[[skins]]
+creature = "manticore"
+name = "manticore tail"
+noun = "tail"
+
+[[skins]]
+creature = "giant marmot"
+name = "marmot pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "great boar"
+name = "boar tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "rabid guard dog"
+name = "rotted canine"
+noun = "canine"
+
+[[skins]]
+creature = "werebear"
+name = "werebear paw"
+noun = "paw"
+
+[[skins]]
+creature = "neartofar orc"
+name = "orc knuckle"
+noun = "knuckle"
+
+[[skins]]
+creature = "shelfae chieftain"
+name = "shelfae crest"
+noun = "crest"
+
+[[skins]]
+creature = "dark orc"
+name = "orc ear"
+noun = "ear"
+
+[[skins]]
+creature = "great stag"
+name = "antlers"
+noun = "antlers"
+
+[[skins]]
+creature = "plumed cockatrice"
+name = "cockatrice plume"
+noun = "plume"
+
+[[skins]]
+creature = "tawny brindlecat"
+name = "tawny brindlecat hide"
+noun = "hide"
+
+[[skins]]
+creature = "black boar"
+name = "black boar hide"
+noun = "hide"
+
+[[skins]]
+creature = "brown boar"
+name = "brown boar skin"
+noun = "skin"
+
+[[skins]]
+creature = "forest troll"
+name = "troll hide"
+noun = "hide"
+
+[[skins]]
+creature = "giant weasel"
+name = "weasel pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "great brown bear"
+name = "brown bear skin"
+noun = "skin"
+
+[[skins]]
+creature = "grey orc"
+name = "orc beard"
+noun = "beard"
+
+[[skins]]
+creature = "silverback orc"
+name = "silverback orc knuckle"
+noun = "knuckle"
+
+[[skins]]
+creature = "spectre"
+name = "spectre skin"
+noun = "skin"
+
+[[skins]]
+creature = "swamp troll"
+name = "swamp troll scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "arctic puma"
+name = "white puma hide"
+noun = "hide"
+
+[[skins]]
+creature = "black leopard"
+name = "black leopard paw"
+noun = "paw"
+
+[[skins]]
+creature = "humpbacked puma"
+name = "puma paw"
+noun = "paw"
+
+[[skins]]
+creature = "large ogre"
+name = "ogre tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "neartofar troll"
+name = "greasy troll scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "panther"
+name = "panther pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "puma"
+name = "puma hide"
+noun = "hide"
+
+[[skins]]
+creature = "ridgeback boar"
+name = "yellowed boar tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "tomb wight"
+name = "wight claw"
+noun = "claw"
+
+[[skins]]
+creature = "wraith"
+name = "wraith talon"
+noun = "talon"
+
+[[skins]]
+creature = "agresh bear"
+name = "agresh bear claw"
+noun = "claw"
+
+[[skins]]
+creature = "banded rattlesnake"
+name = "rattlesnake rattle"
+noun = "rattle"
+
+[[skins]]
+creature = "black bear"
+name = "bear hide"
+noun = "hide"
+
+[[skins]]
+creature = "cave troll"
+name = "troll skin"
+noun = "skin"
+
+[[skins]]
+creature = "fire rat"
+name = "fire rat tail"
+noun = "tail"
+
+[[skins]]
+creature = "ghoul master"
+name = "ghoul finger"
+noun = "finger"
+
+[[skins]]
+creature = "hill troll"
+name = "troll beard"
+noun = "beard"
+
+[[skins]]
+creature = "mongrel wolfhound"
+name = "yellowed canine"
+noun = "canine"
+
+[[skins]]
+creature = "mountain ogre"
+name = "ogre nose"
+noun = "nose"
+
+[[skins]]
+creature = "plains orc warrior"
+name = "scraggly orc scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "red bear"
+name = "bear paw"
+noun = "paw"
+
+[[skins]]
+creature = "wind witch"
+name = "crooked witch nose"
+noun = "nose"
+
+[[skins]]
+creature = "dark shambler"
+name = "glistening black eye"
+noun = "eye"
+
+[[skins]]
+creature = "forest ogre"
+name = "ogre tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "giant veaba"
+name = "veaba claw"
+noun = "claw"
+
+[[skins]]
+creature = "mountain goat"
+name = "goat hoof"
+noun = "hoof"
+
+[[skins]]
+creature = "mountain troll"
+name = "troll toe"
+noun = "toe"
+
+[[skins]]
+creature = "plains ogre"
+name = "ogre nose"
+noun = "nose"
+
+[[skins]]
+creature = "plains orc scout"
+name = "scraggly orc scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "bighorn sheep"
+name = "bighorn sheepskin"
+noun = "sheepskin"
+
+[[skins]]
+creature = "cave lizard"
+name = "stone-grey lizard tail"
+noun = "tail"
+
+[[skins]]
+creature = "elder ghoul master"
+name = "ghoul master claw"
+noun = "claw"
+
+[[skins]]
+creature = "fire cat"
+name = "fire cat claw"
+noun = "claw"
+
+[[skins]]
+creature = "greenwing hornet"
+name = "hornet stinger"
+noun = "stinger"
+
+[[skins]]
+creature = "mountain lion"
+name = "mountain lion skin"
+noun = "skin"
+
+[[skins]]
+creature = "plains lion"
+name = "plains lion skin"
+noun = "skin"
+
+[[skins]]
+creature = "plains orc shaman"
+name = "scraggly orc scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "shelfae warlord"
+name = "orange shelfae scale"
+noun = "scalp"
+
+[[skins]]
+creature = "thunder troll"
+name = "troll scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "war troll"
+name = "troll heart"
+noun = "heart"
+
+[[skins]]
+creature = "arch wight"
+name = "wight skin"
+noun = "skin"
+
+[[skins]]
+creature = "ogre warrior"
+name = "ogre tooth"
+noun = "tooth"
+
+[[skins]]
+creature = "striped warcat"
+name = "warcat whisker"
+noun = "whisker"
+
+[[skins]]
+creature = "wood wight"
+name = "wight scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "cave bear"
+name = "bear claw"
+noun = "claw"
+
+[[skins]]
+creature = "plains orc chieftain"
+name = "scraggly orc scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "cougar"
+name = "cougar tail"
+noun = "tail"
+
+[[skins]]
+creature = "crested basilisk"
+name = "basilisk crest"
+noun = "crest"
+
+[[skins]]
+creature = "dark panther"
+name = "panther pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "warthog"
+name = "warthog snout"
+noun = "snout"
+
+[[skins]]
+creature = "centaur"
+name = "centaur hide"
+noun = "hide"
+
+[[skins]]
+creature = "centaur ranger"
+name = "centaur hide"
+noun = "hide"
+
+[[skins]]
+creature = "crazed zombie"
+name = "zombie scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "fenghai"
+name = "fenghai fur"
+noun = "fur"
+
+[[skins]]
+creature = "zombie"
+name = "zombie scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "arctic wolverine"
+name = "wolverine tail"
+noun = "tail"
+
+[[skins]]
+creature = "giant albino scorpion"
+name = "scorpion stinger"
+noun = "stinger"
+
+[[skins]]
+creature = "ice hound"
+name = "ice hound ear"
+noun = "ear"
+
+[[skins]]
+creature = "night hound"
+name = "night hound hide"
+noun = "hide"
+
+[[skins]]
+creature = "tree viper"
+name = "tree viper fang"
+noun = "fang"
+
+[[skins]]
+creature = "wolverine"
+name = "wolverine pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "jungle troll"
+name = "troll knuckle"
+noun = "knuckle"
+
+[[skins]]
+creature = "cyclops"
+name = "cyclops eye"
+noun = "eye"
+
+[[skins]]
+creature = "snow leopard"
+name = "leopard skin"
+noun = "skin"
+
+[[skins]]
+creature = "troll chieftain"
+name = "troll fang"
+noun = "fang"
+
+[[skins]]
+creature = "dobrem"
+name = "dobrem snout"
+noun = "snout"
+
+[[skins]]
+creature = "giant hawk-owl"
+name = "tufted hawk-owl ear"
+noun = "ear"
+
+[[skins]]
+creature = "martial eagle"
+name = "martial eagle talon"
+noun = "talon"
+
+[[skins]]
+creature = "arctic manticore"
+name = "arctic manticore mane"
+noun = "mane"
+
+[[skins]]
+creature = "ice troll"
+name = "ice troll scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "scaly burgee"
+name = "scaly burgee shell"
+noun = "shell"
+
+[[skins]]
+creature = "giant albino tomb spider"
+name = "sheer white spider mandible"
+noun = "mandible"
+
+[[skins]]
+creature = "hisskra warrior"
+name = "hisskra skin"
+noun = "skin"
+
+[[skins]]
+creature = "hunter troll"
+name = "troll tongue"
+noun = "tongue"
+
+[[skins]]
+creature = "jungle troll chieftain"
+name = "scrap of troll skin"
+noun = "skin"
+
+[[skins]]
+creature = "mammoth arachnid"
+name = "mandible"
+noun = "mandible"
+
+[[skins]]
+creature = "tegursh sentry"
+name = "tegursh claw"
+noun = "claw"
+
+[[skins]]
+creature = "ash hag"
+name = "ash hag nose"
+noun = "nose"
+
+[[skins]]
+creature = "krynch"
+name = "krynch shinbone"
+noun = "shinbone"
+
+[[skins]]
+creature = "giant fog beetle"
+name = "fog beetle carapace"
+noun = "carapace"
+
+[[skins]]
+creature = "caribou"
+name = "a pair of caribou antlers"
+noun = "antlers"
+
+[[skins]]
+creature = "hisskra shaman"
+name = "hisskra tooth"
+noun = "tooth"
+
+[[skins]]
+creature = "moor hound"
+name = "moor hound paw"
+noun = "paw"
+
+[[skins]]
+creature = "skeletal giant"
+name = "skeletal giant bone"
+noun = "bone"
+
+[[skins]]
+creature = "three-toed tegu"
+name = "tailspike"
+noun = "tailspike"
+
+[[skins]]
+creature = "colossus vulture"
+name = "ruff of vulture feathers"
+noun = "feathers"
+
+[[skins]]
+creature = "hisskra chieftain"
+name = "hisskra crest"
+noun = "crest"
+
+[[skins]]
+creature = "lava troll"
+name = "troll eye"
+noun = "eye"
+
+[[skins]]
+creature = "rock troll zombie"
+name = "decaying troll eye"
+noun = "eye"
+
+[[skins]]
+creature = "tundra giant"
+name = "tundra giant tooth"
+noun = "tooth"
+
+[[skins]]
+creature = "bog troll"
+name = "troll ear"
+noun = "ear"
+
+[[skins]]
+creature = "moor eagle"
+name = "talon"
+noun = "talon"
+
+[[skins]]
+creature = "arctic titan"
+name = "arctic titan toe"
+noun = "toe"
+
+[[skins]]
+creature = "fire giant"
+name = "fire giant mane"
+noun = "mane"
+
+[[skins]]
+creature = "snow crone"
+name = "crooked crone finger"
+noun = "finger"
+
+[[skins]]
+creature = "undertaker bat"
+name = "bat wing"
+noun = "wing"
+
+[[skins]]
+creature = "lesser moor wight"
+name = "wight skull"
+noun = "skull"
+
+[[skins]]
+creature = "shadow mare"
+name = "silver-tipped horseshoe"
+noun = "horseshoe"
+
+[[skins]]
+creature = "skeletal warhorse"
+name = "skeletal warhorse jaw"
+noun = "jaw"
+
+[[skins]]
+creature = "tusked ursian"
+name = "ursian tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "frost giant"
+name = "giant toe"
+noun = "toe"
+
+[[skins]]
+creature = "grizzly bear"
+name = "grizzly bear hide"
+noun = "hide"
+
+[[skins]]
+creature = "mud wasp"
+name = "wasp stinger"
+noun = "stinger"
+
+[[skins]]
+creature = "shadow steed"
+name = "silvery tail"
+noun = "tail"
+
+[[skins]]
+creature = "vesperti"
+name = "vesperti claw"
+noun = "claw"
+
+[[skins]]
+creature = "greater bog troll"
+name = "cracked troll jawbone"
+noun = "jawbone"
+
+[[skins]]
+creature = "greater moor wight"
+name = "wight mane"
+noun = "mane"
+
+[[skins]]
+creature = "storm giant"
+name = "giant skin"
+noun = "skin"
+
+[[skins]]
+creature = "kiramon worker"
+name = "kiramon mandible"
+noun = "mandible"
+
+[[skins]]
+creature = "myklian"
+name = "myklian scale"
+noun = "scale"
+
+[[skins]]
+creature = "lesser ice giant"
+name = "giant scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "roa'ter"
+name = "roa'ter skin"
+noun = "skin"
+
+[[skins]]
+creature = "frozen corpse"
+name = "frozen scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "siren lizard"
+name = "multicolored siren lizard skin"
+noun = "skin"
+
+[[skins]]
+creature = "dreadnought raptor"
+name = "raptor feathers"
+noun = "feathers"
+
+[[skins]]
+creature = "night mare"
+name = "silvery hoof"
+noun = "hoof"
+
+[[skins]]
+creature = "firethorn shoot"
+name = "pulsating firethorn"
+noun = "firethorn"
+
+[[skins]]
+creature = "forest trali shaman"
+name = "trali scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "mastodonic leopard"
+name = "spotted leopard pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "polar bear"
+name = "polar bear skin"
+noun = "skin"
+
+[[skins]]
+creature = "lesser vruul"
+name = "vruul skin"
+noun = "skin"
+
+[[skins]]
+creature = "cinder wasp"
+name = "shimmering wasp wing"
+noun = "wing"
+
+[[skins]]
+creature = "forest trali"
+name = "trali hide"
+noun = "hide"
+
+[[skins]]
+creature = "greater ice giant"
+name = "giant scalp"
+noun = "scalp"
+
+[[skins]]
+creature = "kiramon defender"
+name = "kiramon tongue"
+noun = "tongue"
+
+[[skins]]
+creature = "lesser faeroth"
+name = "mottled faeroth crest"
+noun = "crest"
+
+[[skins]]
+creature = "rotting chimera"
+name = "chimera stinger"
+noun = "stinger"
+
+[[skins]]
+creature = "horned vor'taz"
+name = "vor'taz horn"
+noun = "horn"
+
+[[skins]]
+creature = "red-scaled thrak"
+name = "thrak tail"
+noun = "tail"
+
+[[skins]]
+creature = "waern"
+name = "waern fur"
+noun = "fur"
+
+[[skins]]
+creature = "greater faeroth"
+name = "faeroth fang"
+noun = "fang"
+
+[[skins]]
+creature = "seeker"
+name = "seeker eye"
+noun = "eye"
+
+[[skins]]
+creature = "snow madrinol"
+name = "madrinol skin"
+noun = "skin"
+
+[[skins]]
+creature = "tomb troll"
+name = "troll thumb"
+noun = "thumb"
+
+[[skins]]
+creature = "wooly mammoth"
+name = "mammoth tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "sabre-tooth tiger"
+name = "tiger incisor"
+noun = "incisor"
+
+[[skins]]
+creature = "tomb troll necromancer"
+name = "troll eyeball"
+noun = "eyeball"
+
+[[skins]]
+creature = "nightmare steed"
+name = "silver mane"
+noun = "mane"
+
+[[skins]]
+creature = "massive pyrothag"
+name = "pyrothag hide"
+noun = "hide"
+
+[[skins]]
+creature = "black forest viper"
+name = "viper fang"
+noun = "fang"
+
+[[skins]]
+creature = "massive black boar"
+name = "heavy grey tusk"
+noun = "tusk"
+
+[[skins]]
+creature = "stone mastiff"
+name = "stone heart"
+noun = "heart"
+
+[[skins]]
+creature = "massive troll king"
+name = "massive troll king hide"
+noun = "hide"
+
+[[skins]]
+creature = "grifflet"
+name = "pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "red tsark"
+name = "tsark skin"
+noun = "skin"
+
+[[skins]]
+creature = "lesser griffin"
+name = "pelt"
+noun = "pelt"
+
+[[skins]]
+creature = "lesser minotaur"
+name = "minotaur hide"
+noun = "hide"
+
+[[skins]]
+creature = "minotaur warrior"
+name = "minotaur horn"
+noun = "horn"
+
+[[skins]]
+creature = "minotaur magus"
+name = "minotaur hoof"
+noun = "hoof"
+
+[[skins]]
+creature = "caedera"
+name = "caedera skin"
+noun = "skin"
+
+[[skins]]
+creature = "aivren"
+name = "aivren gizzard"
+noun = "gizzard"
+
+[[skins]]
+creature = "triton dissembler"
+name = "curved gold-flecked claw"
+noun = "claw"
+
+[[skins]]
+creature = "triton radical"
+name = "elongated triton spine"
+noun = "spine"
+
+[[skins]]
+creature = "glistening cerebralite"
+name = "cerebralite tentacle"
+noun = "tentacle"
+
+[[skins]]
+creature = "war griffin"
+name = "war griffin talon"
+noun = "talon"
+
+[[skins]]
+creature = "triton magus"
+name = "iridescent triton hide"
+noun = "hide"
+
+[[skins]]
+creature = "enormous rift crawler"
+name = "jagged rift crawler tooth"
+noun = "tooth"

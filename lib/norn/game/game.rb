@@ -168,17 +168,6 @@ module Norn
       end
     end
     ##
-    ## @brief      Writes a game command.
-    ##
-    ## @param      str   The string
-    ##
-    ## @return     self
-    ##
-    def write_game_command(str)
-      write %{#{PACKETS::COMMAND}#{str}}
-      self
-    end
-    ##
     ## write a command to all downstream clients
     ##
     def write_to_clients(str)
@@ -195,10 +184,12 @@ module Norn
     ##
     def write(*chunks)
       chunks.each do |chunk|
-        @upstream.puts chunk.concat("\n")
+        System.log(chunk, label: %i{Game write})
+        @upstream.puts %{#{PACKETS::COMMAND}#{chunk}\n}
       end
       self
     end
+    alias_method :write_game_command, :write
     ##
     ## @brief      kills the game instance 
     ##             and notifies all listening clients

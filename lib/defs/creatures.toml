@@ -1,0 +1,2309 @@
+[[creatures]]
+name = "Agresh bear"
+level = 16
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "Agresh troll chieftain"
+level = 20
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Agresh troll scout"
+level = 14
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Agresh troll warrior"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Arachne acolyte"
+level = 23
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Arachne priest"
+level = 26
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Arachne priestess"
+level = 26
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Arachne servant"
+level = 21
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Bresnahanini rolton"
+level = 3
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "Grutik savage"
+level = 27
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Grutik shaman"
+level = 29
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Illoke elder"
+level = 86
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Illoke jarl"
+level = 89
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Illoke mystic"
+level = 62
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Illoke shaman"
+level = 67
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Ithzir adept"
+level = 96
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Ithzir herald"
+level = 93
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Ithzir initiate"
+level = 91
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Ithzir janissary"
+level = 92
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Ithzir scout"
+level = 89
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Ithzir seer"
+level = 97
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Mistydeep siren"
+level = 2
+tags = ["living","mistydeep"]
+
+[[creatures]]
+name = "martial eagle"
+level = 28
+tags = ["flying"]
+
+[[creatures]]
+name = "Neartofar orc"
+level = 11
+tags = ["living","biped"]
+
+[[creatures]]
+name = "tegursh sentry"
+level = 30
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Neartofar troll"
+level = 15
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Sheruvian harbinger"
+level = 63
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Sheruvian initiate"
+level = 37
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Sheruvian monk"
+level = 41
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Vvrael warlock"
+level = 84
+tags = ["living","biped"]
+
+[[creatures]]
+name = "Vvrael witch"
+level = 82
+tags = ["living","biped"]
+
+[[creatures]]
+name = "aivren"
+level = 86
+tags = ["living","avian"]
+
+[[creatures]]
+name = "albino tomb spider"
+level = 8
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "ancient ghoul master"
+level = 21
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "animated slush"
+level = 54
+tags = ["living","amorphous"]
+
+[[creatures]]
+name = "arch wight"
+level = 20
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "arctic manticore"
+level = 29
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "arctic puma"
+level = 15
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "arctic titan"
+level = 36
+tags = ["living","biped"]
+
+[[creatures]]
+name = "arctic wolverine"
+level = 24
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "ash hag"
+level = 31
+tags = ["living","biped"]
+
+[[creatures]]
+name = "baesrukha"
+level = 42
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "banded rattlesnake"
+level = 16
+tags = ["living","ophidian"]
+
+[[creatures]]
+name = "banshee"
+level = 50
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "barghest"
+level = 35
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "big ugly kobold"
+level = 2
+tags = ["living","biped"]
+
+[[creatures]]
+name = "bighorn sheep"
+level = 18
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "black bear"
+level = 16
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "black boar"
+level = 14
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "black forest ogre"
+level = 60
+tags = ["living","biped"]
+
+[[creatures]]
+name = "black forest viper"
+level = 59
+tags = ["living","ophidian"]
+
+[[creatures]]
+name = "black leopard"
+level = 15
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "black panther"
+level = 17
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "black rolton"
+level = 1
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "black urgh"
+level = 4
+tags = ["living","qudruped"]
+
+[[creatures]]
+name = "black-winged daggerbeak"
+level = 1
+tags = ["living","avian"]
+
+[[creatures]]
+name = "blood eagle"
+level = 7
+tags = ["living","avian"]
+
+[[creatures]]
+name = "bobcat"
+level = 5
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "bog spectre"
+level = 47
+tags = ["living","biped"]
+
+[[creatures]]
+name = "bog troll"
+level = 35
+tags = ["living","bog"]
+
+[[creatures]]
+name = "bog wight"
+level = 44
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "bog wraith"
+level = 41
+tags = ["undead","bog"]
+
+[[creatures]]
+name = "bone golem"
+level = 8
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "brown boar"
+level = 14
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "brown gak"
+level = 2
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "brown spinner"
+level = 9
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "burly reiver"
+level = 24
+tags = ["living","biped"]
+
+[[creatures]]
+name = "caedera"
+level = 82
+tags = ["living","worm"]
+
+[[creatures]]
+name = "carceris"
+level = 25
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "caribou"
+level = 32
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "carrion worm"
+level = 1
+tags = ["living","worm"]
+
+[[creatures]]
+name = "cave bear"
+level = 21
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "cave gnoll"
+level = 3
+tags = ["living","biped"]
+
+[[creatures]]
+name = "cave gnome"
+level = 2
+tags = ["living","biped"]
+
+[[creatures]]
+name = "cave lizard"
+level = 18
+tags = ["living","reptillian"]
+
+[[creatures]]
+name = "cave nipper"
+level = 3
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "cave troll"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "cave worm"
+level = 10
+tags = ["living","worm"]
+
+[[creatures]]
+name = "centaur"
+level = 23
+tags = ["living","hybrid quadruped"]
+
+[[creatures]]
+name = "centaur ranger"
+level = 23
+tags = ["living","hybrid quadruped"]
+
+[[creatures]]
+name = "cinder wasp"
+level = 46
+tags = ["living","insect"]
+
+[[creatures]]
+name = "cobra"
+level = 4
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "cockatrice"
+level = 6
+tags = ["living","hybrid reptillian"]
+
+[[creatures]]
+name = "cold guardian"
+level = 34
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "colossus vulture"
+level = 34
+tags = ["living","avian"]
+
+[[creatures]]
+name = "cougar"
+level = 22
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "coyote"
+level = 5
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "crazed zombie"
+level = 23
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "crested basilisk"
+level = 22
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "crocodile"
+level = 9
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "crystal crab"
+level = 8
+tags = ["living","crustacean"]
+
+[[creatures]]
+name = "crystal golem"
+level = 12
+tags = ["living","biped"]
+
+[[creatures]]
+name = "csetairi"
+level = 76
+tags = ["living","hybrid biped"]
+
+[[creatures]]
+name = "cyclops"
+level = 27
+tags = ["living","biped"]
+
+[[creatures]]
+name = "dark apparition"
+level = 5
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "dark assassin"
+level = 18
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "dark orc"
+level = 12
+tags = ["living","biped"]
+
+[[creatures]]
+name = "dark panther"
+level = 22
+tags = ["living","dark"]
+
+[[creatures]]
+name = "dark shambler"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "dark vortece"
+level = 42
+tags = ["living","unknown"]
+
+[[creatures]]
+name = "dark vysan"
+level = 3
+tags = ["living","biped"]
+
+[[creatures]]
+name = "darken"
+level = 28
+tags = ["living","hybrid biped"]
+
+[[creatures]]
+name = "darkly inked fetish master"
+level = 104
+tags = ["living",""]
+
+[[creatures]]
+name = "darkwoode"
+level = 13
+tags = ["undead","plantlife"]
+
+[[creatures]]
+name = "death dirge"
+level = 9
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "decaying Citadel guardsman"
+level = 56
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "deranged sentry"
+level = 13
+tags = ["living","biped"]
+
+[[creatures]]
+name = "dhu goleras"
+level = 78
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "dobrem"
+level = 28
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "dreadnought raptor"
+level = 43
+tags = ["living","avian"]
+
+[[creatures]]
+name = "dust beetle"
+level = 36
+tags = ["living","insect"]
+
+[[creatures]]
+name = "dybbuk"
+level = 48
+tags = ["undead","hybrid"]
+
+[[creatures]]
+name = "earth elemental"
+level = 82
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "eidolon"
+level = 55
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "elder ghoul master"
+level = 18
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "elder tree spirit"
+level = 30
+tags = ["undead","plantlife"]
+
+[[creatures]]
+name = "emaciated hierophant"
+level = 66
+tags = ["living","emaciated"]
+
+[[creatures]]
+name = "enormous rift crawler"
+level = 103
+tags = ["living","worm"]
+
+[[creatures]]
+name = "ethereal mage apprentice"
+level = 54
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ethereal triton sentry"
+level = 103
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "fanged goblin"
+level = 2
+tags = ["living","goblin"]
+
+[[creatures]]
+name = "fanged rodent"
+level = 1
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "fanged viper"
+level = 4
+tags = ["living","ophidian"]
+
+[[creatures]]
+name = "farlook"
+level = 77
+tags = ["living","farlook"]
+
+[[creatures]]
+name = "fenghai"
+level = 23
+tags = ["living","biped"]
+
+[[creatures]]
+name = "festering taint"
+level = 86
+tags = ["living","biped"]
+
+[[creatures]]
+name = "fire ant"
+level = 1
+tags = ["living","insect"]
+
+[[creatures]]
+name = "fire cat"
+level = 18
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "fire elemental"
+level = 60
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "fire giant"
+level = 36
+tags = ["living","biped"]
+
+[[creatures]]
+name = "fire guardian"
+level = 16
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "fire mage"
+level = 71
+tags = ["living","biped"]
+
+[[creatures]]
+name = "fire ogre"
+level = 28
+tags = ["living","biped"]
+
+[[creatures]]
+name = "fire rat"
+level = 16
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "fire salamander"
+level = 3
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "fire sprite"
+level = 64
+tags = ["living","biped"]
+
+[[creatures]]
+name = "firephantom"
+level = 6
+tags = ["undead","elemental"]
+
+[[creatures]]
+name = "firethorn shoot"
+level = 44
+tags = ["living","plantlife"]
+
+[[creatures]]
+name = "flesh golem"
+level = 50
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "forest bendith"
+level = 40
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "forest ogre"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "forest trali"
+level = 46
+tags = ["living","biped"]
+
+[[creatures]]
+name = "forest trali shaman"
+level = 44
+tags = ["living","biped"]
+
+[[creatures]]
+name = "forest troll"
+level = 14
+tags = ["living","biped"]
+
+[[creatures]]
+name = "frost giant"
+level = 38
+tags = ["living","biped"]
+
+[[creatures]]
+name = "frostborne lich"
+level = 110
+tags = ["undead",""]
+
+[[creatures]]
+name = "frozen corpse"
+level = 42
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "gaunt spectral servant"
+level = 44
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ghost"
+level = 2
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ghost wolf"
+level = 16
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "ghostly mara"
+level = 32
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ghostly pooka"
+level = 33
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "ghostly warrior"
+level = 18
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ghoul master"
+level = 16
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "giant albino scorpion"
+level = 24
+tags = ["living","insect"]
+
+[[creatures]]
+name = "giant albino tomb spider"
+level = 30
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "giant ant"
+level = 1
+tags = ["living","insect"]
+
+[[creatures]]
+name = "giant fog beetle"
+level = 32
+tags = ["living","insect"]
+
+[[creatures]]
+name = "giant hawk-owl"
+level = 28
+tags = ["living","avian"]
+
+[[creatures]]
+name = "giant marmot"
+level = 10
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "giant rat"
+level = 1
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "giant veaba"
+level = 17
+tags = ["living","hybrid quadruped"]
+
+[[creatures]]
+name = "giant weasel"
+level = 14
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "glacial morph"
+level = 56
+tags = ["living","hybrid biped"]
+
+[[creatures]]
+name = "glistening cerebralite"
+level = 100
+tags = ["living",""]
+
+[[creatures]]
+name = "gnarled being"
+level = 82
+tags = ["living","biped"]
+
+[[creatures]]
+name = "gnoll guard"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "gnoll jarl"
+level = 25
+tags = ["living","biped"]
+
+[[creatures]]
+name = "gnoll priest"
+level = 20
+tags = ["living","biped"]
+
+[[creatures]]
+name = "gnoll ranger"
+level = 15
+tags = ["living","biped"]
+
+[[creatures]]
+name = "gnoll thief"
+level = 13
+tags = ["living","biped"]
+
+[[creatures]]
+name = "gnoll worker"
+level = 10
+tags = ["living","biped"]
+
+[[creatures]]
+name = "goblin"
+level = 2
+tags = ["living","biped"]
+
+[[creatures]]
+name = "great boar"
+level = 10
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "great brown bear"
+level = 14
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "great stag"
+level = 13
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "greater bog troll"
+level = 39
+tags = ["living","bog"]
+
+[[creatures]]
+name = "greater burrow orc"
+level = 8
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater construct"
+level = 96
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater earth elemental"
+level = 88
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "greater faeroth"
+level = 50
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater ghoul"
+level = 3
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "greater ice giant"
+level = 46
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater ice spider"
+level = 3
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "greater kappa"
+level = 7
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater krynch"
+level = 84
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater moor wight"
+level = 39
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "greater orc"
+level = 8
+tags = ["living","biped"]
+
+[[creatures]]
+name = "greater spider"
+level = 8
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "greater vruul"
+level = 75
+tags = ["undead","hybrid biped"]
+
+[[creatures]]
+name = "greater water elemental"
+level = 105
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "greenwing hornet"
+level = 18
+tags = ["living","insect"]
+
+[[creatures]]
+name = "gremlock"
+level = 84
+tags = ["living","biped"]
+
+[[creatures]]
+name = "grey orc"
+level = 14
+tags = ["living","biped"]
+
+[[creatures]]
+name = "grifflet"
+level = 64
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "grizzly bear"
+level = 38
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "hill troll"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hisskra chieftain"
+level = 34
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hisskra shaman"
+level = 33
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hisskra warrior"
+level = 30
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hobgoblin"
+level = 3
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hobgoblin shaman"
+level = 7
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hooded figure"
+level = 30
+tags = ["living","biped"]
+
+[[creatures]]
+name = "horned vor'taz"
+level = 48
+tags = ["living","biped"]
+
+[[creatures]]
+name = "huge mein golem"
+level = 37
+tags = ["living","biped"]
+
+[[creatures]]
+name = "humpbacked puma"
+level = 15
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "hunch-backed dogmatist"
+level = 70
+tags = ["living","biped"]
+
+[[creatures]]
+name = "hunter troll"
+level = 30
+tags = ["living","biped"]
+
+[[creatures]]
+name = "ice elemental"
+level = 63
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "ice golem"
+level = 53
+tags = ["living","biped"]
+
+[[creatures]]
+name = "ice hound"
+level = 24
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "ice skeleton"
+level = 3
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ice troll"
+level = 29
+tags = ["living","biped"]
+
+[[creatures]]
+name = "ice wraith"
+level = 45
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "infernal lich"
+level = 110
+tags = ["undead",""]
+
+[[creatures]]
+name = "jungle troll"
+level = 26
+tags = ["living","biped"]
+
+[[creatures]]
+name = "jungle troll chieftain"
+level = 30
+tags = ["living","biped"]
+
+[[creatures]]
+name = "ki-lin"
+level = 28
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "kiramon defender"
+level = 46
+tags = ["living","insect"]
+
+[[creatures]]
+name = "kiramon worker"
+level = 40
+tags = ["living","insect"]
+
+[[creatures]]
+name = "kobold"
+level = 1
+tags = ["living","biped"]
+
+[[creatures]]
+name = "kobold shepherd"
+level = 3
+tags = ["living","biped"]
+
+[[creatures]]
+name = "krag dweller"
+level = 72
+tags = ["living","biped"]
+
+[[creatures]]
+name = "krag yeti"
+level = 70
+tags = ["living","biped"]
+
+[[creatures]]
+name = "krolvin corsair"
+level = 38
+tags = ["living","corsair"]
+
+[[creatures]]
+name = "krolvin mercenary"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "krolvin slaver"
+level = 36
+tags = ["living","slaver"]
+
+[[creatures]]
+name = "krolvin warfarer"
+level = 25
+tags = ["living","biped"]
+
+[[creatures]]
+name = "krolvin warrior"
+level = 19
+tags = ["living","biped"]
+
+[[creatures]]
+name = "krynch"
+level = 31
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "large ogre"
+level = 15
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lava golem"
+level = 56
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lava troll"
+level = 34
+tags = ["living","biped"]
+
+[[creatures]]
+name = "leaper"
+level = 6
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "lesser burrow orc"
+level = 7
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser construct"
+level = 83
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser faeroth"
+level = 46
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser frost shade"
+level = 2
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "lesser ghoul"
+level = 1
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "lesser griffin"
+level = 69
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "lesser ice elemental"
+level = 53
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "lesser ice giant"
+level = 41
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser minotaur"
+level = 74
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser moor wight"
+level = 37
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "lesser mummy"
+level = 6
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "lesser orc"
+level = 6
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser red orc"
+level = 7
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser shade"
+level = 2
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "lesser stone gargoyle"
+level = 27
+tags = ["living","biped"]
+
+[[creatures]]
+name = "lesser vruul"
+level = 45
+tags = ["undead","hybrid biped"]
+
+[[creatures]]
+name = "lich qyn'arj"
+level = 84
+tags = ["undead","lich"]
+
+[[creatures]]
+name = "lost soul"
+level = 91
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "luminescent arachnid"
+level = 15
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "magru"
+level = 37
+tags = ["living","unknown"]
+
+[[creatures]]
+name = "major glacei"
+level = 47
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "major spider"
+level = 20
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "mammoth arachnid"
+level = 30
+tags = ["living","arachnid"]
+
+[[creatures]]
+name = "manticore"
+level = 9
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "massive black boar"
+level = 59
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "massive grahnk"
+level = 20
+tags = ["living","biped"]
+
+[[creatures]]
+name = "massive pyrothag"
+level = 58
+tags = ["living","biped"]
+
+[[creatures]]
+name = "massive troll king"
+level = 63
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mastodonic leopard"
+level = 44
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "maw spore"
+level = 33
+tags = ["living","plantlife"]
+
+[[creatures]]
+name = "mezic"
+level = 33
+tags = ["living","biped"]
+
+[[creatures]]
+name = "minor glacei"
+level = 42
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "minotaur magus"
+level = 78
+tags = ["living","biped"]
+
+[[creatures]]
+name = "minotaur warrior"
+level = 76
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mist wraith"
+level = 5
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "moaning phantom"
+level = 2
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "moaning spirit"
+level = 28
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "monastic lich"
+level = 27
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "mongrel hobgoblin"
+level = 5
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mongrel kobold"
+level = 4
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mongrel troll"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mongrel wolfhound"
+level = 16
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "monkey"
+level = 6
+tags = ["living","biped"]
+
+[[creatures]]
+name = "moor eagle"
+level = 35
+tags = ["living","eagle"]
+
+[[creatures]]
+name = "moor hound"
+level = 33
+tags = ["living","hound"]
+
+[[creatures]]
+name = "moor witch"
+level = 34
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mottled thrak"
+level = 8
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "moulis"
+level = 75
+tags = ["living","unknown"]
+
+[[creatures]]
+name = "mountain goat"
+level = 17
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "mountain lion"
+level = 18
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "mountain ogre"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mountain rolton"
+level = 1
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "mountain snowcat"
+level = 3
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "mountain troll"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "mud wasp"
+level = 38
+tags = ["living","insect"]
+
+[[creatures]]
+name = "murky soul siphon"
+level = 106
+tags = ["undead",""]
+
+[[creatures]]
+name = "muscular supplicant"
+level = 67
+tags = ["living","muscular"]
+
+[[creatures]]
+name = "myklian"
+level = 40
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "n'ecare"
+level = 87
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "naisirc"
+level = 75
+tags = ["undead","hybrid"]
+
+[[creatures]]
+name = "nasty little gremlin"
+level = 5
+tags = ["living","biped"]
+
+[[creatures]]
+name = "necrotic snake"
+level = 48
+tags = ["undead","ophidian"]
+
+[[creatures]]
+name = "nedum vereri"
+level = 18
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "night golem"
+level = 5
+tags = ["living","biped"]
+
+[[creatures]]
+name = "night hound"
+level = 24
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "night mare"
+level = 43
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "nightmare steed"
+level = 55
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "nonomino"
+level = 23
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ogre warrior"
+level = 20
+tags = ["living","biped"]
+
+[[creatures]]
+name = "pale crab"
+level = 2
+tags = ["living","crustacean"]
+
+[[creatures]]
+name = "panther"
+level = 15
+tags = ["living","panther"]
+
+[[creatures]]
+name = "phantasma"
+level = 42
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "phantasmal bestial swordsman"
+level = 62
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "phantom"
+level = 2
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "phosphorescent worm"
+level = 16
+tags = ["living","worm"]
+
+[[creatures]]
+name = "plains lion"
+level = 18
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "plains ogre"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "plains orc chieftain"
+level = 21
+tags = ["living","biped"]
+
+[[creatures]]
+name = "plains orc scout"
+level = 17
+tags = ["living","biped"]
+
+[[creatures]]
+name = "plains orc shaman"
+level = 18
+tags = ["living","biped"]
+
+[[creatures]]
+name = "plains orc warrior"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "plumed cockatrice"
+level = 13
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "polar bear"
+level = 44
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "pra'eda"
+level = 29
+tags = ["living","biped"]
+
+[[creatures]]
+name = "puma"
+level = 15
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "putrefied Citadel herald"
+level = 60
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "rabid guard dog"
+level = 10
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "rabid squirrel"
+level = 2
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "raider orc"
+level = 10
+tags = ["living","biped"]
+
+[[creatures]]
+name = "raving lunatic"
+level = 77
+tags = ["living","biped"]
+
+[[creatures]]
+name = "red bear"
+level = 16
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "red tsark"
+level = 66
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "red-scaled thrak"
+level = 48
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "reiver"
+level = 24
+tags = ["living","biped"]
+
+[[creatures]]
+name = "relnak"
+level = 3
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "revenant"
+level = 4
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "ridge orc"
+level = 4
+tags = ["living","biped"]
+
+[[creatures]]
+name = "ridgeback boar"
+level = 15
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "roa'ter"
+level = 41
+tags = ["living","worm"]
+
+[[creatures]]
+name = "roa'ter wormling"
+level = 24
+tags = ["living","worm"]
+
+[[creatures]]
+name = "rock troll zombie"
+level = 34
+tags = ["undead","zombie"]
+
+[[creatures]]
+name = "rolton"
+level = 1
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "rotting Citadel arbalester"
+level = 58
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "rotting chimera"
+level = 46
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "rotting corpse"
+level = 32
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "rotting farmhand"
+level = 32
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "rotting krolvin pirate"
+level = 18
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "rotting woodsman"
+level = 23
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "sabre-tooth tiger"
+level = 53
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "sand beetle"
+level = 33
+tags = ["living","insect"]
+
+[[creatures]]
+name = "sand devil"
+level = 48
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "scaly burgee"
+level = 29
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "sea nymph"
+level = 2
+tags = ["living","biped"]
+
+[[creatures]]
+name = "seeker"
+level = 52
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "seraceris"
+level = 78
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "shadow mare"
+level = 37
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "shadow steed"
+level = 38
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "shadowy spectre"
+level = 14
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "shan cleric"
+level = 42
+tags = ["living","biped"]
+
+[[creatures]]
+name = "shan ranger"
+level = 42
+tags = ["living","biped"]
+
+[[creatures]]
+name = "shan warrior"
+level = 42
+tags = ["living","biped"]
+
+[[creatures]]
+name = "shan wizard"
+level = 42
+tags = ["living","biped"]
+
+[[creatures]]
+name = "shelfae chieftain"
+level = 11
+tags = ["living","hybrid reptilian"]
+
+[[creatures]]
+name = "shelfae soldier"
+level = 7
+tags = ["living","hybrid reptilian"]
+
+[[creatures]]
+name = "shelfae warlord"
+level = 18
+tags = ["living","hybrid reptilian"]
+
+[[creatures]]
+name = "shimmering fungus"
+level = 35
+tags = ["living","plantlife"]
+
+[[creatures]]
+name = "shrickhen"
+level = 76
+tags = ["undead","hybrid"]
+
+[[creatures]]
+name = "silverback orc"
+level = 14
+tags = ["living","biped"]
+
+[[creatures]]
+name = "siren"
+level = 96
+tags = ["living","biped"]
+
+[[creatures]]
+name = "siren lizard"
+level = 42
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "skayl"
+level = 54
+tags = ["living","unknown"]
+
+[[creatures]]
+name = "skeletal giant"
+level = 33
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "skeletal ice troll"
+level = 31
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "skeletal lord"
+level = 41
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "skeletal soldier"
+level = 34
+tags = ["undead","soldier"]
+
+[[creatures]]
+name = "skeletal warhorse"
+level = 37
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "skeleton"
+level = 1
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "slimy little grub"
+level = 1
+tags = ["living","worm"]
+
+[[creatures]]
+name = "snow crone"
+level = 36
+tags = ["living","biped"]
+
+[[creatures]]
+name = "snow leopard"
+level = 27
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "snow madrinol"
+level = 52
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "snow spectre"
+level = 9
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "snowy cockatrice"
+level = 6
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "soul golem"
+level = 63
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral fisherman"
+level = 6
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral lord"
+level = 36
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral miner"
+level = 40
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral monk"
+level = 25
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral shade"
+level = 35
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral triton defender"
+level = 98
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral warrior"
+level = 34
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectral woodsman"
+level = 35
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spectre"
+level = 14
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "spiked cavern urchin"
+level = 17
+tags = ["living","urchin"]
+
+[[creatures]]
+name = "spotted gak"
+level = 2
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "spotted gnarp"
+level = 1
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "spotted leaper"
+level = 4
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "spotted lynx"
+level = 6
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "spotted velnalin"
+level = 3
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "steel golem"
+level = 20
+tags = ["living","biped"]
+
+[[creatures]]
+name = "stone gargoyle"
+level = 39
+tags = ["living","biped"]
+
+[[creatures]]
+name = "stone giant"
+level = 58
+tags = ["living","biped"]
+
+[[creatures]]
+name = "stone mastiff"
+level = 62
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "stone sentinel"
+level = 53
+tags = ["living","biped"]
+
+[[creatures]]
+name = "stone troll"
+level = 55
+tags = ["living","biped"]
+
+[[creatures]]
+name = "storm giant"
+level = 39
+tags = ["living","biped"]
+
+[[creatures]]
+name = "storm griffin"
+level = 73
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "striped gak"
+level = 3
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "striped relnak"
+level = 3
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "striped warcat"
+level = 20
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "swamp hag"
+level = 42
+tags = ["living","hag"]
+
+[[creatures]]
+name = "swamp troll"
+level = 14
+tags = ["living","biped"]
+
+[[creatures]]
+name = "tawny brindlecat"
+level = 13
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "thrak"
+level = 8
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "three-toed tegu"
+level = 33
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "thunder troll"
+level = 18
+tags = ["living","biped"]
+
+[[creatures]]
+name = "thyril"
+level = 2
+tags = ["living","biped"]
+
+[[creatures]]
+name = "tomb troll"
+level = 52
+tags = ["living","biped"]
+
+[[creatures]]
+name = "tomb troll necromancer"
+level = 54
+tags = ["living","biped"]
+
+[[creatures]]
+name = "tomb wight"
+level = 15
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "tree spirit"
+level = 26
+tags = ["undead","plantlife"]
+
+[[creatures]]
+name = "tree viper"
+level = 24
+tags = ["living","ophidian"]
+
+[[creatures]]
+name = "triton combatant"
+level = 98
+tags = ["living","biped"]
+
+[[creatures]]
+name = "triton dissembler"
+level = 94
+tags = ["living","biped"]
+
+[[creatures]]
+name = "triton executioner"
+level = 96
+tags = ["living","biped"]
+
+[[creatures]]
+name = "triton magus"
+level = 102
+tags = ["living","biped"]
+
+[[creatures]]
+name = "triton radical"
+level = 100
+tags = ["living","biped"]
+
+[[creatures]]
+name = "troglodyte"
+level = 3
+tags = ["living","biped"]
+
+[[creatures]]
+name = "troll chieftain"
+level = 27
+tags = ["living","biped"]
+
+[[creatures]]
+name = "troll wraith"
+level = 35
+tags = ["undead","troll"]
+
+[[creatures]]
+name = "tundra giant"
+level = 34
+tags = ["living","biped"]
+
+[[creatures]]
+name = "tusked ursian"
+level = 37
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "undertaker bat"
+level = 36
+tags = ["living","undertaker"]
+
+[[creatures]]
+name = "urgh"
+level = 4
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "vaespilon"
+level = 93
+tags = ["undead","hybrid biped"]
+
+[[creatures]]
+name = "velnalin"
+level = 3
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "vesperti"
+level = 38
+tags = ["living","biped"]
+
+[[creatures]]
+name = "veteran reiver"
+level = 24
+tags = ["living","biped"]
+
+[[creatures]]
+name = "vourkha"
+level = 39
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "vvrael destroyer"
+level = 108
+tags = ["living",""]
+
+[[creatures]]
+name = "waern"
+level = 49
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "wall guardian"
+level = 11
+tags = ["living","biped"]
+
+[[creatures]]
+name = "war griffin"
+level = 100
+tags = ["living","hybrid"]
+
+[[creatures]]
+name = "war troll"
+level = 18
+tags = ["living","biped"]
+
+[[creatures]]
+name = "warrior shade"
+level = 48
+tags = ["living","biped"]
+
+[[creatures]]
+name = "warthog"
+level = 22
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "wasp nest"
+level = 43
+tags = ["living","wasp"]
+
+[[creatures]]
+name = "water elemental"
+level = 92
+tags = ["living","elemental"]
+
+[[creatures]]
+name = "water moccasin"
+level = 4
+tags = ["living","reptilian"]
+
+[[creatures]]
+name = "water witch"
+level = 5
+tags = ["living","biped"]
+
+[[creatures]]
+name = "water wyrd"
+level = 35
+tags = ["living","wyrd"]
+
+[[creatures]]
+name = "werebear"
+level = 10
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "whiptail"
+level = 4
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "white vysan"
+level = 3
+tags = ["living","biped"]
+
+[[creatures]]
+name = "wild dog"
+level = 32
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "wild hound"
+level = 31
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "wind witch"
+level = 16
+tags = ["living","biped"]
+
+[[creatures]]
+name = "wind wraith"
+level = 63
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "wolfshade"
+level = 15
+tags = ["undead","quadruped"]
+
+[[creatures]]
+name = "wolverine"
+level = 24
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "wood sprite"
+level = 38
+tags = ["living","biped"]
+
+[[creatures]]
+name = "wood wight"
+level = 20
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "wooly mammoth"
+level = 52
+tags = ["living","quadruped"]
+
+[[creatures]]
+name = "wraith"
+level = 15
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "yeti"
+level = 67
+tags = ["living","biped"]
+
+[[creatures]]
+name = "young grass snake"
+level = 1
+tags = ["living","ophidian"]
+
+[[creatures]]
+name = "zombie"
+level = 23
+tags = ["undead","biped"]
+
+[[creatures]]
+name = "zombie rolton"
+level = 1
+tags = ["undead","quadruped"]
