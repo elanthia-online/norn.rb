@@ -11,7 +11,17 @@ module Norn
                 :stats, :silver, :inv, :exports
                 
     def initialize()
+      ##
+      ## this is an Array(Callbacks) 
+      ## that any script may attach callbacks
+      ## directly to, but they must be cleaned up
+      ## after the script dies
+      ##
       @callbacks  = [World::Callbacks.new(self)]
+      ##
+      ## all World properties we want to track
+      ## the state of
+      ##
       @roundtime  = Roundtime.new
       @status     = Status.new
       @room       = Room.new

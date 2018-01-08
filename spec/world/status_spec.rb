@@ -1,23 +1,23 @@
 require 'spec_helper'
 
-describe Status do
+describe Norn::Status do
   it "parses statuses" do
-    expect(Status.match(%{(sitting).}))
+    expect(described_class.match(%{(sitting).}))
       .to eq %i{sitting}
     
-    expect(Status.match(%{(dead),}))
+    expect(described_class.match(%{(dead),}))
       .to eq %i{dead}
     
-    expect(Status.match(%{who is dead,}))
+    expect(described_class.match(%{who is dead,}))
       .to eq %i{dead}
     
-    expect(Status.match(%{who is dead.}))
+    expect(described_class.match(%{who is dead.}))
       .to eq %i{dead}
     
-    expect(Status.match(%{that appears dead.}))
+    expect(described_class.match(%{that appears dead.}))
       .to eq %i{dead}
     
-    expect(Status.match(%{that appears to be stunned.}))
+    expect(described_class.match(%{that appears to be stunned.}))
       .to eq %i{stunned}
   end
 end

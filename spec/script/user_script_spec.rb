@@ -1,4 +1,4 @@
-require "norn/world/status"
+require "norn/world/char/status"
 require "spec_helper"
 require "norn/script/user"
 
