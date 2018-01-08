@@ -1,4 +1,6 @@
 class MemoryStore
+  include Enumerable
+  
   attr_reader :name
   
   def initialize(name = self.class.name, initial = Hash.new)
@@ -17,6 +19,10 @@ class MemoryStore
     @lock.synchronize do
       yield @store
     end
+  end
+
+  def to_json(opts = {})
+    @store.to_json(opts)
   end
 
   def sync(value = {})

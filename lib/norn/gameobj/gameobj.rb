@@ -67,9 +67,13 @@ module GameObj
         ## if it was required but is nil then throw
         raise Exception.new "#{prop} is required" if opts.fetch(:required, false) and val.nil?
         ## set the instance variable
-        instance_variable_set("@#{prop}", val)
+        unsafe_write(prop, val)
       end
       freeze
+    end
+
+    def unsafe_write(prop, val)
+      instance_variable_set("@#{prop}", val)
     end
     ##
     ## a reference to the Game readable id
@@ -108,6 +112,12 @@ module GameObj
         h[d.first] = send(d.first)
         h
       end
+    end
+    ##
+    ## create a JSON serializable obj
+    ##
+    def to_json(opts = {})
+      to_h.to_json
     end
     ##
     ## cast a GameObj to another Class

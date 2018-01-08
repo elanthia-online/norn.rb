@@ -1,6 +1,6 @@
 require "norn/util/memory-store"
 
 module Norn
-  class Containers < MemoryStore
+  class Stats < MemoryStore
   end
 end

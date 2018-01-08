@@ -102,6 +102,18 @@ class Script < Thread
     end
   end
 
+  def write(*lines)
+    return if @game.nil?
+    return if lines.empty?
+    @game.clients.each do |client|
+      unless client.is_a?(Downstream::Receiver) or client.is_a?(Downstream::Mutator)
+        lines.each do |line|
+          client.puts line
+        end
+      end
+    end
+  end
+
   alias_method :log, :safe_log
   alias_method :inspect, :safe_log
   

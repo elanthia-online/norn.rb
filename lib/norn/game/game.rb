@@ -184,7 +184,7 @@ module Norn
     ##
     def write(*chunks)
       chunks.each do |chunk|
-        System.log(chunk, label: %i{Game write})
+        #System.log(chunk, label: %i{Game write})
         @upstream.puts %{#{PACKETS::COMMAND}#{chunk}\n}
       end
       self

@@ -11,14 +11,20 @@ class Script
   ## of the Script runtime
   ##
   class Context
+    def self.name_of(obj)
+      if obj.is_a?(Class) or obj.is_a?(Module)
+        obj.name
+      else
+        obj.class.name
+      end
+    end
+
      def self.inject(*objs)
-      objs.each do |obj|
-        const = if obj.is_a?(Class) or obj.is_a?(Module)
-          obj.name.split("::").last.to_sym
-        else
-          obj.class.name.split("::").last.to_sym
+      objs.each do |prop, obj|
+        if name_of(obj).start_with?("Norn::")
+          const = name_of(obj).split("::").last.to_sym
+          self.const_set(const, obj)
         end
-        self.const_set(const, obj)
       end
       self
     end
@@ -66,6 +72,9 @@ class Script
       ctx.const_set(:Game, script.game)
       ctx.const_set(:World, script.game.world)
       ctx.const_set(:ARGV, args)
+      script.game.world.exports.each do |mod, exports|
+        ctx.const_set(mod, exports)
+      end
       Context.proxy_classes(ctx, script)
       ctx.inject *script.game.world.context
       ctx

@@ -1,10 +1,10 @@
-# encoding: US-ASCII
-Dir[File.dirname(__FILE__) + '/norn/ext/**/*.rb'].each do |file| require file end
-Dir[File.dirname(__FILE__) + '/norn/**/*.rb'].each do |file| require file end
 ##
 ## a scripting layer for Gemstone IV
 ##
 module Norn
+  require "json"
+  Dir[File.dirname(__FILE__) + '/norn/ext/**/*.rb'].each do |file| require file end
+  Dir[File.dirname(__FILE__) + '/norn/**/*.rb'].each do |file| require file end
   ##
   ## @brief      generates a non-blocking connection to a game
   ##

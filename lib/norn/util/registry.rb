@@ -1,7 +1,29 @@
 class Registry
+  include Enumerable
+
+  def self._query(member, attrs)
+    attrs.take_while do |param, expected|
+      actual = if member.respond_to?(param)
+        member.send(param)
+      elsif member.respond_to?(:[])
+        member[param]
+      end
+
+      if expected.is_a?(Regexp)
+        actual =~ expected
+      elsif expected.is_a?(Symbol)
+        actual.to_sym.eql?(expected)
+      elsif expected.is_a?(Fixnum)
+        actual.to_i.eql?(expected)
+      else
+        actual.eql?(expected)
+      end
+    end.size.eql?(attrs.size)
+  end
+
   DEFAULTS = [:id, :noun, :name]
 
-  attr_reader :props, :list
+  attr_reader :props, :list, :maps
 
   def initialize(props = DEFAULTS)
     @props = props
@@ -20,52 +42,49 @@ class Registry
     self
   end
   
-  def put(*objs)
+  def put(*objs, flush: true)
     @lock.synchronize do
-      clear!
+      clear! if flush
       @list = objs.dup
       @maps.each do |prop, store|
         objs.each do |obj|
-          if obj.respond_to?(prop)
-            val = obj.send(prop) 
-            store[val] = obj
+          val = if obj.respond_to?(prop)
+            obj.send(prop) 
+          elsif obj.respond_to?(:[])
+            obj[prop]
           end
+          store[val] = obj if val
         end
       end
     end
     self
   end
 
-  def find(**attrs, &block)
-    @lock.synchronize do
-      return @list.find do |member|
-        attrs.take_while do |param, val|
-          if member.respond_to?(param)
-            member.send(param) == val
-          else
-            member[param] == val
-          end
-        end.size.eql?(attrs.size)
-      end
+  def one(**attrs)
+    find do |member|
+      Registry._query(member, attrs)
     end
   end
 
-  def find(**attrs, &block)
-    @lock.synchronize do
-      return @list.select do |member|
-        attrs.take_while do |param, val|
-          if member.respond_to?(param)
-            member.send(param) == val
-          else
-            member[param] == val
-          end
-        end.size.eql?(attrs.size)
-      end
+  def where(**attrs)
+    select do |member|
+      Registry._query(member, attrs)
     end
+  end
+
+  def each(&block)
+    @lock.synchronize do
+      @list.each(&block)
+    end
+  end
+
+  def to_json(opts = {})
+    map(&:to_json)
   end
 
   private
   def clear!
-    @maps.values.each(&:clear)
+    @maps.values.clear
+    @list.clear
   end
 end
