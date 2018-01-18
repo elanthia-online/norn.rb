@@ -7,7 +7,6 @@ module Norn
     ##
     def self.setup()
       Storage.mkdir_p()
-      Storage.mkdir_p("scripts")
       Storage.mkdir_p("databases")
     end
     

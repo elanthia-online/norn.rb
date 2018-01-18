@@ -1,7 +1,6 @@
 #
-# Dockerfile for nodebb
+# Dockerfile for Norn.rb
 #
-
 FROM alpine
 MAINTAINER Ondreian <noreply@gmail.com>
 
@@ -20,6 +19,8 @@ RUN set -ex \
                       git \
                       krb5-dev \
                       openssl-dev \
+                      sqlite \
+                      sqlite-dev \
                       tar
 
 ADD . / ./
