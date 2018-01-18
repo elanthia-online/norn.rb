@@ -10,7 +10,7 @@ class Script < Thread
       .gsub(/\s+/, "") + "]"
   end
 
-  attr_reader :name, :code, :mode, :callbacks
+  attr_reader :name, :code, :mode, :callbacks, :db_ref, :commands
   attr_accessor :result, :package, :game
   
   def initialize(game, name, mode: :normal, args: [])
@@ -18,6 +18,7 @@ class Script < Thread
     @name      = name
     @callbacks = []
     @mode      = mode
+    @commands  = Commands.new
     @code      = 0
     @start     = Time.now
     script     = self
@@ -31,7 +32,12 @@ class Script < Thread
       teardown
     end
   end
-
+  ##
+  ## add a callback Object
+  ## directly to the parser
+  ## so a script can receive
+  ## parsed XML
+  ##
   def add_callbacks(obj)
     @callbacks << obj
     @game.world.callbacks << obj
@@ -42,8 +48,21 @@ class Script < Thread
     @game.world.callbacks.delete(obj)
   end
 
+  def raise_cannot_make_db!
+    raise Exception.new <<~ERROR
+      Exec scripts should not create databases
+    ERROR
+  end
+
+  def db
+    raise_cannot_make_db! if exec?
+    return @db_ref unless @db_ref.nil?
+    @db_ref = Norn::Storage::DB.open(@name)
+    return @db_ref
+  end
+
   def exit_info
-    log(%{<Exit status:#{@code} time:#{self.uptime}s>}) unless silent?
+    log(%{<script.exit status:#{@code} time:#{self.uptime.round(3)}s>}) unless silent?
   end
 
   def teardown
@@ -59,6 +78,10 @@ class Script < Thread
 
   def silent?
     mode == :silent
+  end
+
+  def exec?
+    @package.nil?
   end
 
   def siblings

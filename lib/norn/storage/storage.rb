@@ -3,16 +3,20 @@ module Norn
   module Storage
     NORN_DIR = File.join Dir.home, ".norn"
     ##
-    ## setup app dir
+    ## setup Norn local assets
     ##
-    FileUtils.mkdir_p NORN_DIR
-
+    def self.setup()
+      Storage.mkdir_p()
+      Storage.mkdir_p("scripts")
+      Storage.mkdir_p("databases")
+    end
+    
     def self.norn_path(*path)
       File.join *([NORN_DIR] + path)
     end
 
-    def self.mkdir_p(dir)
-      FileUtils.mkdir_p norn_path(dir)
+    def self.mkdir_p(*path)
+      FileUtils.mkdir_p norn_path(*path)
     end
 
     def self.open(file, &block)
@@ -30,5 +34,7 @@ module Norn
         yield
       end
     end
+
+    setup()
   end
 end

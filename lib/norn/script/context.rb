@@ -69,6 +69,7 @@ class Script
     def self.of(script, args = [])
       ctx = Class.new(Context)
       ctx.const_set(:Script, script)
+      ctx.const_set(:Commands, script.commands)
       ctx.const_set(:Game, script.game)
       ctx.const_set(:World, script.game.world)
       ctx.const_set(:ARGV, args)

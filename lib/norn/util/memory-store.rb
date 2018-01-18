@@ -81,7 +81,7 @@ class MemoryStore
     access(&:clear)
   end
 
-  def fetch(key=nil, default=nil)
+  def fetch(key=nil, default=nil, &block)
     initial = default
     access do
       if key.nil?
@@ -90,6 +90,7 @@ class MemoryStore
         initial = @store[key.to_sym].nil? ? default : @store[key.to_sym]
       end
     end
+    block.call(initial) if block and initial
     initial
   end
 
