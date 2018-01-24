@@ -12,7 +12,7 @@ VOLUME $SCRIPTS
 
 RUN set -ex \
     && apk add -U bash \
-                  ruby ruby-dev ruby-bundler \
+                  ruby ruby-dev ruby-json ruby-bundler \
                   openssl \
     && apk add -t TMP build-base \
                       curl \

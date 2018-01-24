@@ -28,12 +28,6 @@ module Norn
       end
     end
 
-    def self.read(file)
-      open(file) do |file|
-        yield
-      end
-    end
-
     setup()
   end
 end

@@ -62,7 +62,7 @@ class Script < Thread
   end
 
   def exit_info
-    log(%{<script.exit status:#{@code} time:#{self.uptime.round(3)}s>}) unless silent?
+    log(%{<script.exit status:#{@code} time:#{self.uptime.as_time}>}) unless silent?
   end
 
   def teardown
@@ -153,6 +153,6 @@ class Script < Thread
   end
 
   def uptime
-    Time.now - @start
+    (Time.now - @start).to_i
   end
 end

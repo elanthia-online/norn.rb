@@ -111,34 +111,8 @@ module Norn
         ## handle parsing
         ##
         until @upstream.closed?
-          packet = @upstream.gets
-          if packet
-            original_packet = packet.dup
-            ## parser & receivers always receives raw game feed
-            @parser.puts original_packet.dup
-            ## receivers always 
-            @receivers.each do |receiver|
-              receiver.puts original_packet.dup
-            end
-            ## allow scripts to mutate the game feed
-            mutated_packet = @mutators.reduce(original_packet) do |packet, mutator|
-              result = mutator.call(packet)
-              if result.eql?(:err)
-                packet
-              else
-                result
-              end
-            end
-            
-            @clients.reject!(&:closed?)
-            # forward the response to each connected client
-            !mutated_packet.nil? && @clients.each do |downstream| 
-              begin
-                downstream.puts mutated_packet.dup unless downstream.closed?  
-              rescue => exception
-                System.log(exception, label: :game_error)
-              end
-            end
+          if packet = @upstream.gets
+            process_packet(packet)
           end
         end
         ##
@@ -156,14 +130,51 @@ module Norn
           Thread.fork(@downstream.accept) do |client| 
             @clients << client
             while !client.closed? && cmd = client.gets
-              if Command.match?(cmd)
-                Command.parse(self, cmd)
-              else
-                write_game_command(cmd)
-              end
+              process_command(cmd)
             end
             @clients.delete(client)
           end
+        end
+      end
+    end
+    ##
+    ## process a command from a client or Script
+    ##
+    def process_command(cmd)
+      if Command.match?(cmd)
+        Command.parse(self, cmd)
+      else
+        write_game_command(cmd)
+      end
+    end
+    ##
+    ## process an incoming Game String
+    ##
+    def process_packet(packet)
+      original_packet = packet.dup
+      ## parser & receivers always receives raw game feed
+      @parser.puts original_packet.dup
+      ## receivers always 
+      @receivers.each do |receiver|
+        receiver.puts original_packet.dup
+      end
+      ## allow scripts to mutate the game feed
+      mutated_packet = @mutators.reduce(original_packet) do |packet, mutator|
+        result = mutator.call(packet)
+        if result.eql?(:err)
+          packet
+        else
+          result
+        end
+      end
+      
+      @clients.reject!(&:closed?)
+      # forward the response to each connected client
+      !mutated_packet.nil? && @clients.each do |downstream| 
+        begin
+          downstream.puts mutated_packet.dup unless downstream.closed?  
+        rescue => exception
+          System.log(exception, label: :game_error)
         end
       end
     end

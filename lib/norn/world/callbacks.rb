@@ -3,6 +3,9 @@ module Norn
   class World
     ## alias Tag util
     Tag = Norn::Parser::Tag
+    ##
+    ## callbacks for all incoming parsed XML
+    ##
     class Callbacks
       attr_reader :world
       ##
@@ -129,7 +132,7 @@ module Norn
       end
 
       def on_stream_society(task)
-        # TODO save society task
+        System.log(task, label: %i{society})
       end
 
       def on_stream_bounty(task)
