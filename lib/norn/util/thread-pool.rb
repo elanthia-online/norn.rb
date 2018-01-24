@@ -1,3 +1,5 @@
+require "norn/util/memory-store"
+
 class ThreadPool < MemoryStore
   attr_reader :supervisor
 
