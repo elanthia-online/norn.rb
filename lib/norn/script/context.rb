@@ -92,11 +92,5 @@ class Script
     def self.inspect
       to_s
     end
-
-    def self.put(cmd)
-      script = const_get(:Script)
-      script.safe_write %{#{script.name}>#{cmd}}
-      const_get(:Game).write_game_command cmd
-    end
   end
 end

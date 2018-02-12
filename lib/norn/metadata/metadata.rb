@@ -1,74 +1,80 @@
-module Metadata
-  require "tomlrb"
-  require "ostruct"
+require "norn/storage/storage"
+require "norn/storage/git"
 
-  @@creatures = nil
-  @@jewels    = nil
-  @@skins     = nil
-  @@patterns  = nil
+module Norn
+  module Metadata
+    require "tomlrb"
+    require "ostruct"
 
-  def self.toml(name)
-    Tomlrb.load_file(File.expand_path("../../../defs/#{name}.toml", __FILE__), symbolize_keys: true)
-  end
+    @@creatures = nil
+    @@jewels    = nil
+    @@skins     = nil
+    @@patterns  = nil
 
-  def self.unwrap(name)
-    unwrapped = toml(name)[name]
-    unwrapped.reduce(Hash.new) do |repo, row|
-      yield(repo, row)
-      repo
+    def self.toml(name)
+      Tomlrb.load_file(Storage.path("data", "#{name}.toml"), symbolize_keys: true)
     end
-  end
 
-  def self.creatures
-    load_creatures! if @@creatures.nil?
-    @@creatures
-  end
-
-  def self.jewels
-    load_jewels! if @@jewels.nil?
-    @@jewels
-  end
-
-  def self.skins
-    load_skins! if @@skins.nil?
-    @@skins
-  end
-
-  def self.patterns
-    @@patterns
-  end
-
-  def self.load_creatures!
-    @@creatures = unwrap(:creatures) do |repo, creature|
-      creature[:tags] = creature[:tags].map(&:to_sym)
-      repo[creature[:name].downcase] = {
-        level: creature[:level],
-        tags: creature[:tags]
-      }
+    def self.unwrap(name)
+      unwrapped = toml(name)[name]
+      unwrapped.reduce(Hash.new) do |repo, row|
+        yield(repo, row)
+        repo
+      end
     end
-  end
 
-  def self.load_jewels!
-    @@jewels = unwrap(:gems) do |repo, jewel|
-      repo[jewel[:name].downcase] = jewel
+    def self.creatures
+      load_creatures! if @@creatures.nil?
+      @@creatures
     end
-  end
 
-  def self.load_skins!
-    @@skins = unwrap(:skins) do |repo, skin|
-      creature = creatures.fetch(skin[:creature].downcase)
-      creature[:skin]   = skin
-      creature[:tags] << :skinnable
-      repo[skin[:name]] = skin
+    def self.jewels
+      load_jewels! if @@jewels.nil?
+      @@jewels
     end
-  end
 
-  def self.load_patterns!
-    @@patterns = toml(:patterns)
-  end
+    def self.skins
+      load_skins! if @@skins.nil?
+      @@skins
+    end
 
-  load_creatures!
-  load_skins!
-  load_jewels!
-  load_patterns!
+    def self.patterns
+      @@patterns
+    end
+
+    def self.load_creatures!
+      @@creatures = unwrap(:creatures) do |repo, creature|
+        creature[:tags] = creature[:tags].map(&:to_sym)
+        repo[creature[:name].downcase] = {
+          level: creature[:level],
+          tags: creature[:tags]
+        }
+      end
+    end
+
+    def self.load_jewels!
+      @@jewels = unwrap(:gems) do |repo, jewel|
+        repo[jewel[:name].downcase] = jewel
+      end
+    end
+
+    def self.load_skins!
+      @@skins = unwrap(:skins) do |repo, skin|
+        creature = creatures.fetch(skin[:creature].downcase)
+        creature[:skin]   = skin
+        creature[:tags] << :skinnable
+        repo[skin[:name]] = skin
+      end
+    end
+
+    def self.load_patterns!
+      @@patterns = toml(:patterns)
+    end
+
+    Git.await_update()
+    load_creatures!
+    load_skins!
+    load_jewels!
+    load_patterns!
+  end
 end

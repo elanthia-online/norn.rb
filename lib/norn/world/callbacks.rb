@@ -176,13 +176,10 @@ module Norn
           when :room_objs
             on_component_room_objs(tag)
           when :sprite
+          when :resource
             :noop
           else
-            raise Exception.new %{
-              unhandled stream tag:
-
-              #{tag}
-            }
+            on_unhandled(stream)
           end
         end
       end
@@ -196,6 +193,7 @@ module Norn
       end
 
       def on_compass(tag)
+        @world.room.put(:paths, tag.text) unless tag.text.nil?
         @world.room.put(:exits, tag.children.map do |tag| 
           Room::Exit.of(tag)
         end)
@@ -282,6 +280,9 @@ module Norn
         ## the first <inv> tag is a wrapper for the container
         ##
         child = tag.children.first
+
+        #System.log(tag.text, label: :inv_item)
+
         return if child.fetch(:exist, nil).eql?(id)
           
         @world.containers.put(id,
@@ -359,7 +360,8 @@ module Norn
                 .put(:max, max)
                 .put(:remaining, remaining)
             else
-              System.log(tag, label: :vitals)
+              System.log(tag, 
+                label: :vitals)
             end
           end
         end

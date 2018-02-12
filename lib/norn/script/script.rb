@@ -124,6 +124,7 @@ class Script < Thread
       end
     end
   end
+  alias_method :safe_write, :safe_log
 
   def write(*lines)
     return if @game.nil?
@@ -137,11 +138,26 @@ class Script < Thread
     end
   end
 
+  def put(cmd)
+    safe_log %{>#{cmd}}
+    @game.write_game_command cmd
+  end
+
   alias_method :log, :safe_log
   alias_method :inspect, :safe_log
   
   def dead?
     !alive?
+  end
+
+  def error(message = nil)
+    safe_log(message, label: :error) unless message.nil?
+    kill
+  end
+
+  def exit(message = nil)
+    safe_log(message, label: :exit) unless message.nil?
+    kill
   end
   
   def keepalive!

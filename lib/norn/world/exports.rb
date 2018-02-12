@@ -24,6 +24,10 @@ module Norn
       @modules.keys
     end
 
+    def has?(name)
+      @modules.has_key?(name.to_sym)
+    end
+
     def import(name)
       @modules.fetch(name)
     end

@@ -17,15 +17,24 @@ module Norn
     end
 
     def id
-      fetch :id
+      candidates = Norn::Map.by(:title, %{[#{title}]}) 
+      return candidates.first if candidates.size.eql?(1)
+      candidates = candidates & Norn::Map.by(:description, desc.text)
+      return candidates.first if candidates.size.eql?(1)
+      candidates = candidates & Norn::Map.by(:paths, paths)
+      return candidates.first
     end
 
-    def title
-      fetch :title
+    def metadata
+      OpenStruct.new(Norn::Map.id(id)) if uniq?
     end
 
-    def desc
-      fetch :desc
+    def tags
+      metadata.tags
+    end
+
+    def uniq?
+      id.is_a?(Fixnum)
     end
 
     def exits
@@ -77,7 +86,7 @@ module Norn
       attr_accessor :text, :objs
 
       def initialize(text, objs)
-        @text = text
+        @text = text.strip
         @objs = objs
       end
 

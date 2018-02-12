@@ -18,7 +18,7 @@ class Script
     end
 
     module Loader
-      DEFAULT = Norn::Storage.norn_path("scripts")
+      DEFAULT = Norn::Storage.path("scripts")
       SCRIPTS = ENV.fetch("NORN_SCRIPTS", 
         DEFAULT)
 

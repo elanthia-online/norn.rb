@@ -8,7 +8,6 @@ Gem::Specification.new do |spec|
   spec.version       = Norn::VERSION
   spec.authors       = ["ondreian"]
   spec.email         = ["benjamin.clos+github@gmail.com"]
-
   spec.summary       = "Gemstone IV scripting engine"
   spec.description   = "Gemstone IV scripting engine"
   spec.homepage      = "https://github/ondreian/norn.rb"
@@ -33,4 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "highline"
 end

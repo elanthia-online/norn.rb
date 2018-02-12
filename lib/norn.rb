@@ -1,8 +1,11 @@
+require "json"
+require "rugged"
 ##
 ## a scripting layer for Gemstone IV
 ##
 module Norn
-  require "json"
+  ## never silently fail
+  Thread.report_on_exception = true
   Dir[File.dirname(__FILE__) + '/norn/ext/**/*.rb'].each do |file| require file end
   Dir[File.dirname(__FILE__) + '/norn/**/*.rb'].each do |file| require file end
   ##
@@ -17,6 +20,6 @@ module Norn
   def self.clobber(patt)
     $LOADED_FEATURES
       .select do |path| path =~ /#{patt}/ && path.end_with?(".rb") end
-      .each do |old| load(old) end
+      .each do |stale| load(stale) end
   end
 end

@@ -6,7 +6,7 @@ module Norn
                 :roundtime, :status,
                 :room, :hands, :containers,
                 :stance, :char, :mind, :bounty,
-                :scars, :injuries, :spells,
+                :scars, :injuries, :spells, :map,
                 :encumb, :health, :mana, :stamina, :spirit,
                 :stats, :silver, :inv, :exports
                 
@@ -43,6 +43,7 @@ module Norn
       @health     = Health.new
       @spirit     = Spirit.new
       @exports    = Exports.new
+      @map        = Norn::Map.load()
     end
 
     def context()
