@@ -1,4 +1,4 @@
-module GameObj
+module Exist
   REQUIRED = {required: true, freeze: true}
   LIST     = {default: Array}
   def self.extended(klass)
@@ -7,7 +7,7 @@ module GameObj
     klass.class_variable_set(:@@props, [])
     klass.extend(ClassMethods)
     klass.include(InstanceMethods)
-    ## these props are needed by every GameObj
+    ## these props are needed by every Exist
     klass.class_eval do
       prop(:id,   **REQUIRED)
       prop(:noun, **REQUIRED)
@@ -16,7 +16,7 @@ module GameObj
     end
   end
   ##
-  ## define the class extensions that a GameObj
+  ## define the class extensions that a Exist
   ## will be extended with
   ##
   module ClassMethods
@@ -46,11 +46,11 @@ module GameObj
   end
   ##
   ## defines the instance methods that
-  ## all GameObjs share
+  ## all Exists share
   ##
   module InstanceMethods
     ##
-    ## initializes a GameObj subclass
+    ## initializes a Exist subclass
     ##
     def initialize(**vals)
       ## iterate over the white-list of defined props
@@ -82,7 +82,7 @@ module GameObj
       "##{id}"
     end
     ##
-    ## try to manipulate a GameObj in an unsafe way
+    ## try to manipulate a Exist in an unsafe way
     ##
     def try(method = nil, &block)
       Try.new do
@@ -96,7 +96,7 @@ module GameObj
       end.result
     end
     ##
-    ## make inspection of GameObjs easier
+    ## make inspection of Exists easier
     ##
     def inspect
       %{<#{self.class.name} #{self.class.props.reduce([]) do |s, d| 
@@ -105,7 +105,7 @@ module GameObj
     end
     alias_method :to_s, :inspect
     ##
-    ## cast a GameObj to a Hash
+    ## cast a Exist to a Hash
     ##
     def to_h
       return props.reduce(Hash.new) do |h, d|
@@ -120,7 +120,7 @@ module GameObj
       to_h.to_json
     end
     ##
-    ## cast a GameObj to another Class
+    ## cast a Exist to another Class
     ##
     def as(klass)
       klass.new **to_h

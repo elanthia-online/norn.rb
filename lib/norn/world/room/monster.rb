@@ -1,7 +1,7 @@
-require "norn/gameobj/gameobj"
+require "norn/exists/exist"
 module Norn
   class Monster
-    extend GameObj
+    extend Exist
     prop :status, default: Array
     prop :level
     prop :skin

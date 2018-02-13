@@ -1,7 +1,7 @@
-require "norn/gameobj/gameobj"
+require "norn/exist/exist"
 module Norn
   class Player
-    extend GameObj
+    extend Exist
     prop :status, default: Array
   end
 end

@@ -1,7 +1,7 @@
-require "norn/gameobj/gameobj"
+require "norn/exist/exist"
 
 module Norn
   class Item
-    extend GameObj
+    extend Exist
   end
 end
