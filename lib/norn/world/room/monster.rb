@@ -1,4 +1,4 @@
-require "norn/exists/exist"
+require "norn/exist/exist"
 module Norn
   class Monster
     extend Exist
