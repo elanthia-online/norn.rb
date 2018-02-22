@@ -12,12 +12,11 @@ class Script
         @registry   = registry
         ## alias self since the context
         ## will change inside of super
-        mutator     = self
         ## add it to the registry
-        registry.push(mutator)
+        registry.push(self)
         super do
-          sleep(0.1) while mutator.supervisor.alive?
-          mutator.teardown
+          sleep(0.1) while self.supervisor.alive?
+          self.teardown
         end
       end
 

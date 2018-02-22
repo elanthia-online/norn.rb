@@ -1,13 +1,13 @@
-require "norn/gameobj/gameobj"
+require "norn/exist/exist"
 
 class Plane
-  extend GameObj
+  extend Exist
   def fly
     "fly #{gid}"
   end
 end
 
-describe GameObj do
+describe Exist do
   describe "schema" do
     it "constructs properly" do
       m = Plane.new(
