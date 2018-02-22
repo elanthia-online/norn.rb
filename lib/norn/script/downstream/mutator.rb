@@ -15,8 +15,11 @@ class Script
         ## add it to the registry
         registry.push(self)
         super do
-          sleep(0.1) while self.supervisor.alive?
-          self.teardown
+          begin
+            sleep(0.1) while self.supervisor.alive?  
+          ensure
+            self.teardown()  
+          end
         end
       end
 
